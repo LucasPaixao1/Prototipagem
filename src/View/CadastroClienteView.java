@@ -29,6 +29,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
 
 public class CadastroClienteView {
 
@@ -259,6 +260,18 @@ public class CadastroClienteView {
 		lblFormaDePagamento.setFont(new Font("Arial", Font.BOLD, 11));
 		lblFormaDePagamento.setBounds(754, 212, 137, 14);
 		frame.getContentPane().add(lblFormaDePagamento);
+		
+		JButton btnNewButton = new JButton("Salvar");
+		btnNewButton.setBounds(302, 707, 89, 23);
+		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Alterar");
+		btnNewButton_1.setBounds(554, 707, 89, 23);
+		frame.getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Sair");
+		btnNewButton_2.setBounds(792, 707, 89, 23);
+		frame.getContentPane().add(btnNewButton_2);
 	}
 	public JTable getTable() {
 
