@@ -30,14 +30,28 @@ import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import java.awt.SystemColor;
+import javax.swing.ImageIcon;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormSpecs;
+import com.jgoodies.forms.layout.RowSpec;
 
 public class CadastroClienteView {
 
-	private JFrame frame;
-	private JTextField textField;
+	private JFrame frmCadastroDeCliente;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTable table;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -60,7 +74,7 @@ public class CadastroClienteView {
 			public void run() {
 				try {
 					CadastroClienteView window = new CadastroClienteView();
-					window.frame.setVisible(true);
+					window.frmCadastroDeCliente.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -79,199 +93,318 @@ public class CadastroClienteView {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 927, 794);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmCadastroDeCliente = new JFrame();
+		frmCadastroDeCliente.getContentPane().setFont(new Font("Segoe UI", Font.BOLD, 12));
+		frmCadastroDeCliente.setFont(new Font("Arial", Font.PLAIN, 12));
+		frmCadastroDeCliente.setTitle("Cadastro de Cliente");
+		frmCadastroDeCliente.setBounds(100, 100, 956, 804);
+		frmCadastroDeCliente.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		Panel panel = new Panel();
-		panel.setBounds(0, 0, 265, 129);
-		panel.setBackground(new Color(72, 61, 139));
-		frame.getContentPane().add(panel);
-		SpringLayout sl_panel = new SpringLayout();
-		panel.setLayout(sl_panel);
+		Panel Painel = new Panel();
+		Painel.setBounds(0, 0, 272, 765);
+		Painel.setBackground(new Color(54, 33, 89));
 		
 		JLabel lblVarejoSantos = new JLabel("Varej\u00E3o Santos");
+		lblVarejoSantos.setIcon(new ImageIcon("D:\\Lucas\\Xiss Ressurge\\TCC\\src\\imagens\\icons8-p\u00E1gina-inicial-25.png"));
 		lblVarejoSantos.setForeground(new Color(240, 248, 255));
-		lblVarejoSantos.setFont(new Font("Arial", Font.PLAIN, 20));
-		panel.add(lblVarejoSantos);
+		lblVarejoSantos.setFont(new Font("Segoe UI", Font.BOLD, 24));
 		
-		textField = new JTextField();
-		sl_panel.putConstraint(SpringLayout.NORTH, textField, 98, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, textField, -28, SpringLayout.SOUTH, panel);
-		sl_panel.putConstraint(SpringLayout.WEST, lblVarejoSantos, 0, SpringLayout.WEST, textField);
-		sl_panel.putConstraint(SpringLayout.SOUTH, lblVarejoSantos, -18, SpringLayout.NORTH, textField);
-		sl_panel.putConstraint(SpringLayout.WEST, textField, 23, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, textField, 228, SpringLayout.WEST, panel);
-		panel.add(textField);
-		textField.setColumns(10);
+		JSeparator separator = new JSeparator();
 		
-		Panel panel_1 = new Panel();
-		panel_1.setBackground(new Color(123, 104, 238));
-		panel_1.setBounds(0, 128, 265, 401);
-		frame.getContentPane().add(panel_1);
+		JButton btnNewButton_3 = new JButton("Cadastro de Clientes");
+		btnNewButton_3.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		btnNewButton_3.setOpaque(true);
+		btnNewButton_3.setIcon(new ImageIcon("D:\\Lucas\\Xiss Ressurge\\TCC\\src\\imagens\\icons8-gest\u00E3o-de-cliente-25.png"));
+		btnNewButton_3.setForeground(new Color(255, 255, 255));
+		btnNewButton_3.setBackground(new Color(54, 33, 89));
+		btnNewButton_3.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		
-		Panel panel_2 = new Panel();
-		panel_2.setBackground(new Color(72, 61, 139));
-		panel_2.setBounds(0, 520, 265, 235);
-		frame.getContentPane().add(panel_2);
+		JButton btnCadastroDeFornecedores = new JButton("Cadastro de Fornecedores");
+		btnCadastroDeFornecedores.setIcon(new ImageIcon("D:\\Lucas\\Xiss Ressurge\\TCC\\src\\imagens\\icons8-caminh\u00E3o-25.png"));
+		btnCadastroDeFornecedores.setOpaque(true);
+		btnCadastroDeFornecedores.setForeground(Color.WHITE);
+		btnCadastroDeFornecedores.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		btnCadastroDeFornecedores.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		btnCadastroDeFornecedores.setBackground(new Color(54, 33, 89));
 		
-		JLabel lblId = new JLabel("ID:");
-		lblId.setBounds(302, 28, 46, 14);
-		frame.getContentPane().add(lblId);
+		JButton btnCadastroDeProdutos = new JButton("Cadastro de Produtos");
+		btnCadastroDeProdutos.setIcon(new ImageIcon("D:\\Lucas\\Xiss Ressurge\\TCC\\src\\imagens\\icons8-produto-25.png"));
+		btnCadastroDeProdutos.setOpaque(true);
+		btnCadastroDeProdutos.setForeground(Color.WHITE);
+		btnCadastroDeProdutos.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		btnCadastroDeProdutos.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		btnCadastroDeProdutos.setBackground(new Color(54, 33, 89));
+		
+		JButton btnVendas = new JButton("Vendas");
+		btnVendas.setIcon(new ImageIcon("D:\\Lucas\\Xiss Ressurge\\TCC\\src\\imagens\\icons8-performance-de-vendas-25.png"));
+		btnVendas.setOpaque(true);
+		btnVendas.setForeground(Color.WHITE);
+		btnVendas.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		btnVendas.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		btnVendas.setBackground(new Color(54, 33, 89));
+		
+		JButton btnEstoque = new JButton("Estoque");
+		btnEstoque.setIcon(new ImageIcon("D:\\Lucas\\Xiss Ressurge\\TCC\\src\\imagens\\icons8-procurar-estoque-25.png"));
+		btnEstoque.setOpaque(true);
+		btnEstoque.setForeground(Color.WHITE);
+		btnEstoque.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		btnEstoque.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		btnEstoque.setBackground(new Color(54, 33, 89));
+		
+		JSeparator separator_1 = new JSeparator();
+		
+		JLabel lblAdministrador = new JLabel("Administrador");
+		lblAdministrador.setForeground(new Color(255, 255, 255));
+		lblAdministrador.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		GroupLayout gl_Painel = new GroupLayout(Painel);
+		gl_Painel.setHorizontalGroup(
+			gl_Painel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_Painel.createSequentialGroup()
+					.addGroup(gl_Painel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_Painel.createParallelGroup(Alignment.TRAILING, false)
+							.addComponent(separator_1, Alignment.LEADING)
+							.addComponent(btnNewButton_3, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+							.addComponent(btnEstoque, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+							.addComponent(btnCadastroDeFornecedores, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+							.addComponent(btnCadastroDeProdutos, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+							.addComponent(btnVendas, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+							.addGroup(Alignment.LEADING, gl_Painel.createSequentialGroup()
+								.addGap(10)
+								.addGroup(gl_Painel.createParallelGroup(Alignment.TRAILING, false)
+									.addComponent(separator, Alignment.LEADING)
+									.addComponent(lblVarejoSantos, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+						.addGroup(gl_Painel.createSequentialGroup()
+							.addGap(24)
+							.addComponent(lblAdministrador)))
+					.addContainerGap(2, Short.MAX_VALUE))
+		);
+		gl_Painel.setVerticalGroup(
+			gl_Painel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_Painel.createSequentialGroup()
+					.addGap(45)
+					.addComponent(lblVarejoSantos)
+					.addGap(20)
+					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(32)
+					.addComponent(btnNewButton_3, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnCadastroDeFornecedores, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnCadastroDeProdutos, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+					.addGap(12)
+					.addComponent(btnVendas, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnEstoque, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+					.addGap(71)
+					.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(31)
+					.addComponent(lblAdministrador)
+					.addContainerGap(233, Short.MAX_VALUE))
+		);
+		Painel.setLayout(gl_Painel);
+		
+		JLabel lblId = new JLabel("C\u00D3DIGO:");
+		lblId.setBounds(314, 74, 56, 14);
+		lblId.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		textField_1 = new JTextField();
+		textField_1.setBounds(314, 99, 89, 20);
 		textField_1.setEnabled(false);
-		textField_1.setBounds(298, 53, 63, 20);
-		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 		
 		JLabel lblNome = new JLabel("NOME:");
-		lblNome.setBounds(401, 28, 46, 14);
-		frame.getContentPane().add(lblNome);
+		lblNome.setBounds(415, 74, 43, 14);
+		lblNome.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(401, 53, 480, 20);
-		frame.getContentPane().add(textField_2);
+		textField_2.setBounds(415, 99, 494, 20);
 		textField_2.setColumns(10);
 		
-		JLabel lblTelResidencial = new JLabel("TEL. RESIDENCIAL(opcional):");
+		JLabel lblTelResidencial = new JLabel("TEL. FIXO(opcional):");
+		lblTelResidencial.setBounds(314, 165, 161, 14);
 		lblTelResidencial.setFont(new Font("Arial", Font.BOLD, 11));
-		lblTelResidencial.setBounds(302, 128, 163, 14);
-		frame.getContentPane().add(lblTelResidencial);
 		
 		JFormattedTextField frmtdtxtfldxxXxxxxxxx = new JFormattedTextField();
+		frmtdtxtfldxxXxxxxxxx.setBounds(314, 190, 97, 26);
 		frmtdtxtfldxxXxxxxxxx.setText("(XX) XXXX-XXXX");
-		frmtdtxtfldxxXxxxxxxx.setBounds(302, 153, 104, 20);
-		frame.getContentPane().add(frmtdtxtfldxxXxxxxxxx);
 		
-		JLabel lblTelComercial = new JLabel("TEL. COMERCIAL");
-		lblTelComercial.setFont(new Font("Arial", Font.BOLD, 11));
-		lblTelComercial.setBounds(548, 128, 95, 14);
-		frame.getContentPane().add(lblTelComercial);
+		JLabel lblTelComercial = new JLabel("TEL. NEXTEL");
+		lblTelComercial.setBounds(519, 164, 83, 14);
+		lblTelComercial.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JFormattedTextField formattedTextField = new JFormattedTextField();
+		formattedTextField.setBounds(519, 190, 97, 26);
 		formattedTextField.setText("(XX) XXXX-XXXX");
-		formattedTextField.setBounds(548, 153, 104, 20);
-		frame.getContentPane().add(formattedTextField);
 		
 		JLabel lblTelCelular = new JLabel("TEL. CELULAR (opcional):");
-		lblTelCelular.setFont(new Font("Arial", Font.BOLD, 11));
-		lblTelCelular.setBounds(754, 128, 137, 14);
-		frame.getContentPane().add(lblTelCelular);
+		lblTelCelular.setBounds(670, 165, 136, 14);
+		lblTelCelular.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Clientes Cadastrados", TitledBorder.LEFT, TitledBorder.TOP, null, Color.BLACK));
-		panel_3.setBounds(302, 422, 589, 241);
-		frame.getContentPane().add(panel_3);
+		panel_3.setBounds(314, 455, 595, 241);
+		panel_3.setBorder(new TitledBorder(null, "Clientes Cadastrados", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel_3.setLayout(null);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(16, 57, 578, 166);
+		panel_3.add(scrollPane);
+		
 		table = new JTable();
+		scrollPane.setViewportView(table);
+		table.setToolTipText("");
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"Código", "Nome", "Tel. Residencial", "Tel. Comercial", "Tel. Celular", "CNPJ", "CPF", "Forma De Pagamento"
+				"Codigo", "Nome", "Tel. Residencial", "Tel. Comercial", "Tel. Celular", "CNPJ", "CPF", "Forma De Pagamento"
 			}
 		));
-		table.setFont(new Font("Arial", Font.BOLD, 11));
-		table.setBounds(10, 63, 569, 160);
-		panel_3.add(table);
-		
-		JLabel lblCdigo = new JLabel("ID");
-		lblCdigo.setFont(new Font("Arial", Font.BOLD, 12));
-		lblCdigo.setBounds(35, 38, 22, 14);
-		panel_3.add(lblCdigo);
-		
-		JLabel lblNome_1 = new JLabel("NOME");
-		lblNome_1.setFont(new Font("Arial", Font.BOLD, 12));
-		lblNome_1.setBounds(95, 38, 43, 14);
-		panel_3.add(lblNome_1);
-		
-		JLabel lblTelRes = new JLabel("TEL. RES.");
-		lblTelRes.setFont(new Font("Arial", Font.BOLD, 12));
-		lblTelRes.setBounds(160, 38, 57, 14);
-		panel_3.add(lblTelRes);
-		
-		JLabel lblTelCom = new JLabel("TEL. COM.");
-		lblTelCom.setFont(new Font("Arial", Font.BOLD, 12));
-		lblTelCom.setBounds(227, 38, 57, 14);
-		panel_3.add(lblTelCom);
-		
-		JLabel lblTelCel = new JLabel("TEL. CEL.");
-		lblTelCel.setFont(new Font("Arial", Font.BOLD, 12));
-		lblTelCel.setBounds(301, 38, 57, 14);
-		panel_3.add(lblTelCel);
-		
-		JLabel lblCnpj = new JLabel("CNPJ");
-		lblCnpj.setFont(new Font("Arial", Font.BOLD, 12));
-		lblCnpj.setBounds(379, 38, 31, 14);
-		panel_3.add(lblCnpj);
-		
-		JLabel lblCpf = new JLabel("CPF");
-		lblCpf.setFont(new Font("Arial", Font.BOLD, 12));
-		lblCpf.setBounds(453, 38, 22, 14);
-		panel_3.add(lblCpf);
-		
-		JLabel lblFormaPag = new JLabel("FORMA PAG.");
-		lblFormaPag.setFont(new Font("Arial", Font.BOLD, 12));
-		lblFormaPag.setBounds(505, 38, 84, 14);
-		panel_3.add(lblFormaPag);
+		table.getColumnModel().getColumn(7).setPreferredWidth(133);
+		table.getColumnModel().getColumn(7).setMinWidth(19);
+		table.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JFormattedTextField frmtdtxtfldxxXxxxxxxxx = new JFormattedTextField();
+		frmtdtxtfldxxXxxxxxxxx.setBounds(670, 190, 104, 26);
 		frmtdtxtfldxxXxxxxxxxx.setText("(XX) XXXXX-XXXX");
-		frmtdtxtfldxxXxxxxxxxx.setBounds(754, 153, 104, 20);
-		frame.getContentPane().add(frmtdtxtfldxxXxxxxxxxx);
 		
 		JFormattedTextField formattedTextField_1 = new JFormattedTextField();
-		formattedTextField_1.setBounds(302, 237, 104, 20);
-		frame.getContentPane().add(formattedTextField_1);
+		formattedTextField_1.setBounds(314, 269, 161, 20);
 		
 		JLabel lblCnpjopcional = new JLabel("CNPJ(opcional):");
-		lblCnpjopcional.setFont(new Font("Arial", Font.BOLD, 11));
-		lblCnpjopcional.setBounds(302, 212, 163, 14);
-		frame.getContentPane().add(lblCnpjopcional);
+		lblCnpjopcional.setBounds(314, 244, 161, 14);
+		lblCnpjopcional.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JFormattedTextField formattedTextField_2 = new JFormattedTextField();
-		formattedTextField_2.setBounds(550, 237, 104, 20);
-		frame.getContentPane().add(formattedTextField_2);
+		formattedTextField_2.setBounds(487, 269, 161, 20);
 		
 		JLabel lblCpfopcional = new JLabel("CPF(opcional:)");
-		lblCpfopcional.setFont(new Font("Arial", Font.BOLD, 11));
-		lblCpfopcional.setBounds(550, 212, 163, 14);
-		frame.getContentPane().add(lblCpfopcional);
+		lblCpfopcional.setBounds(487, 244, 183, 14);
+		lblCpfopcional.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(670, 269, 104, 20);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"BOLETO", "DINHEIRO"}));
-		comboBox.setBounds(754, 237, 127, 20);
-		frame.getContentPane().add(comboBox);
 		
 		JLabel lblFormaDePagamento = new JLabel("FORMA DE PAGAMENTO:");
-		lblFormaDePagamento.setFont(new Font("Arial", Font.BOLD, 11));
-		lblFormaDePagamento.setBounds(754, 212, 137, 14);
-		frame.getContentPane().add(lblFormaDePagamento);
+		lblFormaDePagamento.setBounds(670, 244, 130, 14);
+		lblFormaDePagamento.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JButton btnNewButton = new JButton("Salvar");
-		btnNewButton.setBounds(302, 707, 89, 23);
-		frame.getContentPane().add(btnNewButton);
+		btnNewButton.setBounds(314, 707, 89, 26);
+		btnNewButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		
 		JButton btnNewButton_1 = new JButton("Alterar");
-		btnNewButton_1.setBounds(554, 707, 89, 23);
-		frame.getContentPane().add(btnNewButton_1);
+		btnNewButton_1.setBounds(587, 707, 83, 26);
+		btnNewButton_1.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		
 		JButton btnNewButton_2 = new JButton("Sair");
-		btnNewButton_2.setBounds(792, 707, 89, 23);
-		frame.getContentPane().add(btnNewButton_2);
+		btnNewButton_2.setBounds(820, 707, 89, 26);
+		btnNewButton_2.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				System.exit(0);
+				
+			}
+		});
+		
+		JLabel lblRua = new JLabel("RUA:");
+		lblRua.setBounds(314, 319, 161, 14);
+		lblRua.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		JFormattedTextField formattedTextField_3 = new JFormattedTextField();
+		formattedTextField_3.setBounds(314, 344, 161, 20);
+		
+		JLabel lblBairro = new JLabel("BAIRRO:");
+		lblBairro.setBounds(487, 319, 56, 14);
+		lblBairro.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		JFormattedTextField formattedTextField_4 = new JFormattedTextField();
+		formattedTextField_4.setBounds(487, 344, 161, 20);
+		
+		JLabel lblNmero = new JLabel("N\u00DAMERO:");
+		lblNmero.setBounds(660, 319, 56, 14);
+		lblNmero.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		JFormattedTextField formattedTextField_5 = new JFormattedTextField();
+		formattedTextField_5.setBounds(660, 344, 114, 20);
+		
+		JLabel lblCep = new JLabel("CEP");
+		lblCep.setBounds(314, 386, 161, 14);
+		lblCep.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		JFormattedTextField formattedTextField_6 = new JFormattedTextField();
+		formattedTextField_6.setBounds(314, 411, 161, 20);
+		
+		JLabel lblCidade = new JLabel("CIDADE");
+		lblCidade.setBounds(487, 386, 161, 14);
+		lblCidade.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		JFormattedTextField formattedTextField_7 = new JFormattedTextField();
+		formattedTextField_7.setBounds(487, 411, 161, 20);
+		
+		JLabel lblCadastroCliente = new JLabel("CADASTRO CLIENTE");
+		lblCadastroCliente.setBounds(501, 26, 226, 26);
+		lblCadastroCliente.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		
+		JLabel lblPesquisarPorCdigo = new JLabel("Pesquisar por C\u00F3digo:");
+		lblPesquisarPorCdigo.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		lblPesquisarPorCdigo.setBounds(16, 30, 128, 16);
+		panel_3.add(lblPesquisarPorCdigo);
+		
+		textField = new JTextField();
+		textField.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		textField.setColumns(10);
+		textField.setBounds(156, 26, 63, 20);
+		panel_3.add(textField);
+		
+		JButton btnPesquisar = new JButton("Pesquisar");
+		btnPesquisar.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		btnPesquisar.setBounds(246, 26, 90, 20);
+		panel_3.add(btnPesquisar);
+		frmCadastroDeCliente.getContentPane().setLayout(null);
+		frmCadastroDeCliente.getContentPane().add(Painel);
+		frmCadastroDeCliente.getContentPane().add(lblCadastroCliente);
+		frmCadastroDeCliente.getContentPane().add(lblId);
+		frmCadastroDeCliente.getContentPane().add(lblNome);
+		frmCadastroDeCliente.getContentPane().add(textField_1);
+		frmCadastroDeCliente.getContentPane().add(textField_2);
+		frmCadastroDeCliente.getContentPane().add(lblTelResidencial);
+		frmCadastroDeCliente.getContentPane().add(lblTelComercial);
+		frmCadastroDeCliente.getContentPane().add(lblTelCelular);
+		frmCadastroDeCliente.getContentPane().add(frmtdtxtfldxxXxxxxxxx);
+		frmCadastroDeCliente.getContentPane().add(formattedTextField);
+		frmCadastroDeCliente.getContentPane().add(frmtdtxtfldxxXxxxxxxxx);
+		frmCadastroDeCliente.getContentPane().add(lblCnpjopcional);
+		frmCadastroDeCliente.getContentPane().add(lblCpfopcional);
+		frmCadastroDeCliente.getContentPane().add(lblFormaDePagamento);
+		frmCadastroDeCliente.getContentPane().add(formattedTextField_1);
+		frmCadastroDeCliente.getContentPane().add(formattedTextField_2);
+		frmCadastroDeCliente.getContentPane().add(comboBox);
+		frmCadastroDeCliente.getContentPane().add(lblRua);
+		frmCadastroDeCliente.getContentPane().add(lblBairro);
+		frmCadastroDeCliente.getContentPane().add(lblNmero);
+		frmCadastroDeCliente.getContentPane().add(formattedTextField_3);
+		frmCadastroDeCliente.getContentPane().add(formattedTextField_4);
+		frmCadastroDeCliente.getContentPane().add(formattedTextField_5);
+		frmCadastroDeCliente.getContentPane().add(lblCep);
+		frmCadastroDeCliente.getContentPane().add(lblCidade);
+		frmCadastroDeCliente.getContentPane().add(formattedTextField_6);
+		frmCadastroDeCliente.getContentPane().add(formattedTextField_7);
+		frmCadastroDeCliente.getContentPane().add(btnNewButton);
+		frmCadastroDeCliente.getContentPane().add(btnNewButton_1);
+		frmCadastroDeCliente.getContentPane().add(btnNewButton_2);
+		frmCadastroDeCliente.getContentPane().add(panel_3);
 	}
 	public JTable getTable() {
 
