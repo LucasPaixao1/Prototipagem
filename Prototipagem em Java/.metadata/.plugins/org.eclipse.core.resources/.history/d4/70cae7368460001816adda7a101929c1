@@ -1,0 +1,170 @@
+package View;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Color;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JSeparator;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.border.BevelBorder;
+import java.awt.Dimension;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class ViewMenuDesign extends JFrame {
+
+	private JPanel contentPane;
+	private JTable table;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ViewMenuDesign frame = new ViewMenuDesign();
+					frame.setVisible(true);
+				
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ViewMenuDesign() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 955, 804);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 236, 765);
+		panel.setBackground(new Color(54,33,89));
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblVarejoSantos = new JLabel("Varej\u00E3o Santos");
+		lblVarejoSantos.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				ViewMenuDesign menu = new ViewMenuDesign();
+				menu.setVisible(true);
+				dispose();
+				
+			}
+		});
+		lblVarejoSantos.setIcon(new ImageIcon("C:\\Users\\Home\\Documents\\NetBeansProjects\\TCC\\src\\imagens\\icons8-p\u00E1gina-inicial-25.png"));
+		lblVarejoSantos.setForeground(new Color(255, 255, 255));
+		lblVarejoSantos.setFont(new Font("Segoe UI", Font.PLAIN, 24));
+		lblVarejoSantos.setBounds(10, 25, 193, 32);
+		panel.add(lblVarejoSantos);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(10, 68, 193, 2);
+		panel.add(separator);
+		
+		JButton btnNewButton = new JButton("Cadastro de Clientes");
+		btnNewButton.setSize(new Dimension(270, 50));
+		btnNewButton.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE));
+		btnNewButton.setIcon(new ImageIcon("C:\\Users\\Home\\Documents\\NetBeansProjects\\TCC\\src\\imagens\\icons8-gest\u00E3o-de-cliente-25.png"));
+		btnNewButton.setForeground(new Color(255, 255, 255));
+		btnNewButton.setBackground(new Color(54,33,89));
+		btnNewButton.setBounds(0, 109, 236, 32);
+		panel.add(btnNewButton);
+		
+		JButton btnCadastroDeFornecedores = new JButton("Cadastro de Fornecedores");
+		btnCadastroDeFornecedores.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE));
+		btnCadastroDeFornecedores.setIcon(new ImageIcon("C:\\Users\\Home\\Documents\\NetBeansProjects\\TCC\\src\\imagens\\icons8-caminh\u00E3o-25.png"));
+		btnCadastroDeFornecedores.setForeground(new Color(255, 255, 255));
+		btnCadastroDeFornecedores.setBackground(new Color(54,33,89));
+		btnCadastroDeFornecedores.setBounds(0, 158, 236, 32);
+		panel.add(btnCadastroDeFornecedores);
+		
+		JButton btnCadastroDeProdutos = new JButton("Cadastro de Produtos");
+		btnCadastroDeProdutos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CadastroProdutosView produto = new CadastroProdutosView();
+				produto.setVisible(true);
+				
+			}
+		});
+		btnCadastroDeProdutos.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE));
+		btnCadastroDeProdutos.setIcon(new ImageIcon("C:\\Users\\Home\\Documents\\NetBeansProjects\\TCC\\src\\imagens\\icons8-produto-25.png"));
+		btnCadastroDeProdutos.setForeground(new Color(255, 255, 255));
+		btnCadastroDeProdutos.setBackground(new Color(54,33,89));
+		btnCadastroDeProdutos.setBounds(0, 201, 236, 32);
+		panel.add(btnCadastroDeProdutos);
+		
+		JButton btnEstoque = new JButton("Estoque");
+		btnEstoque.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ViewEstoqueDesignr estoque = new ViewEstoqueDesignr();
+			estoque.setVisible(true);
+			
+			}
+		});
+		btnEstoque.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE));
+		btnEstoque.setIcon(new ImageIcon("C:\\Users\\Home\\Documents\\NetBeansProjects\\TCC\\src\\imagens\\icons8-procurar-estoque-25.png"));
+		btnEstoque.setForeground(new Color(255, 255, 255));
+		btnEstoque.setBackground(new Color(54,33,89));
+		btnEstoque.setBounds(0, 249, 236, 32);
+		panel.add(btnEstoque);
+		
+		JButton btnVendas = new JButton("Vendas");
+		btnVendas.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE));
+		btnVendas.setIcon(new ImageIcon("C:\\Users\\Home\\Documents\\NetBeansProjects\\TCC\\src\\imagens\\icons8-performance-de-vendas-25.png"));
+		btnVendas.setForeground(new Color(255, 255, 255));
+		btnVendas.setBackground(new Color(54,33,89));
+		btnVendas.setBounds(0, 292, 236, 32);
+		panel.add(btnVendas);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(0, 366, 236, 2);
+		panel.add(separator_1);
+		
+		JLabel lblAdministrador = new JLabel("Administrador");
+		lblAdministrador.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		lblAdministrador.setForeground(new Color(255, 255, 255));
+		lblAdministrador.setBounds(10, 400, 150, 25);
+		panel.add(lblAdministrador);
+		
+		table = new JTable();
+		table.setBounds(235, 355, 563, -226);
+		panel.add(table);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(236, 29, 703, 97);
+		panel_1.setBackground(new Color(122,72,221));
+		contentPane.add(panel_1);
+		panel_1.setLayout(null);
+		
+		JLabel lblBomDiaJose = new JLabel("Bom dia Jos\u00E9");
+		lblBomDiaJose.setForeground(Color.WHITE);
+		lblBomDiaJose.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		lblBomDiaJose.setBounds(6, 6, 221, 30);
+		panel_1.add(lblBomDiaJose);
+		
+		JLabel lblSejaBemVindo = new JLabel("Seja bem Vindo!");
+		lblSejaBemVindo.setForeground(Color.WHITE);
+		lblSejaBemVindo.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		lblSejaBemVindo.setBounds(6, 48, 163, 39);
+		panel_1.add(lblSejaBemVindo);
+	}
+}

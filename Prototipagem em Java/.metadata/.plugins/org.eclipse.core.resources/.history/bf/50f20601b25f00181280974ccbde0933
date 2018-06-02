@@ -1,0 +1,57 @@
+package host.local.prototipagem;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.Color;
+import javax.swing.JLabel;
+import java.awt.Font;
+
+public class PesquisarFornecedor {
+
+	private JFrame frame;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					PesquisarFornecedor window = new PesquisarFornecedor();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public PesquisarFornecedor() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 879, 617);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(54, 33, 89));
+		panel.setBounds(6, 6, 239, 567);
+		frame.getContentPane().add(panel);
+		
+		JLabel lblVarejoSantos = new JLabel("Varej\u00E3o Santos");
+		lblVarejoSantos.setForeground(new Color(255, 255, 255));
+		lblVarejoSantos.setFont(new Font("SansSerif", Font.PLAIN, 24));
+		panel.add(lblVarejoSantos);
+	}
+}

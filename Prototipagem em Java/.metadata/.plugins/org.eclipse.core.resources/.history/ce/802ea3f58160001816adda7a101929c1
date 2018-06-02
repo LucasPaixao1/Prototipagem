@@ -1,0 +1,213 @@
+package View;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Color;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JSeparator;
+import javax.swing.JButton;
+import javax.swing.border.BevelBorder;
+import java.awt.Dimension;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.JFormattedTextField;
+import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class ViewProdutoDesign extends JFrame {
+
+	private JPanel contentPane;
+	private JTable table;
+	private JTextField textField;
+	private JTextField textField_1;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ViewProdutoDesignr frame = new ViewProdutoDesignr();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ViewProdutoDesign() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 798, 501);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setLayout(null);
+		panel.setBackground(new Color(54, 33, 89));
+		panel.setBounds(0, 0, 222, 470);
+		contentPane.add(panel);
+		
+		JLabel label = new JLabel("Varej\u00E3o Santos");
+		label.setIcon(new ImageIcon("C:\\Users\\Home\\Documents\\NetBeansProjects\\TCC\\src\\imagens\\icons8-p\u00E1gina-inicial-25.png"));
+		label.setForeground(Color.WHITE);
+		label.setFont(new Font("Segoe UI", Font.PLAIN, 24));
+		label.setBounds(10, 25, 193, 32);
+		panel.add(label);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(10, 68, 193, 2);
+		panel.add(separator);
+		
+		JButton button = new JButton("Cadastro de Clientes");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		button.setIcon(new ImageIcon("C:\\Users\\Home\\Documents\\NetBeansProjects\\TCC\\src\\imagens\\icons8-gest\u00E3o-de-cliente-25.png"));
+		button.setSize(new Dimension(270, 50));
+		button.setForeground(Color.WHITE);
+		button.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE));
+		button.setBackground(new Color(54, 33, 89));
+		button.setBounds(0, 109, 236, 32);
+		panel.add(button);
+		
+		JButton button_1 = new JButton("Cadastro de Fornecedores");
+		button_1.setIcon(new ImageIcon("C:\\Users\\Home\\Documents\\NetBeansProjects\\TCC\\src\\imagens\\icons8-caminh\u00E3o-25.png"));
+		button_1.setForeground(Color.WHITE);
+		button_1.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE));
+		button_1.setBackground(new Color(54, 33, 89));
+		button_1.setBounds(0, 158, 236, 32);
+		panel.add(button_1);
+		
+		JButton button_2 = new JButton("Cadastro de Produtos");
+		button_2.setIcon(new ImageIcon("C:\\Users\\Home\\Documents\\NetBeansProjects\\TCC\\src\\imagens\\icons8-produto-25.png"));
+		button_2.setForeground(Color.WHITE);
+		button_2.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE));
+		button_2.setBackground(new Color(54, 33, 89));
+		button_2.setBounds(0, 201, 236, 32);
+		panel.add(button_2);
+		
+		JButton button_3 = new JButton("Estoque");
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ViewEstoqueDesignr estoque = new ViewEstoqueDesignr();
+				estoque.setVisible(true);
+				dispose();
+				
+			}
+		});
+		button_3.setIcon(new ImageIcon("C:\\Users\\Home\\Documents\\NetBeansProjects\\TCC\\src\\imagens\\icons8-procurar-estoque-25.png"));
+		button_3.setForeground(Color.WHITE);
+		button_3.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE));
+		button_3.setBackground(new Color(54, 33, 89));
+		button_3.setBounds(0, 249, 236, 32);
+		panel.add(button_3);
+		
+		JButton button_4 = new JButton("Vendas");
+		button_4.setIcon(new ImageIcon("C:\\Users\\Home\\Documents\\NetBeansProjects\\TCC\\src\\imagens\\icons8-performance-de-vendas-25.png"));
+		button_4.setForeground(Color.WHITE);
+		button_4.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE));
+		button_4.setBackground(new Color(54, 33, 89));
+		button_4.setBounds(0, 292, 236, 32);
+		panel.add(button_4);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(0, 366, 236, 2);
+		panel.add(separator_1);
+		
+		JLabel label_1 = new JLabel("Administrador");
+		label_1.setForeground(Color.WHITE);
+		label_1.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		label_1.setBounds(10, 400, 150, 25);
+		panel.add(label_1);
+		
+		table = new JTable();
+		table.setBounds(235, 355, 563, -226);
+		panel.add(table);
+		
+		JLabel lblCadastroDeProdutos = new JLabel("Cadastro de Produtos");
+		lblCadastroDeProdutos.setForeground(Color.WHITE);
+		lblCadastroDeProdutos.setFont(new Font("Segoe UI", Font.PLAIN, 24));
+		lblCadastroDeProdutos.setBounds(369, 11, 245, 32);
+		contentPane.add(lblCadastroDeProdutos);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(369, 40, 235, 2);
+		contentPane.add(separator_2);
+		
+		JLabel lblNome = new JLabel("C\u00F3digo");
+		lblNome.setBounds(250, 77, 46, 14);
+		contentPane.add(lblNome);
+		
+		textField = new JTextField();
+		textField.setBounds(295, 74, 56, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNome_1 = new JLabel("Nome");
+		lblNome_1.setBounds(354, 77, 46, 14);
+		contentPane.add(lblNome_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(396, 74, 194, 20);
+		contentPane.add(textField_1);
+		
+		JLabel lblValidade = new JLabel("Validade");
+		lblValidade.setBounds(608, 77, 65, 14);
+		contentPane.add(lblValidade);
+		
+		JFormattedTextField formattedTextField = new JFormattedTextField();
+		formattedTextField.setBounds(683, 74, 78, 20);
+		contentPane.add(formattedTextField);
+		
+		JLabel lblValor = new JLabel("Valor");
+		lblValor.setBounds(250, 135, 46, 14);
+		contentPane.add(lblValor);
+		
+		JFormattedTextField formattedTextField_1 = new JFormattedTextField();
+		formattedTextField_1.setBounds(295, 132, 56, 20);
+		contentPane.add(formattedTextField_1);
+		
+		JLabel lblQuantidade = new JLabel("Quantidade");
+		lblQuantidade.setBounds(354, 135, 67, 14);
+		contentPane.add(lblQuantidade);
+		
+		JFormattedTextField formattedTextField_2 = new JFormattedTextField();
+		formattedTextField_2.setBounds(418, 132, 78, 20);
+		contentPane.add(formattedTextField_2);
+		
+		JLabel lblPeso = new JLabel("Peso");
+		lblPeso.setBounds(522, 135, 67, 14);
+		contentPane.add(lblPeso);
+		
+		JFormattedTextField formattedTextField_3 = new JFormattedTextField();
+		formattedTextField_3.setBounds(559, 132, 78, 20);
+		contentPane.add(formattedTextField_3);
+		
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setBounds(250, 215, 90, 28);
+		contentPane.add(btnCadastrar);
+		
+		JButton btnAlterar = new JButton("Alterar");
+		btnAlterar.setBounds(360, 215, 90, 28);
+		contentPane.add(btnAlterar);
+		
+		JButton btnDeletar = new JButton("Deletar");
+		btnDeletar.setBounds(473, 215, 90, 28);
+		contentPane.add(btnDeletar);
+	}
+}

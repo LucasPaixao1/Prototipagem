@@ -1,0 +1,135 @@
+package View;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import javax.swing.border.BevelBorder;
+import java.awt.Dimension;
+
+public class ViewLoginDesign extends JFrame {
+	private JTextField textField;
+	private JTextField textField_1;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ViewLoginDesign frame = new ViewLoginDesign();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ViewLoginDesign() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(54,33,817, 564);
+		JPanel contentPane = new JPanel();
+		contentPane.setSize(new Dimension(788, 554));
+		contentPane.setName("Login");
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(75, 0, 89));
+		panel.setBounds(346,0,455, 526);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(180, 147, 100, 100);
+		lblNewLabel_1.setIcon(new ImageIcon("F:\\DE TUDO UM POUCO\\TCC\\Netbeans\\src\\imagens\\icons8-monitor-filled-100.png"));
+		panel.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Varej\u00E3o Santos");
+		lblNewLabel_2.setForeground(new Color(255, 255, 255));
+		lblNewLabel_2.setFont(new Font("Segoe UI", Font.PLAIN, 24));
+		lblNewLabel_2.setBounds(156, 258, 165, 27);
+		panel.add(lblNewLabel_2);
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon("F:\\DE TUDO UM POUCO\\TCC\\Netbeans\\src\\imagens\\icons8-instagram-50.png"));
+		label_1.setBounds(156, 296, 46, 44);
+		panel.add(label_1);
+		
+		JLabel label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon("F:\\DE TUDO UM POUCO\\TCC\\Netbeans\\src\\imagens\\icons8-facebook-50.png"));
+		label_2.setBounds(210, 296, 46, 44);
+		panel.add(label_2);
+		
+		JLabel label_3 = new JLabel("");
+		label_3.setIcon(new ImageIcon("F:\\DE TUDO UM POUCO\\TCC\\Netbeans\\src\\imagens\\icons8-twitter-50.png"));
+		label_3.setBounds(266, 296, 46, 44);
+		panel.add(label_3);
+		
+		JLabel lblUsuario = new JLabel("Usuario");
+		lblUsuario.setBounds(38, 117, 46, 14);
+		contentPane.add(lblUsuario);
+		
+		textField = new JTextField();
+		textField.setBounds(38, 142, 240, 27);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblSenha = new JLabel("Senha");
+		lblSenha.setBounds(38, 195, 46, 14);
+		contentPane.add(lblSenha);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(38, 220, 240, 27);
+		contentPane.add(textField_1);
+		
+		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(54, 33, 89), new Color(54, 33, 89), new Color(54, 33, 89), new Color(54, 33, 89)));
+		btnEntrar.setForeground(new Color(255, 255, 255));
+		btnEntrar.setBackground(new Color(54,33,89));
+		btnEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ViewMenuDesignr menu = new ViewMenuDesignr();
+				menu.setVisible(true);
+				dispose();
+				
+				
+			}
+		});
+		btnEntrar.setBounds(38, 282, 240, 32);
+		contentPane.add(btnEntrar);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Home\\Documents\\NetBeansProjects\\TCC\\src\\imagens\\icons8-administrador-masculino-25.png"));
+		lblNewLabel.setBounds(10, 142, 28, 27);
+		contentPane.add(lblNewLabel);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon("C:\\Users\\Home\\Documents\\NetBeansProjects\\TCC\\src\\imagens\\icons8-senha-25.png"));
+		label.setBounds(10, 220, 28, 27);
+		contentPane.add(label);
+		
+		JLabel lblEsqueceuASenha = new JLabel("Esqueceu a senha?");
+		lblEsqueceuASenha.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		lblEsqueceuASenha.setBounds(10, 335, 114, 14);
+		contentPane.add(lblEsqueceuASenha);
+	}
+}
+
