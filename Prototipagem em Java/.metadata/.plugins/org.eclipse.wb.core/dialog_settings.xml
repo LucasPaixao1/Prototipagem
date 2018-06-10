@@ -16,6 +16,12 @@
 		<item value="741" key="x"/>
 		<item value="382" key="y"/>
 	</section>
+	<section name="org.eclipse.wb.internal.core.nls.ui.NlsDialog">
+		<item value="360" key="x"/>
+		<item value="720" key="width"/>
+		<item value="215" key="y"/>
+		<item value="430" key="height"/>
+	</section>
 	<section name="org.eclipse.wb.internal.core.model.property.editor.string.StringPropertyDialog">
 		<item value="910" key="x"/>
 		<item value="530" key="width"/>

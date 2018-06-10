@@ -1,0 +1,516 @@
+package View;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Panel;
+import java.awt.Color;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JSeparator;
+import javax.swing.JButton;
+import javax.swing.border.EtchedBorder;
+import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.ImageIcon;
+import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class VendasView extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField codigo;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTable table;
+	private JTextField textField_6;
+	private JTextField textField_7;
+	private JTextField textField_8;
+	static VendasView frameVendas = new VendasView();
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		
+		try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+           System.err.println(ex);
+        }
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frameVendas.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public VendasView() {
+		setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 955, 804);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		
+		Panel panel = new Panel();
+		panel.setBackground(new Color(54, 33, 89));
+		
+		JSeparator separator = new JSeparator();
+		
+		JButton button = new JButton("Cadastro de Clientes");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				CadastroClienteView window = new CadastroClienteView();
+				window.frmCadastroDeCliente.setVisible(true);
+				
+				frameVendas.dispose();
+			}
+		});
+		button.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-gest\u00E3o-de-cliente-25.png")));
+		button.setOpaque(true);
+		button.setForeground(Color.WHITE);
+		button.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		button.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		button.setBackground(new Color(54, 33, 89));
+		
+		JButton button_1 = new JButton("Estoque");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ViewEstoqueDesign estoque = new ViewEstoqueDesign();
+				estoque.setVisible(true);
+				
+				frameVendas.dispose();
+			}
+		});
+		button_1.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-procurar-estoque-25.png")));
+		button_1.setOpaque(true);
+		button_1.setForeground(Color.WHITE);
+		button_1.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		button_1.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		button_1.setBackground(new Color(54, 33, 89));
+		
+		JButton button_2 = new JButton("Cadastro de Fornecedores");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Fornecedor fornecedor = new Fornecedor();
+				fornecedor.frame.setVisible(true);
+				
+				frameVendas.dispose();
+				
+			}
+		});
+		button_2.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-caminh\u00E3o-25.png")));
+		button_2.setOpaque(true);
+		button_2.setForeground(Color.WHITE);
+		button_2.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		button_2.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		button_2.setBackground(new Color(54, 33, 89));
+		
+		JButton button_3 = new JButton("Cadastro de Produtos");
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				CadastroProdutosView produto = new CadastroProdutosView();
+				produto.setVisible(true);
+				
+				frameVendas.dispose();
+			}
+		});
+		button_3.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-produto-25.png")));
+		button_3.setOpaque(true);
+		button_3.setForeground(Color.WHITE);
+		button_3.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		button_3.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		button_3.setBackground(new Color(54, 33, 89));
+		
+		JButton button_4 = new JButton("Vendas");
+		button_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				VendasView vendas = new VendasView();
+				vendas.setVisible(true);
+				
+				frameVendas.dispose();
+				
+			}
+		});
+		button_4.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-performance-de-vendas-25.png")));
+		button_4.setOpaque(true);
+		button_4.setForeground(Color.WHITE);
+		button_4.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		button_4.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		button_4.setBackground(new Color(54, 33, 89));
+		
+		JSeparator separator_1 = new JSeparator();
+		
+		JLabel label = new JLabel("Varej\u00E3o Santos");
+		label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				ViewMenuDesign menu = new ViewMenuDesign();
+				menu.setVisible(true);
+				
+				frameVendas.dispose();
+			}
+		});
+		label.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-p\u00E1gina-inicial-25.png")));
+		label.setForeground(new Color(240, 248, 255));
+		label.setFont(new Font("Segoe UI", Font.BOLD, 24));
+		
+		JSeparator separator_2 = new JSeparator();
+		
+		JLabel label_1 = new JLabel("Administrador");
+		label_1.setForeground(Color.WHITE);
+		label_1.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		JSeparator separator_3 = new JSeparator();
+		
+		JSeparator separator_4 = new JSeparator();
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(10)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(10)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(separator_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(2)
+					.addComponent(separator_4, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE))
+				.addComponent(button, GroupLayout.PREFERRED_SIZE, 270, GroupLayout.PREFERRED_SIZE)
+				.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 270, GroupLayout.PREFERRED_SIZE)
+				.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 270, GroupLayout.PREFERRED_SIZE)
+				.addComponent(button_4, GroupLayout.PREFERRED_SIZE, 270, GroupLayout.PREFERRED_SIZE)
+				.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 270, GroupLayout.PREFERRED_SIZE)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(6)
+					.addComponent(separator_3, GroupLayout.PREFERRED_SIZE, 270, GroupLayout.PREFERRED_SIZE))
+				.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(24)
+					.addComponent(label_1))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(39)
+					.addComponent(label)
+					.addGap(18)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(separator_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(6)
+							.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(separator_4, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE))
+					.addGap(24)
+					.addComponent(button, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+					.addGap(12)
+					.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+					.addGap(12)
+					.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+					.addGap(12)
+					.addComponent(button_4, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+					.addGap(12)
+					.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+					.addGap(63)
+					.addComponent(separator_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(31)
+					.addComponent(label_1))
+		);
+		panel.setLayout(gl_panel);
+		
+		codigo = new JTextField();
+		codigo.setColumns(10);
+		
+		JLabel lblCdigoDaVenda = new JLabel("C\u00D3DIGO DA VENDA:");
+		lblCdigoDaVenda.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		JLabel label_3 = new JLabel("NOME:");
+		label_3.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setText("DD/MM/AA");
+		textField_2.setColumns(10);
+		
+		JLabel lblDataDaVenda = new JLabel("DATA DA VENDA");
+		lblDataDaVenda.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		
+		JLabel label_5 = new JLabel("VALOR DO PRODUTO:");
+		label_5.setToolTipText("");
+		label_5.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		
+		JLabel lblQuantidadeVendida = new JLabel("QUANTIDADE VENDIDA:");
+		lblQuantidadeVendida.setToolTipText("");
+		lblQuantidadeVendida.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		JLabel label_7 = new JLabel("PESO DO PRODUTO:");
+		label_7.setToolTipText("");
+		label_7.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		textField_5 = new JTextField();
+		textField_5.setColumns(10);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new TitledBorder(null, "Vendas Cadastradas", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		
+		JScrollPane scrollPane = new JScrollPane();
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"Codigo", "Nome", "Data da Venda", "Valor", "Quantidade", "Peso ", "Cod. Prod.", "Nome Prod."
+			}
+		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(79);
+		table.getColumnModel().getColumn(1).setPreferredWidth(100);
+		table.getColumnModel().getColumn(2).setPreferredWidth(103);
+		table.getColumnModel().getColumn(3).setPreferredWidth(59);
+		table.getColumnModel().getColumn(4).setPreferredWidth(74);
+		table.getColumnModel().getColumn(5).setPreferredWidth(54);
+		table.getColumnModel().getColumn(6).setPreferredWidth(80);
+		table.getColumnModel().getColumn(7).setPreferredWidth(80);
+		
+		JLabel lblPesquisarPorVenda = new JLabel("Pesquisar por Venda C\u00F3digo:");
+		lblPesquisarPorVenda.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		
+		textField_6 = new JTextField();
+		textField_6.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		textField_6.setColumns(10);
+		
+		JButton button_8 = new JButton("Pesquisar");
+		button_8.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		
+		JButton button_5 = new JButton("Alterar");
+		button_5.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		
+		JButton button_6 = new JButton("Salvar");
+		button_6.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		
+		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		
+		JLabel lblVendas = new JLabel("VENDAS");
+		lblVendas.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		
+		textField_7 = new JTextField();
+		textField_7.setColumns(10);
+		
+		textField_8 = new JTextField();
+		textField_8.setEnabled(false);
+		textField_8.setColumns(10);
+		
+		JLabel label_2 = new JLabel("NOME:");
+		label_2.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		JLabel lblCdigoDoProduto = new JLabel("C\u00D3DIGO DO PRODUTO:");
+		lblCdigoDoProduto.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		JSeparator separator_5 = new JSeparator();
+		
+		JLabel lblNewLabel = new JLabel("");
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addGap(27)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(273)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addGap(3)
+											.addComponent(separator_5, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))
+										.addComponent(lblVendas, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(lblCdigoDaVenda, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)
+									.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(codigo, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
+									.addGap(84)
+									.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 494, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(lblCdigoDoProduto, GroupLayout.PREFERRED_SIZE, 133, GroupLayout.PREFERRED_SIZE)
+									.addGap(12)
+									.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
+									.addGap(32)
+									.addComponent(lblDataDaVenda, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
+									.addGap(37)
+									.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(5)
+									.addComponent(textField_7, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+									.addGap(70)
+									.addComponent(textField_8, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
+									.addGap(32)
+									.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 0, Short.MAX_VALUE)
+									.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 590, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(1)
+									.addComponent(label_7, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE)
+									.addGap(2)
+									.addComponent(lblQuantidadeVendida, GroupLayout.PREFERRED_SIZE, 167, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
+									.addGap(48)
+									.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(button_6, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+									.addGap(184)
+									.addComponent(button_5, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
+									.addGap(150)
+									.addComponent(btnExcluir, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)))
+					.addGap(0))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 765, Short.MAX_VALUE)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(26)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(24)
+							.addComponent(separator_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblVendas, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+					.addGap(54)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblCdigoDaVenda, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+					.addGap(11)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(codigo, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+					.addGap(41)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblCdigoDoProduto, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblDataDaVenda, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+					.addGap(11)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(textField_8, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+							.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textField_7, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+					.addGap(35)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(label_7, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblQuantidadeVendida, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+					.addGap(11)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+					.addGap(78)
+					.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+					.addGap(40)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(button_6, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+						.addComponent(button_5, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnExcluir, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+					.addGap(29))
+		);
+		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+		gl_panel_1.setHorizontalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addGap(10)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addGap(168)
+							.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblPesquisarPorVenda, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))
+					.addGap(22)
+					.addComponent(button_8, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+					.addGap(5))
+		);
+		gl_panel_1.setVerticalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addGap(3)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addGap(2)
+							.addComponent(lblPesquisarPorVenda))
+						.addComponent(button_8, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
+					.addGap(25)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+					.addGap(3))
+		);
+		panel_1.setLayout(gl_panel_1);
+		contentPane.setLayout(gl_contentPane);
+	}
+
+}

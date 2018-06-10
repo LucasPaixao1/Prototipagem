@@ -40,22 +40,24 @@ import javax.swing.JSeparator;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Dimension;
 import javax.swing.JScrollPane;
+import javax.swing.DefaultComboBoxModel;
 
 public class Fornecedor extends JFrame {
 
-	public JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_9;
-	private JTextField textField_10;
+	public  JFrame frame;
+	private JTextField textCodigo;
+	private JTextField textEmpresa;
+	private JTextField textCnpj;
+	private JTextField textRua;
+	private JTextField textCep;
+	private JTextField textNumero;
+	private JTextField textBairro;
+	private JTextField textTelefone;
+	private JTextField textCelular;
 	private JTable table;
 	private JTextField textField_7;
 	static Fornecedor windowFornecedor = new Fornecedor();
+	private JTextField textCidade;
 
 	/**
 	 * Launch the application.
@@ -97,150 +99,157 @@ public class Fornecedor extends JFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setFont(new Font("Segoe UI", Font.BOLD, 12));
 		frame.setBounds(100, 100, 1000, 815);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JLabel lblId = new JLabel("ID:");
-		lblId.setBounds(299, 60, 46, 14);
+		JLabel lblId = new JLabel("C\u00D3DIGO:");
+		lblId.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblId.setBounds(299, 45, 63, 18);
 		frame.getContentPane().add(lblId);
 
-		textField = new JTextField();
-		textField.setEnabled(false);
-		textField.setBounds(357, 55, 80, 23);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		textCodigo = new JTextField();
+		textCodigo.setBounds(359, 40, 80, 23);
+		frame.getContentPane().add(textCodigo);
+		textCodigo.setColumns(10);
 
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(299, 112, 140, 33);
-		frame.getContentPane().add(textField_1);
+		textEmpresa = new JTextField();
+		textEmpresa.setColumns(10);
+		textEmpresa.setBounds(299, 112, 140, 31);
+		frame.getContentPane().add(textEmpresa);
 
 		JLabel lblEmpresa = new JLabel("EMPRESA:");
+		lblEmpresa.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		lblEmpresa.setBounds(299, 86, 85, 14);
 		frame.getContentPane().add(lblEmpresa);
 
 		JLabel lblCnpj = new JLabel("CNPJ:");
-		lblCnpj.setBounds(486, 87, 85, 14);
+		lblCnpj.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblCnpj.setBounds(486, 86, 85, 14);
 		frame.getContentPane().add(lblCnpj);
 
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(486, 113, 180, 30);
-		frame.getContentPane().add(textField_2);
+		textCnpj = new JTextField();
+		textCnpj.setColumns(10);
+		textCnpj.setBounds(486, 113, 180, 30);
+		frame.getContentPane().add(textCnpj);
 
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(299, 182, 180, 30);
-		frame.getContentPane().add(textField_3);
+		textRua = new JTextField();
+		textRua.setColumns(10);
+		textRua.setBounds(299, 182, 180, 30);
+		frame.getContentPane().add(textRua);
 
 		JLabel lblRua = new JLabel("RUA:");
+		lblRua.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		lblRua.setBounds(299, 157, 46, 14);
 		frame.getContentPane().add(lblRua);
 
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(486, 182, 120, 30);
-		frame.getContentPane().add(textField_4);
+		textCep = new JTextField();
+		textCep.setColumns(10);
+		textCep.setBounds(486, 182, 120, 30);
+		frame.getContentPane().add(textCep);
 
 		JLabel lblCep = new JLabel("CEP:");
+		lblCep.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		lblCep.setBounds(491, 157, 46, 14);
 		frame.getContentPane().add(lblCep);
 
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(703, 182, 50, 30);
-		frame.getContentPane().add(textField_5);
+		textNumero = new JTextField();
+		textNumero.setColumns(10);
+		textNumero.setBounds(703, 182, 50, 30);
+		frame.getContentPane().add(textNumero);
 
 		JLabel lblNumero = new JLabel("NUMERO:");
+		lblNumero.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		lblNumero.setBounds(704, 157, 86, 14);
 		frame.getContentPane().add(lblNumero);
 
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(299, 258, 180, 30);
-		frame.getContentPane().add(textField_6);
+		textBairro = new JTextField();
+		textBairro.setColumns(10);
+		textBairro.setBounds(299, 258, 180, 30);
+		frame.getContentPane().add(textBairro);
 
 		JLabel lblBairro = new JLabel("BAIRRO:");
+		lblBairro.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		lblBairro.setBounds(300, 233, 73, 14);
 		frame.getContentPane().add(lblBairro);
 
 		JLabel lblCidade = new JLabel("CIDADE:");
+		lblCidade.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		lblCidade.setBounds(486, 233, 85, 14);
 		frame.getContentPane().add(lblCidade);
 
 		JLabel lblUf = new JLabel("UF:");
+		lblUf.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		lblUf.setBounds(705, 233, 46, 14);
 		frame.getContentPane().add(lblUf);
 
 		JLabel lblTelefone = new JLabel("TELEFONE:");
+		lblTelefone.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		lblTelefone.setBounds(299, 304, 74, 14);
 		frame.getContentPane().add(lblTelefone);
 
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		textField_9.setBounds(298, 329, 180, 30);
-		frame.getContentPane().add(textField_9);
+		textTelefone = new JTextField();
+		textTelefone.setColumns(10);
+		textTelefone.setBounds(298, 329, 180, 30);
+		frame.getContentPane().add(textTelefone);
 
-		JLabel lblTelefone_1 = new JLabel("TELEFONE:");
-		lblTelefone_1.setBounds(486, 304, 85, 14);
+		JLabel lblTelefone_1 = new JLabel("TELEFONE CELULAR:");
+		lblTelefone_1.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblTelefone_1.setBounds(486, 304, 132, 14);
 		frame.getContentPane().add(lblTelefone_1);
 
-		textField_10 = new JTextField();
-		textField_10.setColumns(10);
-		textField_10.setBounds(485, 329, 180, 30);
-		frame.getContentPane().add(textField_10);
+		textCelular = new JTextField();
+		textCelular.setColumns(10);
+		textCelular.setBounds(485, 329, 180, 30);
+		frame.getContentPane().add(textCelular);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
 				"LISTA DE FORNECEDORES CADASTRADOS", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_2.setBounds(272, 419, 734, 285);
+		panel_2.setBounds(272, 410, 652, 294);
 		frame.getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(6, 55, 722, 224);
+		scrollPane.setBounds(16, 55, 621, 224);
 		panel_2.add(scrollPane);
 
 		table = new JTable();
-		scrollPane.setViewportView(table);
-		table.setToolTipText("LISTA DE FORNECEDORES");
 		table.setSurrendersFocusOnKeystroke(true);
 		table.setShowVerticalLines(true);
 		table.setShowHorizontalLines(true);
+		table.setCellSelectionEnabled(true);
+		table.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		table.setBackground(new Color(255, 255, 255));
+		table.setForeground(SystemColor.inactiveCaptionText);
+		scrollPane.setViewportView(table);
+		table.setToolTipText("LISTA DE FORNECEDORES");
 		table.setFillsViewportHeight(true);
 		table.setColumnSelectionAllowed(true);
-		table.setCellSelectionEnabled(true);
 		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table.setModel(new DefaultTableModel(
-				new Object[][] { { "", "", "", "", "", "", "", "", "", "", "" },
-						{ null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null, null, null, null, null }, },
-				new String[] { "ID", "EMPRESA", "CNPJ", "RUA", "CEP", "NUMERO", "BAIRRO", "CIDADE", "UF", "TELEFONE",
-						"TELEFONE" }));
+			new Object[][] {
+			},
+			new String[] {
+				"C\u00D3DIGO", "EMPRESA", "CNPJ", "CEP", "TELEFONE", "CELULAR"
+			}
+		));
 		table.getColumnModel().getColumn(0).setPreferredWidth(62);
-		table.getColumnModel().getColumn(3).setPreferredWidth(127);
-		table.getColumnModel().getColumn(5).setPreferredWidth(59);
-		table.getColumnModel().getColumn(6).setPreferredWidth(100);
-		table.getColumnModel().getColumn(8).setPreferredWidth(34);
 
 		JButton btnPesquisar = new JButton("Pesquisar");
-		btnPesquisar.setBounds(6, 15, 90, 28);
+		btnPesquisar.setBounds(258, 21, 90, 28);
 		panel_2.add(btnPesquisar);
 
 		textField_7 = new JTextField();
-		textField_7.setBounds(108, 15, 122, 28);
+		textField_7.setBounds(107, 21, 122, 28);
 		panel_2.add(textField_7);
 		textField_7.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("Pesquisar");
+		lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblNewLabel.setBounds(16, 27, 55, 16);
+		panel_2.add(lblNewLabel);
 
 		JPanel panel = new JPanel();
 		panel.setIgnoreRepaint(true);
@@ -384,30 +393,50 @@ public class Fornecedor extends JFrame {
 		frame.getContentPane().add(horizontalStrut);
 
 		JLabel lblProduto = new JLabel("PRODUTO:");
+		lblProduto.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		lblProduto.setBounds(704, 304, 85, 14);
 		frame.getContentPane().add(lblProduto);
 
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(703, 328, 140, 23);
-		frame.getContentPane().add(comboBox);
+		JComboBox Produto = new JComboBox();
+		Produto.setBounds(703, 328, 140, 23);
+		frame.getContentPane().add(Produto);
 
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(486, 258, 180, 30);
-		frame.getContentPane().add(comboBox_1);
+		JComboBox Uf = new JComboBox();
+		Uf.setBounds(703, 258, 50, 30);
+		frame.getContentPane().add(Uf);
 
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(703, 258, 50, 30);
-		frame.getContentPane().add(comboBox_2);
-
-		JButton button = new JButton("Editar");
-		button.setBounds(562, 722, 89, 23);
-		frame.getContentPane().add(button);
+		JButton btnAlterar = new JButton("Alterar");
+		btnAlterar.setBounds(562, 722, 89, 23);
+		frame.getContentPane().add(btnAlterar);
 
 		JButton button_1 = new JButton("Salvar");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String codigo = textCodigo.getText().trim();
+				String emp = textEmpresa.getText().trim();
+				String cnpj = textCnpj.getText().trim();
+				String cep = textCep.getText().trim();
+				String telefone = textTelefone.getText().trim();
+				String celular = textCelular.getText().trim();
+				
+				DefaultTableModel val = (DefaultTableModel) table.getModel();
+				val.addRow(new String[] {codigo, emp, cnpj, cep, telefone, celular});
+				
+				textCodigo.setText("");
+				textEmpresa.setText("");
+				textCnpj.setText("");
+				textCep.setText("");
+				textTelefone.setText("");
+				textCelular.setText("");
+				
+				textCodigo.requestFocus();
+			}
+		});
 		button_1.setBounds(300, 722, 89, 23);
 		frame.getContentPane().add(button_1);
 
-		JButton btnSair = new JButton("Sair");
+		JButton btnSair = new JButton("Excluir");
 		btnSair.setBounds(819, 722, 89, 23);
 		frame.getContentPane().add(btnSair);
 		
@@ -420,5 +449,10 @@ public class Fornecedor extends JFrame {
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setBounds(436, 26, 299, 2);
 		frame.getContentPane().add(separator_2);
+		
+		textCidade = new JTextField();
+		textCidade.setBounds(486, 259, 180, 28);
+		frame.getContentPane().add(textCidade);
+		textCidade.setColumns(10);
 	}
 }

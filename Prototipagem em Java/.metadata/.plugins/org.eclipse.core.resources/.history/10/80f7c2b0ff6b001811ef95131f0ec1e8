@@ -1,0 +1,158 @@
+package View;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import javax.swing.border.BevelBorder;
+import java.awt.Dimension;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormSpecs;
+import com.jgoodies.forms.layout.RowSpec;
+import javax.swing.JInternalFrame;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+
+public class ViewLoginDesign extends JFrame {
+	private JTextField textField;
+	private JTextField textField_1;
+	
+	
+	static ViewLoginDesign frameLogin = new ViewLoginDesign();
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		
+		try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+           System.err.println(ex);
+        }
+		
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frameLogin.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ViewLoginDesign() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(54,33,817, 564);
+		JPanel contentPane = new JPanel();
+		contentPane.setSize(new Dimension(788, 554));
+		contentPane.setName("Login");
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(340, 0, 455, 525);
+		panel.setBackground(new Color(54, 33, 89));
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(156, 75, 150, 171);
+		lblNewLabel_1.setIcon(new ImageIcon(ViewLoginDesign.class.getResource("/imagens/Imagem1.png")));
+		panel.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Varej\u00E3o Santos");
+		lblNewLabel_2.setForeground(new Color(255, 255, 255));
+		lblNewLabel_2.setFont(new Font("Segoe UI", Font.PLAIN, 24));
+		lblNewLabel_2.setBounds(156, 258, 165, 27);
+		panel.add(lblNewLabel_2);
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(ViewLoginDesign.class.getResource("/imagens/icons8-nova-mensagem-50.png")));
+		label_1.setBounds(153, 296, 55, 44);
+		panel.add(label_1);
+		
+		JLabel label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(ViewLoginDesign.class.getResource("/imagens/icons8-facebook-50.png")));
+		label_2.setBounds(210, 296, 46, 44);
+		panel.add(label_2);
+		
+		JLabel label_3 = new JLabel("");
+		label_3.setIcon(new ImageIcon(ViewLoginDesign.class.getResource("/imagens/icons8-whatsapp-50 (1).png")));
+		label_3.setBounds(266, 290, 55, 50);
+		panel.add(label_3);
+		
+		JLabel lblUsuario = new JLabel("Usuario");
+		lblUsuario.setBounds(45, 125, 44, 16);
+		
+		textField = new JTextField();
+		textField.setBounds(45, 152, 240, 27);
+		textField.setColumns(10);
+		
+		JLabel lblSenha = new JLabel("Senha");
+		lblSenha.setBounds(45, 205, 36, 14);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(45, 230, 240, 27);
+		textField_1.setColumns(10);
+		
+		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.setBounds(45, 292, 240, 32);
+		btnEntrar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(54, 33, 89), new Color(54, 33, 89), new Color(54, 33, 89), new Color(54, 33, 89)));
+		btnEntrar.setForeground(new Color(255, 255, 255));
+		btnEntrar.setBackground(new Color(54,33,89));
+		btnEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ViewMenuDesign menu = new ViewMenuDesign();
+				menu.setVisible(true);
+				frameLogin.dispose();
+				
+				
+			}
+		});
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(17, 152, 28, 27);
+		lblNewLabel.setIcon(new ImageIcon(ViewLoginDesign.class.getResource("/imagens/icons8-administrador-masculino-25.png")));
+		
+		JLabel label = new JLabel("");
+		label.setBounds(17, 230, 28, 27);
+		label.setIcon(new ImageIcon(ViewLoginDesign.class.getResource("/imagens/icons8-senha-25.png")));
+		
+		JLabel lblEsqueceuASenha = new JLabel("Esqueceu a senha?");
+		lblEsqueceuASenha.setBounds(17, 345, 98, 16);
+		lblEsqueceuASenha.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		contentPane.setLayout(null);
+		contentPane.add(lblUsuario);
+		contentPane.add(lblNewLabel);
+		contentPane.add(textField);
+		contentPane.add(lblSenha);
+		contentPane.add(label);
+		contentPane.add(textField_1);
+		contentPane.add(btnEntrar);
+		contentPane.add(lblEsqueceuASenha);
+		contentPane.add(panel);
+	}
+}
+

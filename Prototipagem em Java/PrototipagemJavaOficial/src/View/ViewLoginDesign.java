@@ -24,13 +24,16 @@ import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Toolkit;
+import java.awt.Window.Type;
+import javax.swing.JPasswordField;
 
 public class ViewLoginDesign extends JFrame {
 	private JTextField textField;
-	private JTextField textField_1;
 	
 	
 	static ViewLoginDesign frameLogin = new ViewLoginDesign();
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -64,6 +67,9 @@ public class ViewLoginDesign extends JFrame {
 	 * Create the frame.
 	 */
 	public ViewLoginDesign() {
+		setResizable(false);
+		
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ViewLoginDesign.class.getResource("/imagens/Imagem1.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(54,33,817, 564);
 		JPanel contentPane = new JPanel();
@@ -73,7 +79,7 @@ public class ViewLoginDesign extends JFrame {
 		setContentPane(contentPane);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(340, 0, 455, 525);
+		panel.setBounds(340, 0, 471, 535);
 		panel.setBackground(new Color(54, 33, 89));
 		panel.setLayout(null);
 		
@@ -88,22 +94,8 @@ public class ViewLoginDesign extends JFrame {
 		lblNewLabel_2.setBounds(156, 258, 165, 27);
 		panel.add(lblNewLabel_2);
 		
-		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon(ViewLoginDesign.class.getResource("/imagens/icons8-nova-mensagem-50.png")));
-		label_1.setBounds(153, 296, 55, 44);
-		panel.add(label_1);
-		
-		JLabel label_2 = new JLabel("");
-		label_2.setIcon(new ImageIcon("F:\\DE TUDO UM POUCO\\TCC\\Prototipagem em Java\\PrototipagemJavaFornecedor\\src\\imagens\\icons8-facebook-50.png"));
-		label_2.setBounds(210, 296, 46, 44);
-		panel.add(label_2);
-		
-		JLabel label_3 = new JLabel("");
-		label_3.setIcon(new ImageIcon("F:\\DE TUDO UM POUCO\\TCC\\Prototipagem em Java\\PrototipagemJavaFornecedor\\src\\imagens\\icons8-whatsapp-50 (1).png"));
-		label_3.setBounds(266, 290, 55, 50);
-		panel.add(label_3);
-		
 		JLabel lblUsuario = new JLabel("Usuario");
+		lblUsuario.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		lblUsuario.setBounds(45, 125, 44, 16);
 		
 		textField = new JTextField();
@@ -111,11 +103,8 @@ public class ViewLoginDesign extends JFrame {
 		textField.setColumns(10);
 		
 		JLabel lblSenha = new JLabel("Senha");
+		lblSenha.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		lblSenha.setBounds(45, 205, 36, 14);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(45, 230, 240, 27);
-		textField_1.setColumns(10);
 		
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.setBounds(45, 292, 240, 32);
@@ -149,10 +138,13 @@ public class ViewLoginDesign extends JFrame {
 		contentPane.add(textField);
 		contentPane.add(lblSenha);
 		contentPane.add(label);
-		contentPane.add(textField_1);
 		contentPane.add(btnEntrar);
 		contentPane.add(lblEsqueceuASenha);
 		contentPane.add(panel);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(45, 231, 240, 28);
+		contentPane.add(passwordField);
 	}
 }
 

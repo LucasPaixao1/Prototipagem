@@ -40,6 +40,7 @@ public class CadastroProdutosView extends JFrame {
 	private JTextField textField_4;
 	private JTable table;
 
+	static CadastroProdutosView frameProdutos = new CadastroProdutosView();
 	/**
 	 * Launch the application.
 	 */
@@ -59,8 +60,7 @@ public class CadastroProdutosView extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastroProdutosView frame = new CadastroProdutosView();
-					frame.setVisible(true);
+					frameProdutos.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -94,7 +94,7 @@ public class CadastroProdutosView extends JFrame {
 				CadastroClienteView window = new CadastroClienteView();
 				window.frmCadastroDeCliente.setVisible(true);
 				
-				dispose();
+				frameProdutos.dispose();
 				
 			}
 		});
@@ -112,7 +112,7 @@ public class CadastroProdutosView extends JFrame {
 				ViewEstoqueDesign estoque = new ViewEstoqueDesign();
 				estoque.setVisible(true);
 				
-				dispose();
+				frameProdutos.dispose();
 				
 			}
 		});
@@ -130,7 +130,7 @@ public class CadastroProdutosView extends JFrame {
 				Fornecedor fornecedor = new Fornecedor();
 				fornecedor.frame.setVisible(true);
 				
-				dispose();
+				frameProdutos.dispose();
 				
 			}
 		});
@@ -148,7 +148,7 @@ public class CadastroProdutosView extends JFrame {
 				CadastroProdutosView produto = new CadastroProdutosView();
 				produto.setVisible(true);
 				
-				dispose();
+				frameProdutos.dispose();
 				
 			}
 		});
@@ -166,7 +166,7 @@ public class CadastroProdutosView extends JFrame {
 				VendasView vendas = new VendasView();
 				vendas.setVisible(true);
 				
-				dispose();
+				frameProdutos.dispose();
 				
 			}
 		});
@@ -185,6 +185,8 @@ public class CadastroProdutosView extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				ViewMenuDesign menu = new ViewMenuDesign();
 				menu.setVisible(true);
+				
+				frameProdutos.dispose();
 			}
 		});
 		label.setIcon(new ImageIcon(CadastroProdutosView.class.getResource("/imagens/icons8-p\u00E1gina-inicial-25.png")));

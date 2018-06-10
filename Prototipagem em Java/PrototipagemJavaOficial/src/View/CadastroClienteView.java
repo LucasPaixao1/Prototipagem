@@ -47,6 +47,7 @@ import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JToggleButton;
 
 public class CadastroClienteView extends JInternalFrame{
 
@@ -135,7 +136,6 @@ public class CadastroClienteView extends JInternalFrame{
 		frmCadastroDeCliente.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		Panel Painel = new Panel();
-		Painel.setBounds(0, 0, 272, 765);
 		Painel.setBackground(new Color(54, 33, 89));
 		
 		JLabel lblVarejoSantos = new JLabel("Varej\u00E3o Santos");
@@ -144,6 +144,8 @@ public class CadastroClienteView extends JInternalFrame{
 			public void mousePressed(MouseEvent arg0) {
 				ViewMenuDesign menu = new ViewMenuDesign();
 				menu.setVisible(true);
+				
+				frmCadastroDeCliente.dispose();
 				
 			}
 		});
@@ -295,64 +297,48 @@ public class CadastroClienteView extends JInternalFrame{
 		Painel.setLayout(gl_Painel);
 		
 		JLabel lblId = new JLabel("C\u00D3DIGO:");
-		lblId.setBounds(314, 74, 50, 14);
 		lblId.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		txtCodigo = new JTextField();
-		txtCodigo.setBounds(314, 99, 89, 20);
 		txtCodigo.setColumns(10);
 		
 		JLabel lblNome = new JLabel("NOME:");
-		lblNome.setBounds(415, 74, 38, 14);
 		lblNome.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		txtNome = new JTextField();
-		txtNome.setBounds(415, 99, 492, 20);
 		txtNome.setColumns(10);
 		
 		JLabel lblTelResidencial = new JLabel("TEL. FIXO(opcional):");
-		lblTelResidencial.setBounds(314, 165, 161, 14);
 		lblTelResidencial.setFont(new Font("Arial", Font.BOLD, 11));
 		
 		JLabel lblTelComercial = new JLabel("TEL. NEXTEL");
-		lblTelComercial.setBounds(487, 164, 67, 15);
 		lblTelComercial.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JLabel lblTelCelular = new JLabel("TEL. CELULAR (opcional):");
-		lblTelCelular.setBounds(670, 164, 136, 15);
 		lblTelCelular.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(314, 455, 593, 241);
+		panel_3.setAlignmentX(10.0f);
 		panel_3.setBorder(new TitledBorder(null, "Clientes Cadastrados", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_3.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(16, 58, 560, 156);
-		panel_3.add(scrollPane);
 		
 		JLabel lblCnpjopcional = new JLabel("CNPJ(opcional):");
-		lblCnpjopcional.setBounds(314, 244, 161, 14);
 		lblCnpjopcional.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
-		JLabel lblCpfopcional = new JLabel("CPF(opcional:)");
-		lblCpfopcional.setBounds(487, 244, 183, 14);
+		JLabel lblCpfopcional = new JLabel("CPF(opcional):");
 		lblCpfopcional.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(670, 269, 92, 20);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"BOLETO", "DINHEIRO"}));
 		
 		JLabel lblFormaDePagamento = new JLabel("FORMA DE PAGAMENTO:");
-		lblFormaDePagamento.setBounds(670, 244, 136, 14);
 		lblFormaDePagamento.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JButton btnNewButton_1 = new JButton("Alterar");
-		btnNewButton_1.setBounds(587, 707, 83, 28);
 		btnNewButton_1.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		
 		JButton btnNewButton_2 = new JButton("Sair");
-		btnNewButton_2.setBounds(818, 707, 89, 28);
 		btnNewButton_2.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -363,51 +349,37 @@ public class CadastroClienteView extends JInternalFrame{
 		});
 		
 		JLabel lblRua = new JLabel("RUA:");
-		lblRua.setBounds(314, 319, 161, 14);
 		lblRua.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JTextField txtRua = new JTextField();
-		txtRua.setBounds(314, 344, 161, 20);
 		
 		JLabel lblBairro = new JLabel("BAIRRO:");
-		lblBairro.setBounds(487, 319, 56, 14);
 		lblBairro.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JLabel lblNmero = new JLabel("N\u00DAMERO:");
-		lblNmero.setBounds(660, 319, 55, 14);
 		lblNmero.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JLabel lblCep = new JLabel("CEP");
-		lblCep.setBounds(314, 386, 161, 14);
 		lblCep.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JTextField txtCep = new JTextField();
-		txtCep.setBounds(314, 411, 89, 20);
 		
 		JLabel lblCidade = new JLabel("CIDADE");
-		lblCidade.setBounds(487, 386, 161, 14);
 		lblCidade.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JTextField txtCidade = new JTextField();
-		txtCidade.setBounds(487, 411, 161, 20);
 		
 		JLabel lblCadastroCliente = new JLabel("CADASTRO CLIENTE");
-		lblCadastroCliente.setBounds(487, 22, 208, 30);
 		lblCadastroCliente.setFont(new Font("Segoe UI", Font.BOLD, 22));
 		
 		JLabel lblPesquisarPorCdigo = new JLabel("Pesquisar por C\u00F3digo:");
 		lblPesquisarPorCdigo.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		lblPesquisarPorCdigo.setBounds(16, 30, 128, 16);
-		panel_3.add(lblPesquisarPorCdigo);
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		textField.setColumns(10);
-		textField.setBounds(156, 26, 63, 20);
-		panel_3.add(textField);
 		
 		JButton btnNewButton = new JButton("Salvar");
-		btnNewButton.setBounds(314, 707, 89, 28);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -431,7 +403,29 @@ public class CadastroClienteView extends JInternalFrame{
 		table.setToolTipText("");
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{codigo, nome, fixo, nextel, celular, cnpj, celular, frmPag},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
 				{null, null, null, null, null, null, null, null},
 				{null, null, null, null, null, null, null, null},
 				{null, null, null, null, null, null, null, null},
@@ -450,66 +444,203 @@ public class CadastroClienteView extends JInternalFrame{
 		
 		JButton btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		btnPesquisar.setBounds(246, 26, 90, 20);
-		panel_3.add(btnPesquisar);
-		frmCadastroDeCliente.getContentPane().setLayout(null);
-		frmCadastroDeCliente.getContentPane().add(Painel);
-		frmCadastroDeCliente.getContentPane().add(lblCadastroCliente);
-		frmCadastroDeCliente.getContentPane().add(lblId);
-		frmCadastroDeCliente.getContentPane().add(lblNome);
-		frmCadastroDeCliente.getContentPane().add(txtCodigo);
-		frmCadastroDeCliente.getContentPane().add(txtNome);
-		frmCadastroDeCliente.getContentPane().add(lblTelResidencial);
-		frmCadastroDeCliente.getContentPane().add(lblTelComercial);
-		frmCadastroDeCliente.getContentPane().add(lblTelCelular);
-		frmCadastroDeCliente.getContentPane().add(lblCnpjopcional);
-		frmCadastroDeCliente.getContentPane().add(lblCpfopcional);
-		frmCadastroDeCliente.getContentPane().add(lblFormaDePagamento);
-		frmCadastroDeCliente.getContentPane().add(comboBox);
-		frmCadastroDeCliente.getContentPane().add(lblRua);
-		frmCadastroDeCliente.getContentPane().add(lblBairro);
-		frmCadastroDeCliente.getContentPane().add(lblNmero);
-		frmCadastroDeCliente.getContentPane().add(txtRua);
-		frmCadastroDeCliente.getContentPane().add(lblCep);
-		frmCadastroDeCliente.getContentPane().add(lblCidade);
-		frmCadastroDeCliente.getContentPane().add(txtCep);
-		frmCadastroDeCliente.getContentPane().add(txtCidade);
-		frmCadastroDeCliente.getContentPane().add(btnNewButton);
-		frmCadastroDeCliente.getContentPane().add(btnNewButton_1);
-		frmCadastroDeCliente.getContentPane().add(btnNewButton_2);
-		frmCadastroDeCliente.getContentPane().add(panel_3);
 		
 		JSeparator separator_2 = new JSeparator();
-		separator_2.setBounds(488, 50, 207, 2);
-		frmCadastroDeCliente.getContentPane().add(separator_2);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(314, 191, 117, 20);
-		frmCadastroDeCliente.getContentPane().add(textField_1);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(487, 191, 117, 20);
-		frmCadastroDeCliente.getContentPane().add(textField_2);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(670, 191, 117, 20);
-		frmCadastroDeCliente.getContentPane().add(textField_3);
 		
 		textField_4 = new JTextField();
-		textField_4.setBounds(314, 270, 117, 20);
-		frmCadastroDeCliente.getContentPane().add(textField_4);
 		
 		textField_5 = new JTextField();
-		textField_5.setBounds(487, 269, 117, 20);
-		frmCadastroDeCliente.getContentPane().add(textField_5);
 		
 		textField_6 = new JTextField();
-		textField_6.setBounds(487, 340, 117, 20);
-		frmCadastroDeCliente.getContentPane().add(textField_6);
 		
 		textField_7 = new JTextField();
-		textField_7.setBounds(660, 344, 117, 20);
-		frmCadastroDeCliente.getContentPane().add(textField_7);
+		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
+		gl_panel_3.setHorizontalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_3.createSequentialGroup()
+							.addGap(2)
+							.addComponent(lblPesquisarPorCdigo, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
+							.addGap(12)
+							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+							.addGap(27)
+							.addComponent(btnPesquisar, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE))
+						.addGroup(Alignment.TRAILING, gl_panel_3.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)))
+					.addContainerGap())
+		);
+		gl_panel_3.setVerticalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addGap(8)
+					.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_3.createSequentialGroup()
+							.addGap(4)
+							.addComponent(lblPesquisarPorCdigo))
+						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnPesquisar, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+					.addGap(13))
+		);
+		panel_3.setLayout(gl_panel_3);
+		GroupLayout groupLayout = new GroupLayout(frmCadastroDeCliente.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addComponent(Painel, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
+					.addGap(42)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(173)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(1)
+									.addComponent(separator_2, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE))
+								.addComponent(lblCadastroCliente)))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblId)
+							.addGap(51)
+							.addComponent(lblNome))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(txtCodigo, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+							.addGap(12)
+							.addComponent(txtNome, GroupLayout.PREFERRED_SIZE, 492, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblTelResidencial, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE)
+							.addGap(82)
+							.addComponent(lblTelComercial)
+							.addGap(131)
+							.addComponent(lblTelCelular, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
+							.addGap(126)
+							.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
+							.addGap(81)
+							.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblCnpjopcional, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE)
+							.addGap(82)
+							.addComponent(lblCpfopcional, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
+							.addGap(81)
+							.addComponent(lblFormaDePagamento, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
+							.addGap(126)
+							.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
+							.addGap(81)
+							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblRua, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE)
+							.addGap(82)
+							.addComponent(lblBairro, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
+							.addGap(101)
+							.addComponent(lblNmero))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(txtRua, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE)
+							.addGap(82)
+							.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
+							.addGap(83)
+							.addComponent(textField_7, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblCep, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE)
+							.addGap(82)
+							.addComponent(lblCidade, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(txtCep, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+							.addGap(76)
+							.addComponent(txtCidade, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+							.addGap(164)
+							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
+							.addGap(168)
+							.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
+						.addComponent(panel_3, GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE))
+					.addGap(15))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addComponent(Painel, GroupLayout.PREFERRED_SIZE, 765, GroupLayout.PREFERRED_SIZE)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(22)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(28)
+							.addComponent(separator_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblCadastroCliente))
+					.addGap(22)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblId, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNome, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+					.addGap(11)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(txtCodigo, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtNome, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
+					.addGap(45)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(1)
+							.addComponent(lblTelResidencial))
+						.addComponent(lblTelComercial, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(1)
+							.addComponent(lblTelCelular, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)))
+					.addGap(11)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(1)
+							.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)))
+					.addGap(32)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblCnpjopcional, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblCpfopcional, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblFormaDePagamento, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+					.addGap(12)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(6)
+							.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
+					.addGap(29)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblRua, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblBairro, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNmero, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+					.addGap(6)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(txtRua, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textField_7, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
+					.addGap(21)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblCep, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblCidade, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
+					.addGap(11)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(txtCep, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtCidade, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
+					.addGap(24)
+					.addComponent(panel_3, GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+					.addGap(11)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnNewButton)
+						.addComponent(btnNewButton_1)
+						.addComponent(btnNewButton_2))
+					.addGap(31))
+		);
+		frmCadastroDeCliente.getContentPane().setLayout(groupLayout);
 		
 
 	}

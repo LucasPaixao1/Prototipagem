@@ -9,7 +9,23 @@
       <title>eclipse.org</title>
       <link>http://www.eclipse.org</link>
     </image>
-      <item>
+        <item>
+      <title><![CDATA[Eclipse Newsletter - A First Look at Jakarta EE]]></title>
+      <link><![CDATA[https://www.eclipse.org/community/eclipse_newsletter/2018/may/]]></link>
+      <description><![CDATA[This month, read eight great pieces to get informed about various parts of Jakarta EE.]]></description>
+      <pubDate>Mon, 04 June 2018 5:40:00 EST</pubDate>
+      <category>news</category>
+      <pressrelease>0</pressrelease>
+    </item>
+    <item>
+      <title><![CDATA[RC2 now available for Eclipse Photon]]></title>
+      <link><![CDATA[https://www.eclipse.org/downloads/index-developer.php]]></link>
+      <description><![CDATA[Download and test release candidate 2 for Eclipse Photon!]]></description>
+      <pubDate>Fri, 01 June 2018 11:00:00 EST</pubDate>
+      <category>news</category>
+      <pressrelease>0</pressrelease>
+    </item>
+    <item>
       <title><![CDATA[Updates to our Privacy Policy]]></title>
       <link><![CDATA[https://blogs.eclipse.org/post/thabang-mashologu/updates-our-privacy-policy]]></link>
       <description><![CDATA[The Eclipse Foundation has updated it's privacy policy for the protection of your personal data.]]></description>
