@@ -4,4 +4,8 @@
 		id="org.eclipse.wb.swing.layouts java.awt.BorderLayout"
 		category="org.eclipse.wb.swing.layouts"
 		nextEntry="org.eclipse.wb.swing.layouts java.awt.CardLayout"/>
+	<moveEntry
+		id="org.eclipse.wb.swing.components javax.swing.JLabel"
+		category="org.eclipse.wb.swing.components"
+		nextEntry="org.eclipse.wb.swing.components javax.swing.JSeparator"/>
 </commands>

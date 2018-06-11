@@ -12,10 +12,22 @@
 		<item value="260" key="y"/>
 		<item value="381" key="height"/>
 	</section>
-	<section name="org.eclipse.wb.internal.swing.model.property.editor.icon.IconPropertyEditor$ImageDialog">
-		<item value="584" key="x"/>
+	<section name="org.eclipse.wb.internal.swing.model.property.editor.models.combo.ComboBoxModelDialog">
+		<item value="722" key="x"/>
+		<item value="476" key="width"/>
+		<item value="337" key="y"/>
+		<item value="365" key="height"/>
+	</section>
+	<section name="org.eclipse.wb.internal.swing.model.property.editor.icon.ImagePropertyEditor$ImageDialog">
+		<item value="519" key="x"/>
 		<item value="881" key="width"/>
-		<item value="221" key="y"/>
+		<item value="240" key="y"/>
+		<item value="559" key="height"/>
+	</section>
+	<section name="org.eclipse.wb.internal.swing.model.property.editor.icon.IconPropertyEditor$ImageDialog">
+		<item value="916" key="x"/>
+		<item value="881" key="width"/>
+		<item value="396" key="y"/>
 		<item value="580" key="height"/>
 	</section>
 </section>

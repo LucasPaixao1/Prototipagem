@@ -207,7 +207,7 @@ public class Fornecedor extends JFrame {
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),
 				"LISTA DE FORNECEDORES CADASTRADOS", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_2.setBounds(272, 410, 652, 294);
+		panel_2.setBounds(299, 416, 652, 294);
 		frame.getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 
@@ -256,7 +256,7 @@ public class Fornecedor extends JFrame {
 		panel.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		panel.setFocusTraversalPolicyProvider(true);
 		panel.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-		panel.setBackground(new Color(54, 33, 89));
+		panel.setBackground(new Color(17, 144, 147));
 		panel.setToolTipText("");
 		panel.setForeground(new Color(72, 61, 139));
 		panel.setBounds(0, -6, 272, 778);
@@ -294,7 +294,7 @@ public class Fornecedor extends JFrame {
 		button_2.setForeground(Color.WHITE);
 		button_2.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		button_2.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
-		button_2.setBackground(new Color(54, 33, 89));
+		button_2.setBackground(new Color(17, 144, 147));
 
 		JButton button_3 = new JButton("Cadastro de Fornecedores");
 		button_3.addActionListener(new ActionListener() {
@@ -312,7 +312,7 @@ public class Fornecedor extends JFrame {
 		button_3.setForeground(Color.WHITE);
 		button_3.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		button_3.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
-		button_3.setBackground(new Color(54, 33, 89));
+		button_3.setBackground(new Color(17, 144, 147));
 
 		JButton button_4 = new JButton("Cadastro de Produtos");
 		button_4.addActionListener(new ActionListener() {
@@ -330,7 +330,7 @@ public class Fornecedor extends JFrame {
 		button_4.setForeground(Color.WHITE);
 		button_4.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		button_4.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
-		button_4.setBackground(new Color(54, 33, 89));
+		button_4.setBackground(new Color(17, 144, 147));
 
 		JButton button_5 = new JButton("Vendas");
 		button_5.addActionListener(new ActionListener() {
@@ -349,7 +349,7 @@ public class Fornecedor extends JFrame {
 		button_5.setForeground(Color.WHITE);
 		button_5.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		button_5.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
-		button_5.setBackground(new Color(54, 33, 89));
+		button_5.setBackground(new Color(17, 144, 147));
 
 		JButton button_6 = new JButton("Estoque");
 		button_6.addActionListener(new ActionListener() {
@@ -368,13 +368,13 @@ public class Fornecedor extends JFrame {
 		button_6.setForeground(Color.WHITE);
 		button_6.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		button_6.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
-		button_6.setBackground(new Color(54, 33, 89));
+		button_6.setBackground(new Color(17, 144, 147));
 
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(0, 475, 270, 2);
+		separator_1.setBounds(0, 517, 270, 2);
 
 		JLabel label_1 = new JLabel("Administrador");
-		label_1.setBounds(30, 509, 79, 16);
+		label_1.setBounds(30, 531, 79, 16);
 		label_1.setForeground(Color.WHITE);
 		label_1.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		panel.setLayout(null);
@@ -387,6 +387,22 @@ public class Fornecedor extends JFrame {
 		panel.add(button_6);
 		panel.add(separator_1);
 		panel.add(label_1);
+		
+		JButton button = new JButton("Relat\u00F3rios");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Relatorios relatorios = new Relatorios();
+				relatorios.setVisible(true);
+				windowFornecedor.dispose();
+				
+			}
+		});
+		button.setIcon(new ImageIcon(Fornecedor.class.getResource("/imagens/icons8-pdf-25.png")));
+		button.setForeground(Color.WHITE);
+		button.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), null));
+		button.setBackground(new Color(17, 144, 147));
+		button.setBounds(0, 437, 268, 48);
+		panel.add(button);
 
 		Component horizontalStrut = Box.createHorizontalStrut(20);
 		horizontalStrut.setBounds(637, 55, 154, 1);
@@ -402,6 +418,7 @@ public class Fornecedor extends JFrame {
 		frame.getContentPane().add(Produto);
 
 		JComboBox Uf = new JComboBox();
+		Uf.setModel(new DefaultComboBoxModel(new String[] {"AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"}));
 		Uf.setBounds(703, 258, 50, 30);
 		frame.getContentPane().add(Uf);
 

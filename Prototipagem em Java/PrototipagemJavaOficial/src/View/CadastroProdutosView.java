@@ -28,18 +28,27 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class CadastroProdutosView extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField txtDdmmaa;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTable table;
-
+	public JTextField txtCodigo;
+	public JTextField txtNome;
+	public JTextField txtData;
+	public JTextField txtValor;
+	public JTextField txtQuantidade;
+	public JTextField txtPeso;
+	public JTable table;
+	
+	public String codigo;
+	public String nome;
+	public String data;
+	public String valor;
+	public String quan;
+	public String peso;
+	
 	static CadastroProdutosView frameProdutos = new CadastroProdutosView();
 	/**
 	 * Launch the application.
@@ -60,6 +69,7 @@ public class CadastroProdutosView extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					frameProdutos.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -72,6 +82,7 @@ public class CadastroProdutosView extends JFrame {
 	 * Create the frame.
 	 */
 	public CadastroProdutosView() {
+		setResizable(false);
 		setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 955, 804);
@@ -81,20 +92,21 @@ public class CadastroProdutosView extends JFrame {
 		contentPane.setLayout(null);
 		
 		Panel panel = new Panel();
-		panel.setBackground(new Color(54, 33, 89));
-		panel.setBounds(0, 0, 272, 765);
+		panel.setBounds(0, 0, 272, 775);
+		panel.setBackground(new Color(17,144,147));
 		contentPane.add(panel);
 		
 		JSeparator separator = new JSeparator();
+		separator.setBounds(0, 490, 0, 2);
 		
 		JButton button = new JButton("Cadastro de Clientes");
+		button.setBounds(0, 131, 270, 48);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				CadastroClienteView window = new CadastroClienteView();
 				window.frmCadastroDeCliente.setVisible(true);
 				
-				frameProdutos.dispose();
 				
 			}
 		});
@@ -103,16 +115,16 @@ public class CadastroProdutosView extends JFrame {
 		button.setForeground(Color.WHITE);
 		button.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		button.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
-		button.setBackground(new Color(54, 33, 89));
+		button.setBackground(new Color(17,144,147));
 		
 		JButton button_1 = new JButton("Estoque");
+		button_1.setBounds(0, 371, 270, 48);
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				ViewEstoqueDesign estoque = new ViewEstoqueDesign();
 				estoque.setVisible(true);
 				
-				frameProdutos.dispose();
 				
 			}
 		});
@@ -121,16 +133,16 @@ public class CadastroProdutosView extends JFrame {
 		button_1.setForeground(Color.WHITE);
 		button_1.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		button_1.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
-		button_1.setBackground(new Color(54, 33, 89));
+		button_1.setBackground(new Color(17,144,147));
 		
 		JButton button_2 = new JButton("Cadastro de Fornecedores");
+		button_2.setBounds(0, 191, 270, 48);
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				Fornecedor fornecedor = new Fornecedor();
 				fornecedor.frame.setVisible(true);
 				
-				frameProdutos.dispose();
 				
 			}
 		});
@@ -139,16 +151,16 @@ public class CadastroProdutosView extends JFrame {
 		button_2.setForeground(Color.WHITE);
 		button_2.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		button_2.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
-		button_2.setBackground(new Color(54, 33, 89));
+		button_2.setBackground(new Color(17,144,147));
 		
 		JButton button_3 = new JButton("Cadastro de Produtos");
+		button_3.setBounds(0, 251, 270, 48);
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				CadastroProdutosView produto = new CadastroProdutosView();
 				produto.setVisible(true);
 				
-				frameProdutos.dispose();
 				
 			}
 		});
@@ -157,16 +169,16 @@ public class CadastroProdutosView extends JFrame {
 		button_3.setForeground(Color.WHITE);
 		button_3.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		button_3.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
-		button_3.setBackground(new Color(54, 33, 89));
+		button_3.setBackground(new Color(17,144,147));
 		
 		JButton button_4 = new JButton("Vendas");
+		button_4.setBounds(0, 311, 270, 48);
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				VendasView vendas = new VendasView();
 				vendas.setVisible(true);
 				
-				frameProdutos.dispose();
 				
 			}
 		});
@@ -175,18 +187,19 @@ public class CadastroProdutosView extends JFrame {
 		button_4.setForeground(Color.WHITE);
 		button_4.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		button_4.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
-		button_4.setBackground(new Color(54, 33, 89));
+		button_4.setBackground(new Color(17,144,147));
 		
 		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(10, 97, 0, 2);
 		
 		JLabel label = new JLabel("Varej\u00E3o Santos");
+		label.setBounds(10, 45, 199, 32);
 		label.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				ViewMenuDesign menu = new ViewMenuDesign();
 				menu.setVisible(true);
 				
-				frameProdutos.dispose();
 			}
 		});
 		label.setIcon(new ImageIcon(CadastroProdutosView.class.getResource("/imagens/icons8-p\u00E1gina-inicial-25.png")));
@@ -194,140 +207,118 @@ public class CadastroProdutosView extends JFrame {
 		label.setFont(new Font("Segoe UI", Font.BOLD, 24));
 		
 		JLabel label_1 = new JLabel("Administrador");
+		label_1.setBounds(24, 523, 79, 16);
 		label_1.setForeground(Color.WHITE);
 		label_1.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(6, 482, 270, 2);
 		
 		JSeparator separator_3 = new JSeparator();
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-							.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(button, GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-							.addComponent(button_1, GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-							.addComponent(button_2, GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-							.addComponent(button_3, GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-							.addComponent(button_4, GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-							.addGroup(gl_panel.createSequentialGroup()
-								.addGap(10)
-								.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
-									.addComponent(separator_1, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addComponent(label, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(separator_3, Alignment.LEADING))))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(24)
-							.addComponent(label_1)))
-					.addContainerGap(2, Short.MAX_VALUE))
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(separator_2, GroupLayout.PREFERRED_SIZE, 270, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(45)
-					.addComponent(label)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(separator_3, GroupLayout.PREFERRED_SIZE, 2, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(32)
-					.addComponent(button, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-					.addGap(12)
-					.addComponent(button_4, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-					.addGap(63)
-					.addComponent(separator_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(31)
-					.addComponent(label_1)
-					.addContainerGap(226, Short.MAX_VALUE))
-		);
-		panel.setLayout(gl_panel);
+		separator_3.setBounds(10, 89, 0, 2);
+		panel.setLayout(null);
+		
+		JButton btnRelatorios = new JButton("Relatorios");
+		btnRelatorios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Relatorios relatorios = new Relatorios();
+				relatorios.setVisible(true);
+				
+				
+			}
+		});
+		btnRelatorios.setIcon(new ImageIcon(CadastroProdutosView.class.getResource("/imagens/icons8-pdf-25.png")));
+		btnRelatorios.setBounds(0, 431, 268, 48);
+		btnRelatorios.setForeground(Color.WHITE);
+		btnRelatorios.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), null));
+		btnRelatorios.setBackground(new Color(17, 144, 147));
+		panel.add(btnRelatorios);
+		panel.add(separator);
+		panel.add(button);
+		panel.add(button_1);
+		panel.add(button_2);
+		panel.add(button_3);
+		panel.add(button_4);
+		panel.add(separator_1);
+		panel.add(label);
+		panel.add(separator_3);
+		panel.add(label_1);
+		panel.add(separator_2);
+		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{button, button_1, button_2, button_3, separator, button_4, separator_1, label, separator_3, label_1, separator_2}));
 		
 		JLabel lblCadastroDeProdutos = new JLabel("CADASTRO DE PRODUTOS");
-		lblCadastroDeProdutos.setFont(new Font("Segoe UI", Font.BOLD, 22));
 		lblCadastroDeProdutos.setBounds(494, 19, 298, 26);
+		lblCadastroDeProdutos.setFont(new Font("Segoe UI", Font.BOLD, 22));
 		contentPane.add(lblCadastroDeProdutos);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(309, 130, 56, 26);
-		contentPane.add(textField);
+		txtCodigo = new JTextField();
+		txtCodigo.setBounds(309, 130, 56, 26);
+		txtCodigo.setColumns(10);
+		contentPane.add(txtCodigo);
 		
 		JLabel label_2 = new JLabel("C\u00D3DIGO:");
-		label_2.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		label_2.setBounds(309, 105, 56, 14);
+		label_2.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		contentPane.add(label_2);
 		
 		JLabel label_3 = new JLabel("NOME:");
-		label_3.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		label_3.setBounds(410, 105, 43, 14);
+		label_3.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		contentPane.add(label_3);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(410, 130, 494, 26);
-		contentPane.add(textField_1);
+		txtNome = new JTextField();
+		txtNome.setBounds(410, 130, 494, 26);
+		txtNome.setColumns(10);
+		contentPane.add(txtNome);
 		
 		JLabel lblDataDeValidade = new JLabel("DATA DE VALIDADE:");
-		lblDataDeValidade.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		lblDataDeValidade.setBounds(309, 197, 117, 14);
+		lblDataDeValidade.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		contentPane.add(lblDataDeValidade);
 		
-		txtDdmmaa = new JTextField();
-		txtDdmmaa.setText("DD/MM/AA");
-		txtDdmmaa.setColumns(10);
-		txtDdmmaa.setBounds(309, 222, 122, 26);
-		contentPane.add(txtDdmmaa);
+		txtData = new JTextField();
+		txtData.setBounds(309, 222, 122, 26);
+		txtData.setText("DD/MM/AA");
+		txtData.setColumns(10);
+		contentPane.add(txtData);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(458, 222, 92, 26);
-		contentPane.add(textField_2);
+		txtValor = new JTextField();
+		txtValor.setBounds(458, 222, 92, 26);
+		txtValor.setColumns(10);
+		contentPane.add(txtValor);
 		
 		JLabel lblValorDoProduto = new JLabel("VALOR DO PRODUTO:");
+		lblValorDoProduto.setBounds(458, 197, 137, 14);
 		lblValorDoProduto.setToolTipText("");
 		lblValorDoProduto.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		lblValorDoProduto.setBounds(458, 197, 137, 14);
 		contentPane.add(lblValorDoProduto);
 		
 		JLabel lblQuantidadeVendida = new JLabel("QUANTIDADE DE PRODUTOS:");
+		lblQuantidadeVendida.setBounds(607, 197, 167, 14);
 		lblQuantidadeVendida.setToolTipText("");
 		lblQuantidadeVendida.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		lblQuantidadeVendida.setBounds(607, 197, 167, 14);
 		contentPane.add(lblQuantidadeVendida);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(607, 222, 92, 26);
-		contentPane.add(textField_3);
+		txtQuantidade = new JTextField();
+		txtQuantidade.setBounds(606, 222, 92, 26);
+		txtQuantidade.setColumns(10);
+		contentPane.add(txtQuantidade);
 		
 		JLabel lblPesoDoProduto = new JLabel("PESO DO PRODUTO:");
+		lblPesoDoProduto.setBounds(790, 197, 137, 14);
 		lblPesoDoProduto.setToolTipText("");
 		lblPesoDoProduto.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		lblPesoDoProduto.setBounds(790, 197, 137, 14);
 		contentPane.add(lblPesoDoProduto);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(785, 222, 92, 26);
-		contentPane.add(textField_4);
+		txtPeso = new JTextField();
+		txtPeso.setBounds(785, 222, 92, 26);
+		txtPeso.setColumns(10);
+		contentPane.add(txtPeso);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new TitledBorder(null, "Produtos Cadastrados", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel_1.setBounds(309, 411, 595, 237);
+		panel_1.setBorder(new TitledBorder(null, "Produtos Cadastrados", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -339,44 +330,67 @@ public class CadastroProdutosView extends JFrame {
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
 			},
 			new String[] {
 				"Codigo", "Nome", "Validade", "Valor", "Quantidade", "Peso"
 			}
 		));
-		
-		JButton button_5 = new JButton("Salvar");
-		button_5.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		button_5.setBounds(309, 709, 89, 26);
-		contentPane.add(button_5);
-		
-		JButton button_6 = new JButton("Alterar");
-		button_6.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		button_6.setBounds(582, 709, 83, 26);
-		contentPane.add(button_6);
-		
-		JButton button_7 = new JButton("Sair");
-		button_7.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		button_7.setBounds(815, 709, 89, 26);
-		contentPane.add(button_7);
-		
-		JSeparator separator_4 = new JSeparator();
-		separator_4.setBounds(494, 41, 280, 2);
-		contentPane.add(separator_4);
 		table.getColumnModel().getColumn(1).setPreferredWidth(90);
 		table.getColumnModel().getColumn(2).setPreferredWidth(94);
 		table.getColumnModel().getColumn(3).setPreferredWidth(95);
 		table.getColumnModel().getColumn(4).setPreferredWidth(95);
 		table.getColumnModel().getColumn(5).setPreferredWidth(97);
+		
+		JButton button_5 = new JButton("Salvar");
+		button_5.setBounds(309, 709, 89, 26);
+		button_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				codigo = txtCodigo.getText().trim();
+				nome = txtNome.getText().trim();
+				data = txtData.getText().trim();
+				valor = txtValor.getText().trim();
+				quan = txtQuantidade.getText().trim();
+				peso = txtPeso.getText().trim();
+				
+				txtCodigo.setText("");
+				txtNome.setText("");
+				txtData.setText("");
+				txtValor.setText("");
+				txtQuantidade.setText("");
+				txtPeso.setText("");
+				
+				DefaultTableModel val = (DefaultTableModel) table.getModel();
+				val.addRow(new String[] {codigo, nome, data, valor, quan, peso});
+				
+				txtCodigo.requestFocus();
+				
+			}
+		});
+		button_5.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		contentPane.add(button_5);
+		
+		JButton button_6 = new JButton("Alterar");
+		button_6.setBounds(582, 709, 83, 26);
+		button_6.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		contentPane.add(button_6);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.setBounds(815, 709, 89, 26);
+		btnExcluir.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		contentPane.add(btnExcluir);
+		
+		JSeparator separator_4 = new JSeparator();
+		separator_4.setBounds(494, 41, 280, 2);
+		contentPane.add(separator_4);
+		contentPane.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{separator, button, button_1, button_2, button_3, button_4, separator_1, label, separator_3, label_1, separator_2, lblCadastroDeProdutos, lblDataDeValidade, txtData, txtValor, lblValorDoProduto, lblQuantidadeVendida, txtQuantidade, lblPesoDoProduto, txtPeso, panel_1, scrollPane, table, button_5, button_6, btnExcluir, separator_4, label_3, txtNome, panel, txtCodigo, label_2}));
 	}
+	
+	public void addDadosTable(JTable tabela) {
+		
+		DefaultTableModel val = (DefaultTableModel) tabela.getModel();
+		val.addRow(new String[] {codigo, nome, quan, data});
+		
+	}
+	
+	
 }

@@ -1,0 +1,90 @@
+package View;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import java.awt.Font;
+
+public class RegistrarEntrada extends JDialog {
+
+	private final JPanel contentPanel = new JPanel();
+	private JTextField textField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			RegistrarEntrada dialog = new RegistrarEntrada();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public RegistrarEntrada() {
+		setFont(new Font("Segoe UI", Font.BOLD, 12));
+		setBounds(100, 100, 448, 552);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
+		{
+			textField = new JTextField();
+			textField.setBounds(143, 47, 86, 20);
+			contentPanel.add(textField);
+			textField.setColumns(10);
+		}
+		{
+			JLabel lblNewLabel = new JLabel("C\u00F3digo do Produto:");
+			lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 11));
+			lblNewLabel.setBounds(10, 49, 114, 14);
+			contentPanel.add(lblNewLabel);
+		}
+		{
+			JLabel lblNomeDoProduto = new JLabel("Nome Do Produto:");
+			lblNomeDoProduto.setFont(new Font("Segoe UI", Font.BOLD, 11));
+			lblNomeDoProduto.setBounds(10, 117, 114, 14);
+			contentPanel.add(lblNomeDoProduto);
+		}
+		{
+			JLabel label = new JLabel("New label");
+			label.setFont(new Font("Segoe UI", Font.BOLD, 11));
+			label.setBounds(10, 184, 46, 14);
+			contentPanel.add(label);
+		}
+		{
+			JLabel label = new JLabel("New label");
+			label.setFont(new Font("Segoe UI", Font.BOLD, 11));
+			label.setBounds(10, 244, 46, 14);
+			contentPanel.add(label);
+		}
+		{
+			JPanel buttonPane = new JPanel();
+			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			{
+				JButton okButton = new JButton("Salvar");
+				okButton.setActionCommand("OK");
+				buttonPane.add(okButton);
+				getRootPane().setDefaultButton(okButton);
+			}
+			{
+				JButton cancelButton = new JButton("Cancelar");
+				cancelButton.setActionCommand("Cancel");
+				buttonPane.add(cancelButton);
+			}
+		}
+	}
+
+}

@@ -4,8 +4,24 @@
 <fullyQualifiedTypeName name="View.CadastroClienteView"/>
 <fullyQualifiedTypeName name="javax.swing.JInternalFrame"/>
 <fullyQualifiedTypeName name="host.local.prototipagem.Fornecedor"/>
-<fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="javax.sound.midi.Synthesizer"/>
-<fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="javax.print.DocFlavor.URL"/>
+<fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
+<fullyQualifiedTypeName name="View.CadastroProdutosView"/>
+<fullyQualifiedTypeName name="javax.swing.JFrame.AccessibleJFrame"/>
+<fullyQualifiedTypeName name="View.ViewEstoqueDesign"/>
+<fullyQualifiedTypeName name="View.AddLembrete"/>
+<fullyQualifiedTypeName name="View.RegistrarEntrada"/>
+<fullyQualifiedTypeName name="com.itextpdf.text.DocumentException"/>
+<fullyQualifiedTypeName name="com.itextpdf.text.Paragraph"/>
+<fullyQualifiedTypeName name="com.itextpdf.text.pdf.PdfWriter"/>
+<fullyQualifiedTypeName name="com.itextpdf.text.Document"/>
+<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+<fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
+<fullyQualifiedTypeName name="java.awt.Desktop"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="com.itextpdf.text.FontFactory"/>
+<fullyQualifiedTypeName name="View.Relatorios"/>
 </qualifiedTypeNameHistroy>
