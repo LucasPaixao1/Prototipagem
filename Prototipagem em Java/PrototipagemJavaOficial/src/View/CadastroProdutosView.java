@@ -71,6 +71,8 @@ public class CadastroProdutosView extends JFrame {
 				try {
 					
 					frameProdutos.setVisible(true);
+					frameProdutos.setLocationRelativeTo(null);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -84,7 +86,7 @@ public class CadastroProdutosView extends JFrame {
 	public CadastroProdutosView() {
 		setResizable(false);
 		setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 955, 804);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -107,7 +109,7 @@ public class CadastroProdutosView extends JFrame {
 				CadastroClienteView window = new CadastroClienteView();
 				window.frmCadastroDeCliente.setVisible(true);
 				
-				
+				dispose();
 			}
 		});
 		button.setIcon(new ImageIcon(CadastroProdutosView.class.getResource("/imagens/icons8-gest\u00E3o-de-cliente-25.png")));
@@ -125,7 +127,7 @@ public class CadastroProdutosView extends JFrame {
 				ViewEstoqueDesign estoque = new ViewEstoqueDesign();
 				estoque.setVisible(true);
 				
-				
+				dispose();
 			}
 		});
 		button_1.setIcon(new ImageIcon(CadastroProdutosView.class.getResource("/imagens/icons8-procurar-estoque-25.png")));
@@ -143,7 +145,7 @@ public class CadastroProdutosView extends JFrame {
 				Fornecedor fornecedor = new Fornecedor();
 				fornecedor.frame.setVisible(true);
 				
-				
+				dispose();
 			}
 		});
 		button_2.setIcon(new ImageIcon(CadastroProdutosView.class.getResource("/imagens/icons8-caminh\u00E3o-25.png")));
@@ -161,7 +163,7 @@ public class CadastroProdutosView extends JFrame {
 				CadastroProdutosView produto = new CadastroProdutosView();
 				produto.setVisible(true);
 				
-				
+				dispose();
 			}
 		});
 		button_3.setIcon(new ImageIcon(CadastroProdutosView.class.getResource("/imagens/icons8-produto-25.png")));
@@ -179,7 +181,7 @@ public class CadastroProdutosView extends JFrame {
 				VendasView vendas = new VendasView();
 				vendas.setVisible(true);
 				
-				
+				dispose();
 			}
 		});
 		button_4.setIcon(new ImageIcon(CadastroProdutosView.class.getResource("/imagens/icons8-performance-de-vendas-25.png")));
@@ -199,7 +201,7 @@ public class CadastroProdutosView extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				ViewMenuDesign menu = new ViewMenuDesign();
 				menu.setVisible(true);
-				
+				dispose();
 			}
 		});
 		label.setIcon(new ImageIcon(CadastroProdutosView.class.getResource("/imagens/icons8-p\u00E1gina-inicial-25.png")));
@@ -225,7 +227,7 @@ public class CadastroProdutosView extends JFrame {
 				Relatorios relatorios = new Relatorios();
 				relatorios.setVisible(true);
 				
-				
+				dispose();
 			}
 		});
 		btnRelatorios.setIcon(new ImageIcon(CadastroProdutosView.class.getResource("/imagens/icons8-pdf-25.png")));
@@ -345,6 +347,7 @@ public class CadastroProdutosView extends JFrame {
 		button_5.setBounds(309, 709, 89, 26);
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				codigo = txtCodigo.getText().trim();
 				nome = txtNome.getText().trim();
 				data = txtData.getText().trim();

@@ -27,16 +27,20 @@
 		<item value="400" key="height"/>
 	</section>
 	<section name="FatJarPackageWizard">
-		<item value="C:\Users\Lucas\Desktop\Prototipagem em Java.xml" key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION"/>
+		<item value="C:\Users\Lucas\Desktop\Prototipagem em Java.jar" key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION"/>
 		<item value="ViewLoginDesign (1) - PrototipagemJavaOficial" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
 		<item value="C:\Users\Lucas\Desktop\TCC.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
 		<item value="true" key="FatJarPackageWizardPage.ANTSCRIPT_SAVE"/>
 		<item value="1" key="FatJarPackageWizardPage.LIBRARY_HANDLING"/>
 		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
 			<item value="C:\Users\Lucas\Desktop\TCC.jar"/>
+			<item value="C:\Users\LabInfo\Desktop\TCC.jar"/>
+			<item value="C:\Users\etecja\Desktop\TCC.jar"/>
 			<item value="F:\DE TUDO UM POUCO\TCC\Prototipagem em Java\TCC.jar"/>
 		</list>
 		<list key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION_HISTORY">
+			<item value="C:\Users\Lucas\Desktop\Prototipagem em Java.jar"/>
+			<item value="C:\Users\LabInfo\Desktop\Prototipagem em Java.jar"/>
 			<item value="C:\Users\Lucas\Desktop\Prototipagem em Java.xml"/>
 			<item value=".xml"/>
 		</list>

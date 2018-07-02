@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.wb.internal.core.model.property.order.ReorderDialog">
-		<item value="1900" key="x"/>
+		<item value="1400" key="x"/>
 		<item value="520" key="width"/>
 		<item value="267" key="y"/>
-		<item value="365" key="height"/>
+		<item value="366" key="height"/>
 	</section>
 	<section name="org.eclipse.wb.internal.swing.model.property.editor.models.table.TableModelDialog">
 		<item value="171" key="x"/>

@@ -40,6 +40,8 @@ public class AddLembrete extends JDialog {
 			AddLembrete dialog = new AddLembrete();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
+			dialog.setLocationRelativeTo(null);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -75,13 +77,13 @@ public class AddLembrete extends JDialog {
 		}
 		{
 			textField = new JTextField();
-			textField.setBounds(96, 111, 86, 20);
+			textField.setBounds(96, 103, 86, 28);
 			contentPanel.add(textField);
 			textField.setColumns(10);
 		}
 		{
 			textField_2 = new JTextField();
-			textField_2.setBounds(96, 317, 221, 20);
+			textField_2.setBounds(96, 309, 221, 28);
 			contentPanel.add(textField_2);
 			textField_2.setColumns(10);
 		}
@@ -105,8 +107,7 @@ public class AddLembrete extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						
 						AddLembrete addLembrete= new AddLembrete();
-						addLembrete.dispose();
-					}
+						dispose();					}
 				});
 				okButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 				okButton.setActionCommand("OK");

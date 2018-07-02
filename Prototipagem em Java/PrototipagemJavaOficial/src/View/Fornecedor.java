@@ -7,6 +7,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.SystemColor;
+import java.awt.Window;
 import java.awt.Color;
 import javax.swing.UIManager;
 import javax.swing.JLabel;
@@ -20,6 +21,8 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+
 import java.awt.Font;
 import java.awt.Component;
 import javax.swing.Box;
@@ -44,7 +47,7 @@ import javax.swing.DefaultComboBoxModel;
 
 public class Fornecedor extends JFrame {
 
-	public  JFrame frame;
+	public JFrame frame;
 	private JTextField textCodigo;
 	private JTextField textEmpresa;
 	private JTextField textCnpj;
@@ -56,7 +59,6 @@ public class Fornecedor extends JFrame {
 	private JTextField textCelular;
 	private JTable table;
 	private JTextField textField_7;
-	static Fornecedor windowFornecedor = new Fornecedor();
 	private JTextField textCidade;
 
 	/**
@@ -79,7 +81,10 @@ public class Fornecedor extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					Fornecedor windowFornecedor = new Fornecedor();
 					windowFornecedor.setVisible(true);
+					windowFornecedor.setLocationRelativeTo(null);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -99,9 +104,10 @@ public class Fornecedor extends JFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.getContentPane().setFont(new Font("Segoe UI", Font.BOLD, 12));
 		frame.setBounds(100, 100, 1000, 815);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JLabel lblId = new JLabel("C\u00D3DIGO:");
@@ -110,7 +116,7 @@ public class Fornecedor extends JFrame {
 		frame.getContentPane().add(lblId);
 
 		textCodigo = new JTextField();
-		textCodigo.setBounds(359, 40, 80, 23);
+		textCodigo.setBounds(359, 42, 80, 23);
 		frame.getContentPane().add(textCodigo);
 		textCodigo.setColumns(10);
 
@@ -228,13 +234,8 @@ public class Fornecedor extends JFrame {
 		table.setFillsViewportHeight(true);
 		table.setColumnSelectionAllowed(true);
 		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"C\u00D3DIGO", "EMPRESA", "CNPJ", "CEP", "TELEFONE", "CELULAR"
-			}
-		));
+		table.setModel(new DefaultTableModel(new Object[][] {},
+				new String[] { "C\u00D3DIGO", "EMPRESA", "CNPJ", "CEP", "TELEFONE", "CELULAR" }));
 		table.getColumnModel().getColumn(0).setPreferredWidth(62);
 
 		JButton btnPesquisar = new JButton("Pesquisar");
@@ -245,7 +246,7 @@ public class Fornecedor extends JFrame {
 		textField_7.setBounds(107, 21, 122, 28);
 		panel_2.add(textField_7);
 		textField_7.setColumns(10);
-		
+
 		JLabel lblNewLabel = new JLabel("Pesquisar");
 		lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		lblNewLabel.setBounds(16, 27, 55, 16);
@@ -259,7 +260,7 @@ public class Fornecedor extends JFrame {
 		panel.setBackground(new Color(17, 144, 147));
 		panel.setToolTipText("");
 		panel.setForeground(new Color(72, 61, 139));
-		panel.setBounds(0, -6, 272, 778);
+		panel.setBounds(0, -6, 272, 793);
 		frame.getContentPane().add(panel);
 
 		JLabel label = new JLabel("Varej\u00E3o Santos");
@@ -286,8 +287,10 @@ public class Fornecedor extends JFrame {
 
 				CadastroClienteView window = new CadastroClienteView();
 				window.frmCadastroDeCliente.setVisible(true);
-				
-				windowFornecedor.dispose();
+
+				Component comp = SwingUtilities.getRoot(frame);
+
+				((Window) comp).dispose();
 			}
 		});
 		button_2.setOpaque(true);
@@ -299,11 +302,13 @@ public class Fornecedor extends JFrame {
 		JButton button_3 = new JButton("Cadastro de Fornecedores");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				Fornecedor fornecedor = new Fornecedor();
 				fornecedor.frame.setVisible(true);
-				
-				windowFornecedor.dispose();
+
+				Component comp = SwingUtilities.getRoot(frame);
+
+				((Window) comp).dispose();
 			}
 		});
 		button_3.setIcon(new ImageIcon(Fornecedor.class.getResource("/imagens/icons8-caminh\u00E3o-25.png")));
@@ -317,11 +322,13 @@ public class Fornecedor extends JFrame {
 		JButton button_4 = new JButton("Cadastro de Produtos");
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				CadastroProdutosView produto = new CadastroProdutosView();
 				produto.setVisible(true);
-				
-				windowFornecedor.dispose();
+
+				Component comp = SwingUtilities.getRoot(frame);
+
+				((Window) comp).dispose();
 			}
 		});
 		button_4.setIcon(new ImageIcon(Fornecedor.class.getResource("/imagens/icons8-produto-25.png")));
@@ -335,12 +342,14 @@ public class Fornecedor extends JFrame {
 		JButton button_5 = new JButton("Vendas");
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				VendasView vendas = new VendasView();
 				vendas.setVisible(true);
-				
-				windowFornecedor.dispose();
-				
+
+				Component comp = SwingUtilities.getRoot(frame);
+
+				((Window) comp).dispose();
+
 			}
 		});
 		button_5.setIcon(new ImageIcon(Fornecedor.class.getResource("/imagens/icons8-performance-de-vendas-25.png")));
@@ -354,12 +363,14 @@ public class Fornecedor extends JFrame {
 		JButton button_6 = new JButton("Estoque");
 		button_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				ViewEstoqueDesign estoque = new ViewEstoqueDesign();
 				estoque.setVisible(true);
-				
-				windowFornecedor.dispose();
-				
+
+				Component comp = SwingUtilities.getRoot(frame);
+
+				((Window) comp).dispose();
+
 			}
 		});
 		button_6.setIcon(new ImageIcon(Fornecedor.class.getResource("/imagens/icons8-procurar-estoque-25.png")));
@@ -387,14 +398,17 @@ public class Fornecedor extends JFrame {
 		panel.add(button_6);
 		panel.add(separator_1);
 		panel.add(label_1);
-		
+
 		JButton button = new JButton("Relat\u00F3rios");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Relatorios relatorios = new Relatorios();
 				relatorios.setVisible(true);
-				windowFornecedor.dispose();
 				
+				Component comp = SwingUtilities.getRoot(frame);
+
+				((Window) comp).dispose();
+
 			}
 		});
 		button.setIcon(new ImageIcon(Fornecedor.class.getResource("/imagens/icons8-pdf-25.png")));
@@ -418,7 +432,9 @@ public class Fornecedor extends JFrame {
 		frame.getContentPane().add(Produto);
 
 		JComboBox Uf = new JComboBox();
-		Uf.setModel(new DefaultComboBoxModel(new String[] {"AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"}));
+		Uf.setModel(new DefaultComboBoxModel(
+				new String[] { "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB",
+						"PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO" }));
 		Uf.setBounds(703, 258, 50, 30);
 		frame.getContentPane().add(Uf);
 
@@ -429,24 +445,24 @@ public class Fornecedor extends JFrame {
 		JButton button_1 = new JButton("Salvar");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				String codigo = textCodigo.getText().trim();
 				String emp = textEmpresa.getText().trim();
 				String cnpj = textCnpj.getText().trim();
 				String cep = textCep.getText().trim();
 				String telefone = textTelefone.getText().trim();
 				String celular = textCelular.getText().trim();
-				
+
 				DefaultTableModel val = (DefaultTableModel) table.getModel();
-				val.addRow(new String[] {codigo, emp, cnpj, cep, telefone, celular});
-				
+				val.addRow(new String[] { codigo, emp, cnpj, cep, telefone, celular });
+
 				textCodigo.setText("");
 				textEmpresa.setText("");
 				textCnpj.setText("");
 				textCep.setText("");
 				textTelefone.setText("");
 				textCelular.setText("");
-				
+
 				textCodigo.requestFocus();
 			}
 		});
@@ -456,17 +472,17 @@ public class Fornecedor extends JFrame {
 		JButton btnSair = new JButton("Excluir");
 		btnSair.setBounds(819, 722, 89, 23);
 		frame.getContentPane().add(btnSair);
-		
+
 		JLabel lblCadastroDeFornecedores = new JLabel("Cadastro de Fornecedores");
 		lblCadastroDeFornecedores.setForeground(Color.BLACK);
 		lblCadastroDeFornecedores.setFont(new Font("Segoe UI", Font.BOLD, 24));
 		lblCadastroDeFornecedores.setBounds(438, 6, 297, 23);
 		frame.getContentPane().add(lblCadastroDeFornecedores);
-		
+
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setBounds(436, 26, 299, 2);
 		frame.getContentPane().add(separator_2);
-		
+
 		textCidade = new JTextField();
 		textCidade.setBounds(486, 259, 180, 28);
 		frame.getContentPane().add(textCidade);

@@ -65,6 +65,8 @@ public class VendasView extends JFrame {
 			public void run() {
 				try {
 					frameVendas.setVisible(true);
+					frameVendas.setLocationRelativeTo(null);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -79,14 +81,14 @@ public class VendasView extends JFrame {
 		setTitle("Vendas");
 		setResizable(false);
 		setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 955, 804);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
 		Panel panel = new Panel();
-		panel.setBounds(0, 0, 270, 770);
+		panel.setBounds(0, 0, 270, 776);
 		panel.setBackground(new Color(17,144,147));
 		
 		JSeparator separator = new JSeparator();
@@ -100,8 +102,7 @@ public class VendasView extends JFrame {
 				CadastroClienteView window = new CadastroClienteView();
 				window.frmCadastroDeCliente.setVisible(true);
 				
-				frameVendas.dispose();
-			}
+				dispose();			}
 		});
 		button.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-gest\u00E3o-de-cliente-25.png")));
 		button.setOpaque(true);
@@ -118,8 +119,7 @@ public class VendasView extends JFrame {
 				ViewEstoqueDesign estoque = new ViewEstoqueDesign();
 				estoque.setVisible(true);
 				
-				frameVendas.dispose();
-			}
+				dispose();			}
 		});
 		button_1.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-procurar-estoque-25.png")));
 		button_1.setOpaque(true);
@@ -135,8 +135,7 @@ public class VendasView extends JFrame {
 				Fornecedor fornecedor = new Fornecedor();
 				fornecedor.frame.setVisible(true);
 				
-				frameVendas.dispose();
-				
+				dispose();				
 			}
 		});
 		button_2.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-caminh\u00E3o-25.png")));
@@ -154,8 +153,7 @@ public class VendasView extends JFrame {
 				CadastroProdutosView produto = new CadastroProdutosView();
 				produto.setVisible(true);
 				
-				frameVendas.dispose();
-			}
+				dispose();			}
 		});
 		button_3.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-produto-25.png")));
 		button_3.setOpaque(true);
@@ -172,8 +170,7 @@ public class VendasView extends JFrame {
 				VendasView vendas = new VendasView();
 				vendas.setVisible(true);
 				
-				frameVendas.dispose();
-				
+				dispose();				
 			}
 		});
 		button_4.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-performance-de-vendas-25.png")));
@@ -194,8 +191,7 @@ public class VendasView extends JFrame {
 				ViewMenuDesign menu = new ViewMenuDesign();
 				menu.setVisible(true);
 				
-				frameVendas.dispose();
-			}
+				dispose();			}
 		});
 		label.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-p\u00E1gina-inicial-25.png")));
 		label.setForeground(new Color(240, 248, 255));
@@ -388,8 +384,7 @@ public class VendasView extends JFrame {
 				Relatorios relatorios = new Relatorios();
 				relatorios.setVisible(true);
 				
-				frameVendas.dispose();
-				
+				dispose();				
 			}
 		});
 		btnRelatorios.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-pdf-25.png")));

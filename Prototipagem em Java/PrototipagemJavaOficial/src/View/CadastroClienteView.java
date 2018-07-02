@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JSeparator;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.SpringLayout;
 import javax.swing.JTextField;
 import javax.swing.JTextField;
@@ -34,8 +36,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+
 import java.awt.SystemColor;
 import java.awt.Toolkit;
+import java.awt.Window;
 
 import javax.swing.ImageIcon;
 import javax.swing.GroupLayout;
@@ -56,11 +61,6 @@ public class CadastroClienteView extends JInternalFrame{
 	public JFrame frmCadastroDeCliente;
 	public JTextField txtCodigo;
 	public JTextField txtNome;
-	public JTextField txtFixo;
-	public JTextField txtNextel;
-	public JTextField txtCelular;
-	public JTextField txtCnpj;
-	public JTextField txtCpf;
 	public JTextField txtRua;
 	public JTextField txtCep;
 	public JComboBox comboBox;
@@ -79,15 +79,13 @@ public class CadastroClienteView extends JInternalFrame{
 	public String num;
 	public String cep;
 	public String cidade;
+	private JTextField txtFixo;
+	private JTextField txtNextel;
+	private JTextField txtCelular;
+	private JTextField txtCnpj;
+	private JTextField txtCpf;
 	private JTextField txtBairro;
 	private JTextField txtNumero;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
 	
 
 	/**
@@ -112,6 +110,9 @@ public class CadastroClienteView extends JInternalFrame{
 				try {
 					CadastroClienteView window = new CadastroClienteView();
 					window.setVisible(true);
+					window.setLocation(null);
+
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -136,7 +137,7 @@ public class CadastroClienteView extends JInternalFrame{
 		frmCadastroDeCliente.setFont(new Font("Arial", Font.PLAIN, 12));
 		frmCadastroDeCliente.setTitle("Cadastro de Cliente");
 		frmCadastroDeCliente.setBounds(100, 100, 956, 804);
-		frmCadastroDeCliente.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmCadastroDeCliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		Panel Painel = new Panel();
 		Painel.setBounds(0, 0, 272, 775);
@@ -150,7 +151,9 @@ public class CadastroClienteView extends JInternalFrame{
 				ViewMenuDesign menu = new ViewMenuDesign();
 				menu.setVisible(true);
 				
-				frmCadastroDeCliente.dispose();
+				   Component comp = SwingUtilities.getRoot(frmCadastroDeCliente);
+
+				   ((Window) comp).dispose();		
 				
 			}
 		});
@@ -169,7 +172,9 @@ public class CadastroClienteView extends JInternalFrame{
 				CadastroClienteView windowCliente = new CadastroClienteView();
 				windowCliente.frmCadastroDeCliente.setVisible(true);
 				
-				frmCadastroDeCliente.dispose();
+				   Component comp = SwingUtilities.getRoot(frmCadastroDeCliente);
+
+				   ((Window) comp).dispose();		
 				
 			}
 		});
@@ -188,7 +193,9 @@ public class CadastroClienteView extends JInternalFrame{
 				Fornecedor fornecedor = new Fornecedor();
 				fornecedor.frame.setVisible(true);
 				
-				frmCadastroDeCliente.dispose();
+				   Component comp = SwingUtilities.getRoot(frmCadastroDeCliente);
+
+				   ((Window) comp).dispose();		
 			}
 		});
 		btnCadastroDeFornecedores.setIcon(new ImageIcon(CadastroClienteView.class.getResource("/imagens/icons8-caminh\u00E3o-25.png")));
@@ -206,7 +213,9 @@ public class CadastroClienteView extends JInternalFrame{
 				CadastroProdutosView produto = new CadastroProdutosView();
 				produto.setVisible(true);
 				
-				frmCadastroDeCliente.dispose();
+				   Component comp = SwingUtilities.getRoot(frmCadastroDeCliente);
+
+				   ((Window) comp).dispose();		
 				
 			}
 		});
@@ -225,7 +234,9 @@ public class CadastroClienteView extends JInternalFrame{
 				VendasView vendas = new VendasView();
 				vendas.setVisible(true);
 				
-				frmCadastroDeCliente.dispose();
+				   Component comp = SwingUtilities.getRoot(frmCadastroDeCliente);
+
+				   ((Window) comp).dispose();		
 				
 			}
 		});
@@ -244,7 +255,9 @@ public class CadastroClienteView extends JInternalFrame{
 				ViewEstoqueDesign estoque = new ViewEstoqueDesign();
 				estoque.setVisible(true);
 				
-				frmCadastroDeCliente.dispose();
+				   Component comp = SwingUtilities.getRoot(frmCadastroDeCliente);
+
+				   ((Window) comp).dispose();		
 				
 			}
 		});
@@ -268,7 +281,7 @@ public class CadastroClienteView extends JInternalFrame{
 		lblId.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		txtCodigo = new JTextField();
-		txtCodigo.setBounds(314, 99, 89, 20);
+		txtCodigo.setBounds(314, 99, 89, 30);
 		txtCodigo.setColumns(10);
 		
 		JLabel lblNome = new JLabel("NOME:");
@@ -276,7 +289,7 @@ public class CadastroClienteView extends JInternalFrame{
 		lblNome.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		txtNome = new JTextField();
-		txtNome.setBounds(415, 99, 492, 20);
+		txtNome.setBounds(415, 99, 492, 30);
 		txtNome.setColumns(10);
 		
 		JLabel lblTelResidencial = new JLabel("TEL. FIXO(opcional):");
@@ -308,7 +321,7 @@ public class CadastroClienteView extends JInternalFrame{
 		lblCpfopcional.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(755, 270, 92, 20);
+		comboBox.setBounds(755, 270, 92, 30);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"BOLETO", "DINHEIRO"}));
 		
 		JLabel lblFormaDePagamento = new JLabel("FORMA DE PAGAMENTO:");
@@ -335,7 +348,7 @@ public class CadastroClienteView extends JInternalFrame{
 		lblRua.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JTextField txtRua = new JTextField();
-		txtRua.setBounds(314, 345, 161, 20);
+		txtRua.setBounds(314, 345, 161, 29);
 		
 		JLabel lblBairro = new JLabel("BAIRRO:");
 		lblBairro.setBounds(557, 325, 99, 14);
@@ -350,14 +363,14 @@ public class CadastroClienteView extends JInternalFrame{
 		lblCep.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JTextField txtCep = new JTextField();
-		txtCep.setBounds(314, 411, 89, 20);
+		txtCep.setBounds(314, 411, 89, 30);
 		
 		JLabel lblCidade = new JLabel("CIDADE");
 		lblCidade.setBounds(557, 386, 161, 14);
 		lblCidade.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		
 		JTextField txtCidade = new JTextField();
-		txtCidade.setBounds(557, 411, 161, 20);
+		txtCidade.setBounds(557, 411, 161, 30);
 		
 		JLabel lblCadastroCliente = new JLabel("CADASTRO CLIENTE");
 		lblCadastroCliente.setBounds(487, 22, 208, 30);
@@ -391,6 +404,12 @@ public class CadastroClienteView extends JInternalFrame{
 				txtCelular.setText("");
 				txtCnpj.setText("");
 				txtCpf.setText("");
+				txtBairro.setText("");
+				txtRua.setText("");
+				txtNumero.setText("");
+				txtCep.setText("");
+				txtCidade.setText("");
+				
 				
 				DefaultTableModel val = (DefaultTableModel) table.getModel();
 				val.addRow(new String[] {codigo, nome, fixo, celular, cnpj, frmPag});
@@ -425,26 +444,26 @@ public class CadastroClienteView extends JInternalFrame{
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setBounds(488, 50, 207, 2);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(314, 191, 117, 20);
+		txtFixo = new JTextField();
+		txtFixo.setBounds(314, 191, 117, 30);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(557, 191, 117, 20);
+		txtNextel = new JTextField();
+		txtNextel.setBounds(557, 191, 117, 30);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(755, 192, 117, 20);
+		txtCelular = new JTextField();
+		txtCelular.setBounds(755, 192, 117, 29);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(314, 276, 117, 20);
+		txtCnpj = new JTextField();
+		txtCnpj.setBounds(314, 276, 117, 30);
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(557, 270, 117, 20);
+		txtCpf = new JTextField();
+		txtCpf.setBounds(557, 277, 117, 29);
 		
-		textField_6 = new JTextField();
-		textField_6.setBounds(557, 345, 117, 20);
+		txtBairro = new JTextField();
+		txtBairro.setBounds(557, 345, 117, 29);
 		
-		textField_7 = new JTextField();
-		textField_7.setBounds(757, 345, 117, 20);
+		txtNumero = new JTextField();
+		txtNumero.setBounds(757, 345, 117, 29);
 		frmCadastroDeCliente.getContentPane().setLayout(null);
 		frmCadastroDeCliente.getContentPane().add(Painel);
 		Painel.setLayout(null);
@@ -465,8 +484,9 @@ public class CadastroClienteView extends JInternalFrame{
 				Relatorios relatorios = new Relatorios();
 				relatorios.setVisible(true);
 				
-				frmCadastroDeCliente.dispose();
-				
+				   Component comp = SwingUtilities.getRoot(frmCadastroDeCliente);
+
+				   ((Window) comp).dispose();				
 			}
 		});
 		btnRelatorios.setIcon(new ImageIcon(CadastroClienteView.class.getResource("/imagens/icons8-pdf-25.png")));
@@ -484,21 +504,21 @@ public class CadastroClienteView extends JInternalFrame{
 		frmCadastroDeCliente.getContentPane().add(lblTelResidencial);
 		frmCadastroDeCliente.getContentPane().add(lblTelComercial);
 		frmCadastroDeCliente.getContentPane().add(lblTelCelular);
-		frmCadastroDeCliente.getContentPane().add(textField_1);
-		frmCadastroDeCliente.getContentPane().add(textField_2);
-		frmCadastroDeCliente.getContentPane().add(textField_3);
+		frmCadastroDeCliente.getContentPane().add(txtFixo);
+		frmCadastroDeCliente.getContentPane().add(txtNextel);
+		frmCadastroDeCliente.getContentPane().add(txtCelular);
 		frmCadastroDeCliente.getContentPane().add(lblCnpjopcional);
 		frmCadastroDeCliente.getContentPane().add(lblCpfopcional);
 		frmCadastroDeCliente.getContentPane().add(lblFormaDePagamento);
-		frmCadastroDeCliente.getContentPane().add(textField_4);
-		frmCadastroDeCliente.getContentPane().add(textField_5);
+		frmCadastroDeCliente.getContentPane().add(txtCnpj);
+		frmCadastroDeCliente.getContentPane().add(txtCpf);
 		frmCadastroDeCliente.getContentPane().add(comboBox);
 		frmCadastroDeCliente.getContentPane().add(lblRua);
 		frmCadastroDeCliente.getContentPane().add(lblBairro);
 		frmCadastroDeCliente.getContentPane().add(lblNmero);
 		frmCadastroDeCliente.getContentPane().add(txtRua);
-		frmCadastroDeCliente.getContentPane().add(textField_6);
-		frmCadastroDeCliente.getContentPane().add(textField_7);
+		frmCadastroDeCliente.getContentPane().add(txtBairro);
+		frmCadastroDeCliente.getContentPane().add(txtNumero);
 		frmCadastroDeCliente.getContentPane().add(lblCep);
 		frmCadastroDeCliente.getContentPane().add(lblCidade);
 		frmCadastroDeCliente.getContentPane().add(txtCep);

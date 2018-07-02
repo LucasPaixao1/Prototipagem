@@ -31,32 +31,31 @@ import javax.swing.JPasswordField;
 
 public class ViewLoginDesign extends JFrame {
 	private JTextField txtLogin;
-	
-	
+
 	static ViewLoginDesign frameLogin = new ViewLoginDesign();
-	private JPasswordField txtSenha;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
+
 		try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-           System.err.println(ex);
-        }
-		
-		
+			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+				if ("Nimbus".equals(info.getName())) {
+					javax.swing.UIManager.setLookAndFeel(info.getClassName());
+					break;
+				}
+			}
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| javax.swing.UnsupportedLookAndFeelException ex) {
+			System.err.println(ex);
+		}
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					frameLogin.setVisible(true);
+					frameLogin.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -69,60 +68,71 @@ public class ViewLoginDesign extends JFrame {
 	 */
 	public ViewLoginDesign() {
 		setResizable(false);
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(54,33,817, 564);
+		setBounds(54, 33, 817, 564);
 		JPanel contentPane = new JPanel();
 		contentPane.setSize(new Dimension(788, 554));
 		contentPane.setName("Login");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBounds(340, 0, 471, 535);
-		panel.setBackground(new Color(17,144,147));
+		panel.setBackground(new Color(17, 144, 147));
 		panel.setLayout(null);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("Varej\u00E3o Santos");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Segoe UI", Font.PLAIN, 24));
 		lblNewLabel_2.setBounds(156, 258, 165, 27);
 		panel.add(lblNewLabel_2);
-		
+
 		JLabel lblUsuario = new JLabel("Usuario");
 		lblUsuario.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		lblUsuario.setBounds(45, 125, 44, 16);
-		
+
 		txtLogin = new JTextField();
 		txtLogin.setBounds(45, 152, 240, 27);
 		txtLogin.setColumns(10);
-		
+
 		JLabel lblSenha = new JLabel("Senha");
 		lblSenha.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		lblSenha.setBounds(45, 205, 36, 14);
+
+		
+		JPasswordField txtSenha = new JPasswordField();
+		txtSenha.setBounds(45, 231, 240, 28);
+		contentPane.add(txtSenha);
 		
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.setBounds(45, 292, 240, 32);
-		btnEntrar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(17,144,147), new Color(17,144,147), new Color(17,144,147), new Color(17,144,147)));
+		btnEntrar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(17, 144, 147), new Color(17, 144, 147),
+				new Color(17, 144, 147), new Color(17, 144, 147)));
 		btnEntrar.setForeground(new Color(255, 255, 255));
-		btnEntrar.setBackground(new Color(17,144,147));
+		btnEntrar.setBackground(new Color(17, 144, 147));
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				if (txtLogin.getText().trim().equals("Admin") && txtSenha.getText().trim().equals("Admin")) {
 					ViewMenuDesign menu = new ViewMenuDesign();
 					menu.setVisible(true);
-					frameLogin.dispose();			
+					frameLogin.dispose();
+				}else {
+					
+					JOptionPane.showMessageDialog(frameLogin, "Login ou senha incorreto");
+				}
 			}
 		});
-		
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(17, 152, 28, 27);
-		lblNewLabel.setIcon(new ImageIcon(ViewLoginDesign.class.getResource("/imagens/icons8-administrador-masculino.png")));
-		
+		lblNewLabel.setIcon(
+				new ImageIcon(ViewLoginDesign.class.getResource("/imagens/icons8-administrador-masculino.png")));
+
 		JLabel label = new JLabel("");
 		label.setBounds(17, 230, 28, 27);
 		label.setIcon(new ImageIcon(ViewLoginDesign.class.getResource("/imagens/icons8-senha.png")));
-		
+
 		JLabel lblEsqueceuASenha = new JLabel("Esqueceu a senha?");
 		lblEsqueceuASenha.setBounds(17, 345, 98, 16);
 		lblEsqueceuASenha.setFont(new Font("Segoe UI", Font.PLAIN, 12));
@@ -135,15 +145,11 @@ public class ViewLoginDesign extends JFrame {
 		contentPane.add(btnEntrar);
 		contentPane.add(lblEsqueceuASenha);
 		contentPane.add(panel);
-		
+
 		JLabel label_1 = new JLabel("");
 		label_1.setIcon(new ImageIcon(ViewLoginDesign.class.getResource("/imagens/Logo1.png")));
 		label_1.setBounds(176, 121, 123, 125);
 		panel.add(label_1);
-		
-		txtSenha = new JPasswordField();
-		txtSenha.setBounds(45, 231, 240, 28);
-		contentPane.add(txtSenha);
+
 	}
 }
-

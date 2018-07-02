@@ -42,6 +42,8 @@ public class RegistrarEntrada extends JDialog {
 			RegistrarEntrada dialog = new RegistrarEntrada();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
+			dialog.setLocationRelativeTo(null);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -59,7 +61,7 @@ public class RegistrarEntrada extends JDialog {
 		contentPanel.setLayout(null);
 		{
 			textField = new JTextField();
-			textField.setBounds(143, 47, 46, 20);
+			textField.setBounds(143, 39, 46, 28);
 			contentPanel.add(textField);
 			textField.setColumns(10);
 		}
@@ -89,19 +91,19 @@ public class RegistrarEntrada extends JDialog {
 		}
 		{
 			textField_1 = new JTextField();
-			textField_1.setBounds(143, 115, 233, 20);
+			textField_1.setBounds(143, 107, 233, 28);
 			contentPanel.add(textField_1);
 			textField_1.setColumns(10);
 		}
 		{
 			textField_2 = new JTextField();
-			textField_2.setBounds(143, 182, 86, 20);
+			textField_2.setBounds(143, 174, 86, 28);
 			contentPanel.add(textField_2);
 			textField_2.setColumns(10);
 		}
 		{
 			textField_3 = new JTextField();
-			textField_3.setBounds(143, 242, 86, 20);
+			textField_3.setBounds(143, 234, 86, 28);
 			contentPanel.add(textField_3);
 			textField_3.setColumns(10);
 		}
@@ -113,7 +115,7 @@ public class RegistrarEntrada extends JDialog {
 		}
 		{
 			textField_4 = new JTextField();
-			textField_4.setBounds(143, 309, 233, 20);
+			textField_4.setBounds(143, 301, 233, 28);
 			contentPanel.add(textField_4);
 			textField_4.setColumns(10);
 		}
@@ -127,8 +129,7 @@ public class RegistrarEntrada extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						
 						RegistrarEntrada registrarEntrada = new RegistrarEntrada();
-						 registrarEntrada.dispose();
-						
+						dispose();						
 					}
 				});
 				okButton.setActionCommand("OK");

@@ -56,7 +56,9 @@ public class ViewMenuDesign extends JFrame {
 			public void run() {
 				try {
 					frameMenu.setVisible(true);
-				
+					frameMenu.setLocationRelativeTo(null);
+
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -69,7 +71,7 @@ public class ViewMenuDesign extends JFrame {
 	 */
 	public ViewMenuDesign() {
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 955, 804);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -93,7 +95,7 @@ public class ViewMenuDesign extends JFrame {
 		panel_1.add(lblSejaBemVindo);
 		
 		Panel panel = new Panel();
-		panel.setBounds(0, 0, 270, 765);
+		panel.setBounds(0, 0, 270, 776);
 		panel.setBackground(new Color(17,144,147));
 		
 		JSeparator separator = new JSeparator();
@@ -108,8 +110,7 @@ public class ViewMenuDesign extends JFrame {
 				CadastroClienteView clientes = new CadastroClienteView();
 				clientes.frmCadastroDeCliente.setVisible(true);
 				
-				frameMenu.dispose();
-				
+				dispose();				
 			}
 		});
 		button.setOpaque(true);
@@ -127,8 +128,7 @@ public class ViewMenuDesign extends JFrame {
 				ViewEstoqueDesign estoque = new ViewEstoqueDesign();
 				estoque.setVisible(true);
 				
-				frameMenu.dispose();
-			}
+				dispose();			}
 		});
 		button_1.setOpaque(true);
 		button_1.setForeground(Color.WHITE);
@@ -145,8 +145,7 @@ public class ViewMenuDesign extends JFrame {
 				Fornecedor fornecedor = new Fornecedor();
 				fornecedor.frame.setVisible(true);
 				
-				frameMenu.dispose();
-				
+				dispose();				
 			}
 		});
 		button_2.setOpaque(true);
@@ -164,8 +163,7 @@ public class ViewMenuDesign extends JFrame {
 				CadastroProdutosView produto = new CadastroProdutosView();
 				produto.setVisible(true);
 				
-				frameMenu.dispose();
-			
+				dispose();			
 			}
 		});
 		button_3.setOpaque(true);
@@ -183,8 +181,7 @@ public class ViewMenuDesign extends JFrame {
 				VendasView vendas = new VendasView();
 				vendas.setVisible(true);
 				
-				frameMenu.dispose();
-				
+				dispose();				
 			}
 		});
 		button_4.setOpaque(true);
@@ -278,14 +275,14 @@ public class ViewMenuDesign extends JFrame {
 		panel.add(label_1);
 		
 		JButton btnRelatorios = new JButton("Relatorios");
+		btnRelatorios.setIcon(new ImageIcon(ViewMenuDesign.class.getResource("/imagens/icons8-pdf-25.png")));
 		btnRelatorios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				Relatorios relatorio = new Relatorios();
 				relatorio.setVisible(true);
 				
-				frameMenu.dispose();
-				
+				dispose();				
 			}
 		});
 		btnRelatorios.setOpaque(true);
