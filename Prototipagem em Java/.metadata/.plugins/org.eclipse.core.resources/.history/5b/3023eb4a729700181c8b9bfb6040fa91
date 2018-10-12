@@ -1,0 +1,14 @@
+package BO;
+
+import DAO.VendasDAO;
+import Validator.VendasValidation;
+
+public class VendasBO {
+
+	public void cadastrarVendas() {
+		VendasValidation vendasvalidator = new VendasValidation();
+		VendasDAO vendasDAO = new VendasDAO();
+		
+	}
+
+}

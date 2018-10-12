@@ -1,0 +1,27 @@
+package BO;
+
+import java.awt.HeadlessException;
+
+import javax.swing.JOptionPane;
+
+import VO.ProdutoVO;
+import Validator.ProdutoValidation;
+
+public class ProdutoBO {
+
+	public ProdutoVO cadastrarProduto(ProdutoVO pVO) {
+		ProdutoValidation pValidation = new ProdutoValidation();
+		pValidation.validaProduto();
+
+		try {
+			
+			
+			
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Erro ao Cadastrar" + e.getMessage());
+		}
+
+		return null;
+	}
+
+}

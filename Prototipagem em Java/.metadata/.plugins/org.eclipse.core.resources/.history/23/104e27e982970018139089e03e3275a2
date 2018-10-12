@@ -1,0 +1,71 @@
+package DAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
+import DAOFactory.DAOFactory;
+import VO.ProdutoVO;
+import VO.VendasVO;
+
+public class VendasDAO {
+	
+	private Connection connection;
+
+	public VendasDAO() throws Exception {
+		this.connection = DAOFactory.conexao();
+	}
+
+	public void cadastrarVendas(VendasVO vendasVO) throws Exception {
+		
+		PreparedStatement preparedStatement = this.connection.prepareStatement("INSERT INTO Vendas (Codigo_Vendas, data_venda, quantidade_venda, Codigo_Produto, Codigo_Cliente,valor_venda,peso_venda) VALUES(?,?,?,?,?,?,?);");
+		preparedStatement.setInt(1, vendasVO.getCodigo());
+		
+		java.util.Date dataUtil = new java.util.Date();
+		java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
+		
+		preparedStatement.setDate(2, new java.sql.Date(vendasVO.getDataVenda().getTime()));
+		preparedStatement.setInt(3, vendasVO.getQuantidade());
+		preparedStatement.setInt(4, vendasVO.getCodigoProduto());
+		preparedStatement.setInt(5, vendasVO.getCodigocliente());
+		preparedStatement.setDouble(6,vendasVO.getValor());
+		preparedStatement.setDouble(7,vendasVO.getPeso());
+		
+		int cont = preparedStatement.executeUpdate();
+		if (cont == 1) {
+			JOptionPane.showMessageDialog(null, "Venda Cadastrada com sucesso");
+		}
+	
+	}
+
+	public List<VendasVO> pesquisarVendasTodos() throws Exception {
+		List<VendasVO> retorno = new ArrayList<VendasVO>();
+		
+		PreparedStatement preparedStatement1 = this.connection.prepareStatement("Select * From Vendas");
+		PreparedStatement preparedStatement2 = this.connection.prepareStatement("Select produto.Codigo_Produto From produto where Codigo_Produto = ?");
+		PreparedStatement preparedStatement3 = this.connection.prepareStatement("Select cliente.Codigo_Cliente From cliente where Codigo_Cliente = ?");
+		
+		ResultSet resultSet1 = preparedStatement1.executeQuery();
+		ResultSet resultSet2 = preparedStatement2.executeQuery();
+		ResultSet resultSet3 = preparedStatement3.executeQuery();
+		
+		while (resultSet1.next() && resultSet2.next() && resultSet3.next()) {
+
+			VendasVO vendasVO = new VendasVO();
+			vendasVO.setCodigo(resultSet1.getInt("Codigo_Produto"));
+			vendasVO.setData(resultSet1.getDate("data_venda"));
+			vendasVO.setValor(resultSet.getDouble("Valor_Produtos"));
+			vendasVO.setPeso(resultSet.getDouble("Peso_Produto"));
+			vendasVO.setQuan(resultSet.getInt("Quantidade_Produto"));
+			retorno.add(vendasVO);
+		}
+
+		return retorno;
+	}
+
+}

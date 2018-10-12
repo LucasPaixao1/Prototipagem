@@ -2,9 +2,27 @@
 <classpath>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="lib" path="jgoodies-common-1.8.0.jar" sourcepath="jgoodies-common-1.8.0-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
-	<classpathentry exported="true" kind="lib" path="itextpdf-5.5.10.jar"/>
+	<classpathentry kind="lib" path="lib/miglayout15-swing.jar"/>
+	<classpathentry kind="lib" path="lib/jgoodies-forms-1.8.0.jar"/>
+	<classpathentry kind="lib" path="lib/jgoodies-forms-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="lib/jgoodies-common-1.8.0.jar"/>
+	<classpathentry kind="lib" path="lib/jgoodies-common-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="lib/itextpdf-5.5.10.jar"/>
+	<classpathentry kind="lib" path="lib/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/jgoodies-common-1.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/jgoodies-looks-2.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/junit-4.6.jar"/>
+	<classpathentry kind="lib" path="src/CEP/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-email-1.5-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/commons-email-1.5-sources.jar"/>
+	<classpathentry kind="lib" path="lib/commons-email-1.5-test-sources.jar"/>
+	<classpathentry kind="lib" path="lib/commons-email-1.5-tests.jar"/>
+	<classpathentry kind="lib" path="lib/commons-email-1.5.jar"/>
+	<classpathentry kind="lib" path="lib/dsn.jar"/>
+	<classpathentry kind="lib" path="lib/gimap.jar"/>
+	<classpathentry kind="lib" path="lib/imap.jar"/>
+	<classpathentry kind="lib" path="lib/mail.jar"/>
+	<classpathentry kind="lib" path="lib/mailapi.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.25-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

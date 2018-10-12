@@ -1,0 +1,223 @@
+package View;
+
+import java.awt.BorderLayout;
+import java.awt.Point;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+
+
+import java.awt.Color;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.CompoundBorder;
+import java.awt.event.ActionListener;
+import java.awt.geom.Point2D;
+import java.awt.event.ActionEvent;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.Dialog.ModalExclusionType;
+
+public class CadastroUsuarioView extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textField;
+	private JPasswordField passwordField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					CadastroUsuarioView frame = new CadastroUsuarioView();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public CadastroUsuarioView() {
+		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+		setTitle("Cadastro de Usuario");
+		setResizable(false);
+		setBounds(100, 100, 678, 494);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 728, 493);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(17, 144, 147));
+		panel_1.setBounds(0, 0, 359, 493);
+		panel.add(panel_1);
+		panel_1.setLayout(null);
+		
+		JLabel label = new JLabel("");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setIcon(new ImageIcon(CadastroUsuarioView.class.getResource("/imagens/Logo1.png")));
+		label.setBounds(45, 147, 240, 160);
+		panel_1.add(label);
+		
+		JLabel lblVarejoSantos = new JLabel("Varej\u00E3o Santos");
+		lblVarejoSantos.setFont(new Font("Elephant", Font.PLAIN, 21));
+		lblVarejoSantos.setForeground(Color.WHITE);
+		lblVarejoSantos.setBounds(82, 92, 171, 27);
+		panel_1.add(lblVarejoSantos);
+		
+		JSeparator separator_3 = new JSeparator();
+		separator_3.setBounds(71, 130, 182, 2);
+		panel_1.add(separator_3);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(54,33,89));
+		panel_2.setBounds(357, 0, 378, 493);
+		panel.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel lblCadastroDeUsuario = new JLabel("Cadastro De Usuario");
+		lblCadastroDeUsuario.setIcon(new ImageIcon(CadastroUsuarioView.class.getResource("/imagens/icons8-administrador-masculino.png")));
+		lblCadastroDeUsuario.setForeground(Color.WHITE);
+		lblCadastroDeUsuario.setFont(new Font("Elephant", Font.PLAIN, 18));
+		lblCadastroDeUsuario.setBounds(36, 11, 245, 26);
+		panel_2.add(lblCadastroDeUsuario);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(36, 35, 226, 2);
+		panel_2.add(separator);
+		
+		JLabel lblNome = new JLabel("Nome");
+		lblNome.setIcon(new ImageIcon(CadastroUsuarioView.class.getResource("/imagens/icons8-usu\u00E1rio-15 (1).png")));
+		lblNome.setForeground(Color.WHITE);
+		lblNome.setBounds(10, 82, 67, 14);
+		panel_2.add(lblNome);
+		
+		textField = new JTextField();
+		textField.setBorder(null);
+		textField.setForeground(Color.WHITE);
+		textField.setBackground(new Color(54,33,89));
+		textField.setBounds(10, 107, 271, 20);
+		panel_2.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblSenha = new JLabel("Senha");
+		lblSenha.setIcon(new ImageIcon(CadastroUsuarioView.class.getResource("/imagens/icons8-cadeado-2-15.png")));
+		lblSenha.setForeground(Color.WHITE);
+		lblSenha.setBounds(10, 153, 86, 14);
+		panel_2.add(lblSenha);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBackground(new Color(54,33,89));
+		passwordField.setBorder(null);
+		passwordField.setBounds(10, 178, 271, 14);
+		panel_2.add(passwordField);
+		
+		JLabel lblLogin = new JLabel("Login");
+		lblLogin.setIcon(new ImageIcon(CadastroUsuarioView.class.getResource("/imagens/icons8-usu\u00E1rio-15 (1).png")));
+		lblLogin.setForeground(Color.WHITE);
+		lblLogin.setBounds(10, 209, 67, 14);
+		panel_2.add(lblLogin);
+		
+		textField_1 = new JTextField();
+		textField_1.setBackground(new Color(54,33,89));
+		textField_1.setBorder(null);
+		textField_1.setColumns(10);
+		textField_1.setBounds(10, 234, 271, 14);
+		panel_2.add(textField_1);
+		
+		JLabel lblEmail = new JLabel("Email");
+		lblEmail.setIcon(new ImageIcon(CadastroUsuarioView.class.getResource("/imagens/icons8-mensagem-15.png")));
+		lblEmail.setForeground(Color.WHITE);
+		lblEmail.setBounds(10, 265, 86, 14);
+		panel_2.add(lblEmail);
+		
+		textField_2 = new JTextField();
+		textField_2.setBackground(new Color(54,33,89));
+		textField_2.setBorder(null);
+		textField_2.setColumns(10);
+		textField_2.setBounds(10, 290, 271, 14);
+		panel_2.add(textField_2);
+		
+		JLabel lblTipoDeConta = new JLabel("Tipo de Conta");
+		lblTipoDeConta.setIcon(new ImageIcon(CadastroUsuarioView.class.getResource("/imagens/icons8-ordem-de-compra-15.png")));
+		lblTipoDeConta.setForeground(Color.WHITE);
+		lblTipoDeConta.setBounds(10, 321, 97, 14);
+		panel_2.add(lblTipoDeConta);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Administrador", "Funcionario"}));
+		comboBox.setBorder(null);
+		comboBox.setBackground(Color.YELLOW);
+		comboBox.setBounds(10, 346, 271, 20);
+		panel_2.add(comboBox);
+		
+		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				
+				
+			}
+		});
+		btnSalvar.setIcon(new ImageIcon(CadastroUsuarioView.class.getResource("/imagens/icons8-salvar-25 (4).png")));
+		btnSalvar.setBounds(10, 399, 97, 33);
+		panel_2.add(btnSalvar);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ViewLoginDesign menu = new ViewLoginDesign();
+				menu.setVisible(true);
+				dispose();
+				
+			}
+		});
+		btnCancelar.setIcon(new ImageIcon(CadastroUsuarioView.class.getResource("/imagens/icons8-excluir-25 (1).png")));
+		btnCancelar.setBounds(172, 399, 114, 33);
+		panel_2.add(btnCancelar);
+		
+		JSeparator separator_4 = new JSeparator();
+		separator_4.setBounds(10, 127, 252, 17);
+		panel_2.add(separator_4);
+		separator_4.setForeground(Color.WHITE);
+		
+		JSeparator separator_5 = new JSeparator();
+		separator_5.setForeground(Color.WHITE);
+		separator_5.setBounds(10, 191, 252, 17);
+		panel_2.add(separator_5);
+		
+		JSeparator separator_6 = new JSeparator();
+		separator_6.setForeground(Color.WHITE);
+		separator_6.setBounds(10, 247, 252, 17);
+		panel_2.add(separator_6);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setForeground(Color.WHITE);
+		separator_1.setBounds(10, 304, 252, 17);
+		panel_2.add(separator_1);
+	}
+}

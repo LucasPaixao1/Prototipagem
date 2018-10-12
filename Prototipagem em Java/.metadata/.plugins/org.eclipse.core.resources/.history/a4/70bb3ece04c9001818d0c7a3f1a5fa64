@@ -1,0 +1,16 @@
+package Controller;
+
+import BO.RelatorioVendasBO;
+import VO.RelatorioVendasVO;
+
+public class RelatorioController {
+
+	public RelatorioVendasVO getDadosRelatoriosVendas() throws Exception {
+		RelatorioVendasBO relatorioVendasBO = new RelatorioVendasBO();
+		
+		
+		
+		return relatorioVendasBO.getDadosRelatoriosVendas();
+	}
+
+}

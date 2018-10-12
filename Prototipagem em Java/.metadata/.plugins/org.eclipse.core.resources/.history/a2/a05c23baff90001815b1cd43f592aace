@@ -1,0 +1,36 @@
+package Controller;
+
+import java.util.List;
+
+import BO.ProdutoBO;
+import VO.ProdutoVO;
+
+public class ProdutoController {
+
+	public void cadastroDeProduto(ProdutoVO pVO) throws Exception {
+		ProdutoBO pBO = new ProdutoBO();
+		pBO.cadastrarProduto(pVO);
+
+	}
+
+	public List<ProdutoVO> pesquisarProdutoTodos() throws Exception {
+
+		ProdutoBO pBO = new ProdutoBO();
+		return pBO.getDados();
+
+	}
+
+	public String excluir(ProdutoVO produtoVO) throws Exception {
+
+		ProdutoBO pBO = new ProdutoBO();
+
+		return pBO.excluir(produtoVO);
+
+	}
+
+	public String alteraProduto(ProdutoVO produtoVO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

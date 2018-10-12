@@ -1,0 +1,122 @@
+package DAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
+import DAOFactory.DAOFactory;
+import VO.ClienteVO;
+import VO.ProdutoVO;
+
+public class ClienteDAO {
+private Connection connection;
+	
+	public ClienteDAO() throws Exception{
+		this.connection = DAOFactory.conexao();
+	}
+
+	public void cadastraCliente(ClienteVO cVO) throws Exception {
+	PreparedStatement preparedStatement = this.connection.prepareStatement("INSERT INTO Cliente(Codigo_Cliente,Nome_Cliente,CNPJ_Cliente,CPF_Cliente,Forma_De_Pagamento_Cliente) VALUES(?,?,?,?,?)");
+	PreparedStatement preparedStatement2 = this.connection.prepareStatement("INSERT INTO Contato(Cel_Contato,Fixo_Contato,Nextel_Contato, Codigo_Cliente) VALUES(?,?,?,?)");
+	PreparedStatement preparedStatement1 = this.connection.prepareStatement("INSERT INTO Endereco(Rua_Endereco,Bairro_Endereco,Numero_Endereco,Cep_Endereco,Cidade_Endereco, Codigo_Cliente)VALUES(?,?,?,?,?,?)");
+	
+	preparedStatement.setInt(1, cVO.getCodigo());
+	preparedStatement.setString(2, cVO.getNome());
+	preparedStatement.setString(3,cVO.getCnpj());
+	preparedStatement.setString(4, cVO.getCpf());
+	preparedStatement.setString(5, cVO.getFormaDePagamento());
+
+	
+	preparedStatement2.setString(1, cVO.getCel());
+	preparedStatement2.setString(2, cVO.getFixo());
+	preparedStatement2.setString(3, cVO.getNextel());
+	preparedStatement2.setInt(4, cVO.getCodigo());
+	
+	
+	preparedStatement1.setString(1, cVO.getRua());
+	preparedStatement1.setString(2, cVO.getBairro());
+	preparedStatement1.setString(3, cVO.getNumero());
+	preparedStatement1.setString(4, cVO.getCep());
+	preparedStatement1.setString(5, cVO.getCidade());
+	preparedStatement1.setInt(6, cVO.getCodigo());
+	
+
+	
+
+
+	if (preparedStatement.executeUpdate() == 1 && preparedStatement1.executeUpdate() == 1 && preparedStatement2.executeUpdate() == 1) {
+		JOptionPane.showMessageDialog(null,"Cliente Cadastrado com sucesso");
+	}
+	
+	}
+
+	public List<ClienteVO> pesquisarClienteTodos() throws Exception {
+		List<ClienteVO> retorno = new ArrayList<ClienteVO>();
+		int cont = 1;
+		PreparedStatement preparedStatement = this.connection.prepareStatement("Select * From Cliente");
+		ResultSet resultSet = preparedStatement.executeQuery();
+
+		while (resultSet.next()) {
+			ClienteVO clienteVO = new ClienteVO();
+			clienteVO.setCodigo(resultSet.getInt("Codigo_Cliente"));
+			clienteVO.setNome(resultSet.getString("Nome_Cliente"));
+			clienteVO.setCnpj(resultSet.getString("CNPJ_Cliente"));
+			clienteVO.setCpf(resultSet.getString("CPF_Cliente"));
+			clienteVO.setFormaDePagamento(resultSet.getString("Forma_De_Pagamento_Cliente"));
+			retorno.add(clienteVO);
+			cont++;
+			
+		}
+		
+		return retorno;
+	}
+
+	public String excluirCliente(int codigo) throws SQLException {
+		String retorno = "Não foi possivel excluir o produto";
+		
+		PreparedStatement preparedStatement1 = this.connection.prepareStatement("DELETE FROM Endereco WHERE Codigo_Cliente = ?");
+		PreparedStatement preparedStatement2 = this.connection.prepareStatement("DELETE FROM Contato WHERE Codigo_Cliente = ?");
+		PreparedStatement preparedStatement3 = this.connection.prepareStatement("DELETE FROM Cliente WHERE Codigo_Cliente = ?");
+
+
+		preparedStatement1.setInt(1, codigo);
+		preparedStatement2.setInt(1, codigo);
+		preparedStatement3.setInt(1, codigo);
+		
+		int result1 = preparedStatement1.executeUpdate();
+		int result2 = preparedStatement2.executeUpdate();
+		int result3 = preparedStatement3.executeUpdate();
+		
+		if (result1 == 1 && result2 == 1 && result3 == 1) {
+			retorno = "Produto excluido com sucesso";
+		}
+
+		return retorno;
+
+	}
+
+	public ClienteVO pesquisarContatoTodos(int codigo) {
+		ProdutoVO clienteVO = new ProdutoVO();
+		
+		PreparedStatement preparedStatement = this.connection.prepareStatement("Select * From Produto Where Codigo_Produto = ?");
+		preparedStatement.setInt(1, codigo);
+
+		ResultSet resultSet = preparedStatement.executeQuery();	
+		if (resultSet.next()) {
+			clienteVO.setCodigo(resultSet.getInt("Codigo_Produto"));
+			clienteVO.setNome(resultSet.getString("Nome_Produto"));
+			clienteVO.setData(resultSet.getDate("Validade_Produtos"));
+			clienteVO.setValor(resultSet.getDouble("Valor_Produtos"));
+			clienteVO.setPeso(resultSet.getDouble("Peso_Produto"));
+			clienteVO.setQuan(resultSet.getInt("Quantidade_Produto"));
+		}
+		
+		return clienteVO;
+	}
+}
+

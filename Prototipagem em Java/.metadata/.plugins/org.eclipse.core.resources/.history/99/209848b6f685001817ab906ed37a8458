@@ -1,0 +1,13 @@
+package BO;
+
+import VO.ProdutoVO;
+import Validator.ProdutoValidation;
+
+public class ProdutoBO {
+
+	public ProdutoVO cadastrarProduto(ProdutoVO pVO) {
+		ProdutoValidation pValidation = new ProdutoValidation();
+		return null;
+	}
+
+}

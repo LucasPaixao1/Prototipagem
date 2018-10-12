@@ -13,33 +13,36 @@
 		<item value="250" key="dialogHeight"/>
 		<item value="350" key="dialogWidth"/>
 		<list key="textEntries">
-			<item value="1"/>
-			<item value="1"/>
+			<item value="2"/>
+			<item value="2"/>
 			<item value="1"/>
 			<item value="1"/>
 		</list>
 		<list key="orderedElements">
-			<item value="org.eclipse.debug.ui.DebugPerspective"/>
 			<item value="org.eclipse.debug.ui.VariableView"/>
-			<item value="org.eclipse.ui.console.ConsoleView"/>
 			<item value="org.eclipse.jdt.ui.PackageExplorer"/>
+			<item value="org.eclipse.debug.ui.DebugPerspective"/>
+			<item value="org.eclipse.ui.console.ConsoleView"/>
 		</list>
 		<list key="orderedProviders">
+			<item value="org.eclipse.e4.ui.parts"/>
+			<item value="org.eclipse.e4.ui.parts"/>
 			<item value="org.eclipse.ui.perspectives"/>
-			<item value="org.eclipse.e4.ui.parts"/>
-			<item value="org.eclipse.e4.ui.parts"/>
 			<item value="org.eclipse.e4.ui.parts"/>
 		</list>
 		<list key="textArray">
-			<item value="debug"/>
 			<item value="varia"/>
+			<item value="va"/>
+			<item value="pa"/>
+			<item value="p"/>
+			<item value="debug"/>
 			<item value="conso"/>
-			<item value="pack"/>
 		</list>
 	</section>
 	<section name="NewWizardAction">
-		<item value="org.eclipse.wb.swing.JFrame" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<item value="org.eclipse.jdt.ui.wizards.NewClassCreationWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.jdt.ui.java"/>
 			<item value="org.eclipse.wb"/>
 			<item value="org.eclipse.wb/org.eclipse.wb.swing"/>
 		</list>
@@ -56,5 +59,7 @@
 		</list>
 	</section>
 	<section name="ZipFileImportWizard">
+	</section>
+	<section name="FileSystemImportWizard">
 	</section>
 </section>

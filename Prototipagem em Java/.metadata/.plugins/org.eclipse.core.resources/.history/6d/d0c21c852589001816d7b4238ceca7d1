@@ -1,0 +1,75 @@
+package DAO;
+
+import java.sql.Connection;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import DAOFactory.DAOFactory;
+import VO.ProdutoVO;
+
+public class ProdutoDAO {
+	
+	private Connection connection;
+	
+	public ProdutoDAO() throws Exception{
+		this.connection = DAOFactory.conexao();
+	}
+
+	public void cadastraProduto(ProdutoVO pVO) throws Exception {
+		
+		PreparedStatement preparedStatement = this.connection.prepareStatement("INSERT INTO Produto (Codigo_Produto, Nome_Produto, Validade_Produtos, Valor_Produtos, Quantidade_Produto, Peso_Produto) VALUES (?,?,?,?,?,?)");
+		preparedStatement.setInt(1, pVO.getCodigo());
+		preparedStatement.setString(2, pVO.getNome());
+
+
+		java.util.Date dataUtil = new java.util.Date();
+		java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
+
+		preparedStatement.setDate(3,new java.sql.Date(pVO.getData().getTime()));
+		preparedStatement.setDouble(4, pVO.getValor());
+		preparedStatement.setInt(5, pVO.getQuan());
+		preparedStatement.setDouble(6, pVO.getPeso());
+		int cont = preparedStatement.executeUpdate();
+		if (cont == 1) {
+			JOptionPane.showMessageDialog(null,"Produto Cadastrado com sucesso");
+		}
+	}
+	
+	public List<ProdutoVO> pesquisarContatoTodos() throws Exception {
+		List<ProdutoVO> retorno = new ArrayList<ProdutoVO>();
+
+		int cont = 1;
+		PreparedStatement preparedStatement = this.connection.prepareStatement("Select *From Produto");
+		ResultSet resultSet = preparedStatement.executeQuery();
+
+		while (resultSet.next()) {
+
+			ProdutoVO contatoVO = new ProdutoVO();
+			contatoVO.setId(resultSet.getInt("id"));
+			contatoVO.setNome(resultSet.getString("nome"));
+			contatoVO.setDdd(resultSet.getString("ddd"));
+			contatoVO.setTelefone(resultSet.getString("telefone"));
+			retorno.add(contatoVO);
+
+			cont++;
+		}
+
+		if (retorno.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Não Há Contatos Cadastrados", "Atenção", JOptionPane.WARNING_MESSAGE);
+		}
+
+		return retorno;
+
+	}
+
+
+}

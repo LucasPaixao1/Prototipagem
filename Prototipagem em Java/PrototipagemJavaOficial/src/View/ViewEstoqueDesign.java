@@ -8,13 +8,23 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
+import java.awt.HeadlessException;
+
 import javax.swing.JSeparator;
 import javax.swing.JButton;
 import javax.swing.border.BevelBorder;
 import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import Controller.EstoqueController;
+import Controller.ProdutoController;
+import VO.EstoqueVO;
+import VO.ProdutoVO;
+
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -28,17 +38,31 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+import java.awt.Cursor;
+import javax.swing.JToggleButton;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.InputMethodListener;
+import java.awt.event.InputMethodEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class ViewEstoqueDesign extends JFrame {
 
 	private JPanel contentPane;
-	public JTable tableEstoque;
-	private JTextField textField;
+	public static JTable tableEstoque;
+	private JTextField txtPesquisa;
 
 	static ViewEstoqueDesign frameEstoque = new ViewEstoqueDesign();
 
 	/**
 	 * Launch the application.
+	 * @throws Exception 
 	 */
 	public static void main(String[] args) {
 
@@ -48,17 +72,20 @@ public class ViewEstoqueDesign extends JFrame {
 					javax.swing.UIManager.setLookAndFeel(info.getClassName());
 					break;
 				}
+				
 			}
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-				| javax.swing.UnsupportedLookAndFeelException ex) {
+			
+			listarTodos();
+		} catch( Exception ex) {
 			System.err.println(ex);
 		}
+		
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					frameEstoque.setVisible(true);
-					frameEstoque.setLocationRelativeTo(null);
+					frameEstoque.setLocationRelativeTo(null);					
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -69,8 +96,25 @@ public class ViewEstoqueDesign extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws Exception 
 	 */
-	public ViewEstoqueDesign() {
+	public ViewEstoqueDesign(){
+		
+		try {
+			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+				if ("Nimbus".equals(info.getName())) {
+					javax.swing.UIManager.setLookAndFeel(info.getClassName());
+					break;
+				}
+				
+			}
+			
+			listarTodos();
+		} catch( Exception ex) {
+			System.err.println(ex);
+		}
+		
+	
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 955, 804);
@@ -81,7 +125,9 @@ public class ViewEstoqueDesign extends JFrame {
 		setContentPane(contentPane);
 
 		JLabel lblEstoque = new JLabel("Estoque");
-		lblEstoque.setBounds(573, 35, 92, 32);
+		lblEstoque.setIcon(
+				new ImageIcon(ViewEstoqueDesign.class.getResource("/imagens/icons8-procurar-estoque-filled-25.png")));
+		lblEstoque.setBounds(573, 35, 120, 32);
 		lblEstoque.setForeground(Color.BLACK);
 		lblEstoque.setFont(new Font("Segoe UI", Font.BOLD, 24));
 
@@ -96,30 +142,84 @@ public class ViewEstoqueDesign extends JFrame {
 		CadastroProdutosView cadastroProdutosView = new CadastroProdutosView();
 
 		tableEstoque = new JTable();
+		tableEstoque.setEnabled(false);
 		scrollPane.setViewportView(tableEstoque);
-		tableEstoque.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "C\u00F3digo", "Nome", "Quantidade", "Validade" }) {
-			Class[] columnTypes = new Class[] { Integer.class, Object.class, Object.class, Object.class };
-
+		tableEstoque.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"C\u00F3digo", "Nome", "Tipo", "Quantidade", "Peso"
+			}
+		) {
+			Class[] columnTypes = new Class[] {
+				Integer.class, Object.class, Object.class, Object.class, Object.class
+			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
 		});
 		tableEstoque.getColumnModel().getColumn(1).setPreferredWidth(134);
-		tableEstoque.getColumnModel().getColumn(2).setPreferredWidth(133);
-		tableEstoque.getColumnModel().getColumn(3).setPreferredWidth(170);
+		tableEstoque.getColumnModel().getColumn(3).setPreferredWidth(133);
+		
+		txtPesquisa = new JTextField();
+		txtPesquisa.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				
+				try {
+					Pattern patternString = Pattern.compile("[A-Z]");
+					Pattern patternNumeros = Pattern.compile("[0-9]");
 
-		textField = new JTextField();
-		textField.setBounds(101, 34, 136, 28);
-		textField.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		textField.setColumns(10);
+					if (patternString.matcher(txtPesquisa.getText().toUpperCase()).find()) {
+
+						pesquisaNome(txtPesquisa.getText());
+
+					} else if (patternNumeros.matcher(txtPesquisa.getText()).find()) {
+
+						pesquisaId(Integer.parseInt(txtPesquisa.getText()));
+					}
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(null, "Erro: " + e1.getMessage());
+				}
+				
+			}
+		});
+
+		txtPesquisa.setBounds(101, 34, 136, 28);
+		txtPesquisa.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		txtPesquisa.setColumns(10);
 
 		JLabel lblPesquisar = new JLabel("Pesquisar:");
 		lblPesquisar.setBounds(21, 40, 74, 16);
 		lblPesquisar.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 
 		JButton button_5 = new JButton("Pesquisar");
-		button_5.setBounds(243, 38, 90, 20);
+		button_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Pattern patternString = Pattern.compile("[A-Z]");
+					Pattern patternNumeros = Pattern.compile("[0-9]");
+
+					if (patternString.matcher(txtPesquisa.getText().toUpperCase()).find()) {
+
+						pesquisaNome(txtPesquisa.getText());
+
+					} else if (patternNumeros.matcher(txtPesquisa.getText()).find()) {
+
+						pesquisaId(Integer.parseInt(txtPesquisa.getText()));
+					}
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(null, "Erro: " + e1.getMessage());
+				}
+
+			}
+
+		});
+		button_5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_5.setIcon(new ImageIcon(ViewEstoqueDesign.class.getResource("/imagens/icons8-pesquisar-filled-25.png")));
+		button_5.setBounds(243, 34, 124, 28);
 		button_5.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 
 		Panel panel = new Panel();
@@ -130,6 +230,8 @@ public class ViewEstoqueDesign extends JFrame {
 		separator.setBounds(0, 492, 0, 2);
 
 		JButton button = new JButton("Cadastro de Clientes");
+		button.setMnemonic(KeyEvent.VK_1);
+		button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		button.setBounds(0, 132, 270, 48);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -148,11 +250,19 @@ public class ViewEstoqueDesign extends JFrame {
 		button.setBackground(new Color(17, 144, 147));
 
 		JButton button_1 = new JButton("Estoque");
+		button_1 .setMnemonic(KeyEvent.VK_5);
+		button_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		button_1.setBounds(0, 372, 270, 48);
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				ViewEstoqueDesign estoque = new ViewEstoqueDesign();
+				ViewEstoqueDesign estoque = null;
+				try {
+					estoque = new ViewEstoqueDesign();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				estoque.setVisible(true);
 
 				dispose();
@@ -166,6 +276,8 @@ public class ViewEstoqueDesign extends JFrame {
 		button_1.setBackground(new Color(17, 144, 147));
 
 		JButton button_2 = new JButton("Cadastro de Fornecedores");
+		button_2 .setMnemonic(KeyEvent.VK_2);
+		button_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		button_2.setBounds(0, 192, 270, 48);
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -173,7 +285,8 @@ public class ViewEstoqueDesign extends JFrame {
 				Fornecedor fornecedor = new Fornecedor();
 				fornecedor.frame.setVisible(true);
 
-				dispose();			}
+				dispose();
+			}
 		});
 		button_2.setIcon(new ImageIcon(ViewEstoqueDesign.class.getResource("/imagens/icons8-caminh\u00E3o-25.png")));
 		button_2.setOpaque(true);
@@ -183,6 +296,8 @@ public class ViewEstoqueDesign extends JFrame {
 		button_2.setBackground(new Color(17, 144, 147));
 
 		JButton button_3 = new JButton("Cadastro de Produtos");
+		button_3 .setMnemonic(KeyEvent.VK_3);
+		button_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		button_3.setBounds(0, 252, 270, 48);
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -201,6 +316,8 @@ public class ViewEstoqueDesign extends JFrame {
 		button_3.setBackground(new Color(17, 144, 147));
 
 		JButton button_4 = new JButton("Vendas");
+		button_4 .setMnemonic(KeyEvent.VK_4);
+		button_4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		button_4.setBounds(0, 312, 270, 48);
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -220,6 +337,7 @@ public class ViewEstoqueDesign extends JFrame {
 		button_4.setBackground(new Color(17, 144, 147));
 
 		JLabel label = new JLabel("Varej\u00E3o Santos");
+		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		label.setBounds(6, 45, 260, 32);
 		label.addMouseListener(new MouseAdapter() {
 			@Override
@@ -227,7 +345,8 @@ public class ViewEstoqueDesign extends JFrame {
 				ViewMenuDesign menu = new ViewMenuDesign();
 				menu.setVisible(true);
 
-				dispose();			}
+				dispose();
+			}
 		});
 		label.setIcon(new ImageIcon(ViewEstoqueDesign.class.getResource("/imagens/icons8-p\u00E1gina-inicial-25.png")));
 		label.setForeground(new Color(240, 248, 255));
@@ -278,13 +397,16 @@ public class ViewEstoqueDesign extends JFrame {
 		panel.add(label);
 
 		JButton btnNewButton_1 = new JButton("Relatorios");
+		btnNewButton_1 .setMnemonic(KeyEvent.VK_6);
+		btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				Relatorios relatorios = new Relatorios();
 				relatorios.setVisible(true);
 
-				dispose();			}
+				dispose();
+			}
 		});
 		btnNewButton_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), null));
 		btnNewButton_1.setIcon(new ImageIcon(ViewEstoqueDesign.class.getResource("/imagens/icons8-pdf-25.png")));
@@ -300,19 +422,103 @@ public class ViewEstoqueDesign extends JFrame {
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		panel_1.add(lblPesquisar);
-		panel_1.add(textField);
+		panel_1.add(txtPesquisa);
 		panel_1.add(button_5);
 		panel_1.add(scrollPane);
 
-		JButton btnNewButton = new JButton("Registrar Entrada De Produtos");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		JButton btnNewButton_2 = new JButton("Atualizar");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 
-				RegistrarEntrada registrarEntrada = new RegistrarEntrada();
-				registrarEntrada.setVisible(true);
+				try {
+					listarTodos();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage());
+					e.printStackTrace();
+				}
 			}
 		});
-		btnNewButton.setBounds(285, 593, 206, 28);
-		contentPane.add(btnNewButton);
+		btnNewButton_2
+				.setIcon(new ImageIcon(ViewEstoqueDesign.class.getResource("/imagens/icons8-actualizar-25 (1).png")));
+		btnNewButton_2.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		btnNewButton_2.setBounds(414, 34, 141, 28);
+		panel_1.add(btnNewButton_2);
 	}
+
+	private static void cleanTable(JTable tabela) {
+
+		DefaultTableModel dtm = (DefaultTableModel) tabela.getModel();
+
+		dtm.setNumRows(0);
+
+	}
+
+	private static void listarTodos() throws Exception {
+
+		cleanTable(tableEstoque);
+
+		EstoqueController controller = new EstoqueController();
+		List<EstoqueVO> lista = new ArrayList<EstoqueVO>();
+
+		lista = controller.listarProdutos();
+
+		for (EstoqueVO estoqueVO : lista) {
+
+			DefaultTableModel dados = (DefaultTableModel) tableEstoque.getModel();
+
+			String txt = Integer.toString(estoqueVO.getCodigo());
+
+			String peso = Double.toString(estoqueVO.getPeso());
+			String quantidade = Integer.toString(estoqueVO.getQuantidade());
+
+			dados.addRow(new String[] { txt, estoqueVO.getNome(), estoqueVO.getTipo(), quantidade, peso });
+
+		}
+
+	}
+
+	private void pesquisaNome(String nome) throws Exception {
+		
+		cleanTable(tableEstoque);
+
+		EstoqueController controller = new EstoqueController();
+
+		List<EstoqueVO> lista = controller.pesquisarNome(nome);
+
+		for (EstoqueVO estoqueVO : lista) {
+
+			DefaultTableModel dados = (DefaultTableModel) tableEstoque.getModel();
+
+			String txt = Integer.toString(estoqueVO.getCodigo());
+
+			String peso = Double.toString(estoqueVO.getPeso());
+			String quantidade = Integer.toString(estoqueVO.getQuantidade());
+
+			dados.addRow(new String[] { txt, estoqueVO.getNome(), estoqueVO.getTipo(), quantidade,   peso });
+
+		}
+
+	}
+
+	private void pesquisaId(int id) throws Exception {
+		
+		cleanTable(tableEstoque);
+		
+		
+		EstoqueController controller = new EstoqueController();
+
+		EstoqueVO estoqueVO = controller.pesquisarId(id);
+
+		DefaultTableModel dados = (DefaultTableModel) tableEstoque.getModel();
+
+		String txt = Integer.toString(estoqueVO.getCodigo());
+
+		String peso = Double.toString(estoqueVO.getPeso());
+		String quantidade = Integer.toString(estoqueVO.getQuantidade());
+
+		dados.addRow(new String[] { txt, estoqueVO.getNome(), estoqueVO.getTipo(), quantidade,  peso });
+
+	}
+
 }

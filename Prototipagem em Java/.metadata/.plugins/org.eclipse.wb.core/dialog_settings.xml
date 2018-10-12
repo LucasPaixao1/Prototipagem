@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<section name="org.eclipse.wb.internal.core.model.util.ExposeComponentSupport$ExposeDialog">
+		<item value="697" key="x"/>
+		<item value="525" key="width"/>
+		<item value="379" key="y"/>
+		<item value="281" key="height"/>
+	</section>
 	<section name="org.eclipse.wb.internal.core.model.property.order.ReorderDialog">
 		<item value="1400" key="x"/>
 		<item value="520" key="width"/>
@@ -12,6 +18,15 @@
 		<item value="64" key="y"/>
 		<item value="552" key="height"/>
 	</section>
+	<section name="org.eclipse.wb.internal.core.editor.palette.dialogs.ImportArchiveDialog">
+		<item value="697" key="x"/>
+		<item value="525" key="width"/>
+		<item value="299" key="y"/>
+		<item value="442" key="height"/>
+		<list key="HISTORY_JAR_LIST">
+			<item value="C:\Users\Lucas\Desktop\JCalendar\lib\jcalendar-1.4.jar"/>
+		</list>
+	</section>
 	<section name="org.eclipse.wb.internal.core.editor.actions.assistant.LayoutAssistantWindow">
 		<item value="741" key="x"/>
 		<item value="382" key="y"/>
@@ -22,10 +37,22 @@
 		<item value="215" key="y"/>
 		<item value="430" key="height"/>
 	</section>
+	<section name="org.eclipse.wb.internal.core.editor.palette.dialogs.PaletteManagerDialog">
+		<item value="697" key="x"/>
+		<item value="525" key="width"/>
+		<item value="262" key="y"/>
+		<item value="516" key="height"/>
+	</section>
 	<section name="org.eclipse.wb.internal.core.model.property.editor.string.StringPropertyDialog">
 		<item value="910" key="x"/>
 		<item value="530" key="width"/>
 		<item value="277" key="y"/>
 		<item value="346" key="height"/>
+	</section>
+	<section name="org.eclipse.wb.internal.core.editor.palette.dialogs.CategoryAddDialog">
+		<item value="697" key="x"/>
+		<item value="525" key="width"/>
+		<item value="325" key="y"/>
+		<item value="389" key="height"/>
 	</section>
 </section>

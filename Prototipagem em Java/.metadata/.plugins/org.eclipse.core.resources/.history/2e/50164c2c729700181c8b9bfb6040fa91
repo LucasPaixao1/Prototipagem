@@ -1,0 +1,12 @@
+package BO;
+
+import Validator.VendasValidation;
+
+public class VendasBO {
+
+	public void cadastrarVendas() {
+		VendasValidation vendasvalidator = new VendasValidation();
+		
+	}
+
+}

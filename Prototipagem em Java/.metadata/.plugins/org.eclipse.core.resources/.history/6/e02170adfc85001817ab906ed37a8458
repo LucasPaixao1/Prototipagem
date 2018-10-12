@@ -1,0 +1,22 @@
+package BO;
+
+import java.awt.HeadlessException;
+
+import javax.swing.JOptionPane;
+
+import DAO.ProdutoDAO;
+import VO.ProdutoVO;
+import Validator.ProdutoValidation;
+
+public class ProdutoBO {
+
+	public void cadastrarProduto(ProdutoVO pVO) throws Exception {
+		ProdutoValidation pValidation = new ProdutoValidation();
+		ProdutoDAO pDAO = new ProdutoDAO();
+		
+			pValidation.validaProduto(pVO);
+			pDAO.cadastraProduto(pVO);
+			
+	}
+
+}

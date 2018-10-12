@@ -1,0 +1,37 @@
+package DAO;
+
+import java.sql.Connection;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import DAOFactory.DAOFactory;
+import VO.ProdutoVO;
+
+public class ProdutoDAO {
+	
+	private Connection connection;
+	
+	public ProdutoDAO() throws Exception{
+		this.connection = DAOFactory.conexao();
+	}
+
+	public void cadastraProduto(ProdutoVO pVO) throws Exception {
+		PreparedStatement preparedStatement = this.connection.prepareStatement("INSERT INTO Produto (Codigo_Produto, Nome_Produto, Validade_Produto, Valor_Produtos, Quantidade_Produto, Peso_Produto) VALUES (?,?,?,?,?,?)");
+		preparedStatement.setInt(1, pVO.getCodigo());
+		preparedStatement.setString(2, pVO.getNome());
+
+
+		java.util.Date dataUtil = new java.util.Date();
+		java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
+
+		preparedStatement.setDate(3, pVO.getData());
+		preparedStatement.setDouble(4, pVO.getValor());
+		preparedStatement.setInt(5, pVO.getQuan());
+		preparedStatement.setDouble(6, pVO.getPeso());
+		preparedStatement.execute();
+	}
+
+}

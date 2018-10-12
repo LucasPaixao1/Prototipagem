@@ -1,0 +1,24 @@
+package DAO;
+
+import java.sql.Connection;
+
+import DAOFactory.DAOFactory;
+import VO.VendasVO;
+
+public class VendasDAO {
+	
+	private Connection connection;
+
+	public VendasDAO() throws Exception {
+		this.connection = DAOFactory.conexao();
+	}
+
+	public void cadastrarVendas(VendasVO vendasVO) {
+		
+		
+		
+		
+		
+	}
+
+}

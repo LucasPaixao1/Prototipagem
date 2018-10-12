@@ -1,0 +1,40 @@
+package DAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
+
+import DAOFactory.DAOFactory;
+import VO.VendasVO;
+
+public class VendasDAO {
+	
+	private Connection connection;
+
+	public VendasDAO() throws Exception {
+		this.connection = DAOFactory.conexao();
+	}
+
+	public void cadastrarVendas(VendasVO vendasVO) throws Exception {
+		
+		PreparedStatement preparedStatement = this.connection.prepareStatement("INSERT INTO Vendas (Codigo_Vendas, data_venda, quantidade_venda, Codigo_Produto, Codigo_Cliente) VALUES(?,?,?,?);");
+		preparedStatement.setInt(1, vendasVO.getCodigo());
+		
+		java.util.Date dataUtil = new java.util.Date();
+		java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
+		
+		preparedStatement.setDate(2, new java.sql.Date(vendasVO.getDataVenda().getTime()));
+		preparedStatement.setInt(3, vendasVO.getQuantidade());
+		preparedStatement.setInt(4, vendasVO.getCodigoProduto());
+		preparedStatement.setInt(5, vendasVO.getCodigocliente());
+		
+		int cont = preparedStatement.executeUpdate();
+		if (cont == 1) {
+			JOptionPane.showMessageDialog(null, "Venda Cadastrado com sucesso");
+		}
+	
+	}
+
+}

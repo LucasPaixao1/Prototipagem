@@ -1,0 +1,25 @@
+package Controller;
+
+import java.util.List;
+
+import BO.VendasBO;
+import VO.VendasVO;
+
+public class VendasController {
+
+	public void cadastrarvendas(VendasVO vendas) throws Exception {
+		
+		VendasBO vendasBO = new  VendasBO();
+		vendasBO.cadastrarVendas(vendas);
+		
+	}
+
+//	public List<VendasVO> pesquisaVendasTodos() throws Exception {
+//		
+//		VendasBO vendasBO = new VendasBO();
+//		
+//		return vendasBO.getDados();
+//	}
+//
+//	
+//}

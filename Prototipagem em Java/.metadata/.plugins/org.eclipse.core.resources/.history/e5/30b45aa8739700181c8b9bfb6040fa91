@@ -1,0 +1,16 @@
+package Controller;
+
+import BO.VendasBO;
+import VO.VendasVO;
+
+public class VendasController {
+
+	public void cadastrarvendas(VendasVO vendas) {
+		
+		VendasBO vendasBO = new  VendasBO();
+		vendasBO.cadastrarVendas(vendas);
+		
+	}
+
+	
+}

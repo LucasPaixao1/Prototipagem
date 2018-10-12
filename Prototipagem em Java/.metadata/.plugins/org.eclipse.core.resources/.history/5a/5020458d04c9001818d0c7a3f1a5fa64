@@ -1,0 +1,565 @@
+package View;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Panel;
+import java.awt.Color;
+import java.awt.Desktop;
+
+import javax.swing.JSeparator;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JButton;
+import javax.swing.border.EtchedBorder;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JSlider;
+import javax.swing.JProgressBar;
+import java.awt.Cursor;
+import javax.swing.SwingConstants;
+import com.toedter.calendar.JDateChooser;
+
+import Controller.RelatorioController;
+import VO.RelatorioVendasVO;
+
+public class Relatorios extends JFrame {
+
+	private JPanel contentPane;
+	static Relatorios frameRelatorio = new Relatorios();
+	private JDateChooser txtdatainicio;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+
+		try {
+			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+				if ("Nimbus".equals(info.getName())) {
+					javax.swing.UIManager.setLookAndFeel(info.getClassName());
+					break;
+				}
+			}
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| javax.swing.UnsupportedLookAndFeelException ex) {
+			System.err.println(ex);
+		}
+
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frameRelatorio.setVisible(true);
+					frameRelatorio.setLocationRelativeTo(null);
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Relatorios() {
+		
+		try {
+			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+				if ("Nimbus".equals(info.getName())) {
+					javax.swing.UIManager.setLookAndFeel(info.getClassName());
+					break;
+				}
+			}
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| javax.swing.UnsupportedLookAndFeelException ex) {
+			System.err.println(ex);
+		}
+		
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 970, 770);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		contentPane.setLayout(null);
+
+		Panel panel = new Panel();
+		panel.setLayout(null);
+		panel.setBackground(new Color(17, 144, 147));
+		panel.setBounds(0, 0, 268, 775);
+		contentPane.add(panel);
+		setContentPane(contentPane);
+		JSeparator separator = new JSeparator();
+		separator.setBounds(6, 83, 204, 18);
+		panel.add(separator);
+
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(216, 91, 0, 2);
+		panel.add(separator_1);
+
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(216, 99, 0, 2);
+		panel.add(separator_2);
+
+		JSeparator separator_3 = new JSeparator();
+		separator_3.setBounds(0, 492, 0, 2);
+		panel.add(separator_3);
+
+		JSeparator separator_4 = new JSeparator();
+		separator_4.setBounds(0, 492, 270, 2);
+		panel.add(separator_4);
+
+		JLabel label = new JLabel("Administrador");
+		label.setForeground(Color.WHITE);
+		label.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		label.setBounds(24, 525, 79, 16);
+		panel.add(label);
+
+		JButton button = new JButton("Cadastro de Clientes");
+		button.setMnemonic(KeyEvent.VK_1);
+		button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				CadastroClienteView windowCliente = new CadastroClienteView();
+				windowCliente.frmCadastroDeCliente.setVisible(true);
+
+				dispose();
+			}
+		});
+		button.setIcon(new ImageIcon(Relatorios.class.getResource("/imagens/icons8-gest\u00E3o-de-cliente-25.png")));
+		button.setOpaque(true);
+		button.setForeground(Color.WHITE);
+		button.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		button.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		button.setBackground(new Color(17, 144, 147));
+		button.setBounds(0, 132, 270, 48);
+		panel.add(button);
+
+		JButton button_1 = new JButton("Cadastro de Fornecedores");
+		button_1.setMnemonic(KeyEvent.VK_2);
+		button_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				Fornecedor fornecedor = new Fornecedor();
+				fornecedor.frame.setVisible(true);
+
+				dispose();
+			}
+		});
+		button_1.setIcon(new ImageIcon(Relatorios.class.getResource("/imagens/icons8-caminh\u00E3o-25.png")));
+		button_1.setOpaque(true);
+		button_1.setForeground(Color.WHITE);
+		button_1.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		button_1.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		button_1.setBackground(new Color(17, 144, 147));
+		button_1.setBounds(0, 192, 270, 48);
+		panel.add(button_1);
+
+		JButton button_2 = new JButton("Cadastro de Produtos");
+		button_2.setMnemonic(KeyEvent.VK_3);
+		button_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				CadastroProdutosView produto = new CadastroProdutosView();
+				produto.setVisible(true);
+
+				dispose();
+			}
+		});
+		button_2.setIcon(new ImageIcon(Relatorios.class.getResource("/imagens/icons8-produto-25.png")));
+		button_2.setOpaque(true);
+		button_2.setForeground(Color.WHITE);
+		button_2.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		button_2.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		button_2.setBackground(new Color(17, 144, 147));
+		button_2.setBounds(0, 252, 270, 48);
+		panel.add(button_2);
+
+		JButton button_3 = new JButton("Vendas");
+		button_3.setMnemonic(KeyEvent.VK_4);
+		button_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				VendasView vendas = new VendasView();
+				vendas.setVisible(true);
+
+				dispose();
+			}
+		});
+		button_3.setIcon(new ImageIcon(Relatorios.class.getResource("/imagens/icons8-performance-de-vendas-25.png")));
+		button_3.setOpaque(true);
+		button_3.setForeground(Color.WHITE);
+		button_3.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		button_3.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		button_3.setBackground(new Color(17, 144, 147));
+		button_3.setBounds(0, 312, 270, 48);
+		panel.add(button_3);
+
+		JButton button_4 = new JButton("Estoque");
+		button_4.setMnemonic(KeyEvent.VK_5);
+		button_4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				ViewEstoqueDesign estoque = new ViewEstoqueDesign();
+				estoque.setVisible(true);
+
+				dispose();
+			}
+
+		});
+		button_4.setIcon(new ImageIcon(Relatorios.class.getResource("/imagens/icons8-procurar-estoque-25.png")));
+		button_4.setOpaque(true);
+		button_4.setForeground(Color.WHITE);
+		button_4.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		button_4.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		button_4.setBackground(new Color(17, 144, 147));
+		button_4.setBounds(0, 372, 270, 48);
+		panel.add(button_4);
+
+		JLabel label_1 = new JLabel("Varej\u00E3o Santos");
+		label_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+
+				ViewMenuDesign menu = new ViewMenuDesign();
+				menu.setVisible(true);
+
+				dispose();
+			}
+		});
+		label_1.setIcon(new ImageIcon(Relatorios.class.getResource("/imagens/icons8-p\u00E1gina-inicial-25.png")));
+		label_1.setForeground(new Color(240, 248, 255));
+		label_1.setFont(new Font("Segoe UI", Font.BOLD, 24));
+		label_1.setBounds(6, 45, 260, 32);
+		panel.add(label_1);
+
+		JButton btnRelatorios = new JButton("Relatorios");
+		btnRelatorios.setMnemonic(KeyEvent.VK_6);
+		btnRelatorios.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnRelatorios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				dispose();
+			}
+		});
+		btnRelatorios.setIcon(new ImageIcon(Relatorios.class.getResource("/imagens/icons8-pdf-25.png")));
+		btnRelatorios.setForeground(Color.WHITE);
+		btnRelatorios.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), null));
+		btnRelatorios.setBackground(new Color(17, 144, 147));
+		btnRelatorios.setBounds(0, 432, 268, 48);
+		panel.add(btnRelatorios);
+
+		JSeparator separator_7 = new JSeparator();
+		separator_7.setForeground(Color.WHITE);
+		separator_7.setBounds(269, 372, 353, 2);
+		panel.add(separator_7);
+
+		JSeparator separator_8 = new JSeparator();
+		separator_8.setBounds(269, 372, 353, 16);
+		panel.add(separator_8);
+
+		JSeparator separator_5 = new JSeparator();
+		separator_5.setForeground(Color.WHITE);
+		separator_5.setBounds(269, 358, 693, 2);
+		panel.add(separator_5);
+
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(25, 25, 112));
+		panel_1.setBounds(268, 0, 361, 362);
+		contentPane.add(panel_1);
+		panel_1.setLayout(null);
+
+		JButton btnNewButton = new JButton("Gerar Relat\u00F3rio de vendas");
+		btnNewButton.setBounds(72, 302, 201, 37);
+		panel_1.add(btnNewButton);
+		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					RelatorioVendasVO relatorioVendasVO = new RelatorioVendasVO();
+					relatorioVendasVO = getDadosRelatoriosVendas();
+					gravaPdf(relatorioVendasVO);
+					
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+
+			}
+		});
+		btnNewButton.setIcon(new ImageIcon(Relatorios.class.getResource("/imagens/icons8-pdf-25.png")));
+		btnNewButton.setForeground(new Color(255, 255, 255));
+		btnNewButton.setBackground(new Color(0, 128, 128));
+
+		JLabel lblRelatrioDeVendas = new JLabel("Relat\u00F3rio De vendas");
+		lblRelatrioDeVendas.setBounds(126, 6, 147, 33);
+		lblRelatrioDeVendas.setIcon(new ImageIcon(Relatorios.class.getResource("/imagens/icons8-arquivo-25.png")));
+		lblRelatrioDeVendas.setFont(new Font("SansSerif", Font.BOLD, 12));
+		lblRelatrioDeVendas.setForeground(Color.WHITE);
+		panel_1.add(lblRelatrioDeVendas);
+
+		JLabel lblCliqueNoBoto = new JLabel(
+				"Clique no bot\u00E3o abaixo para exibir um relat\u00F3rio completo \r\n\r\n");
+		lblCliqueNoBoto.setBounds(6, 51, 356, 23);
+		lblCliqueNoBoto.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblCliqueNoBoto.setForeground(Color.WHITE);
+		panel_1.add(lblCliqueNoBoto);
+
+		JLabel lblNeleIrConter = new JLabel(
+				"Nele ir\u00E1 conter informa\u00E7\u00F5es sobre a maior venda no m\u00EAs\r\n");
+		lblNeleIrConter.setBounds(6, 94, 334, 16);
+		lblNeleIrConter.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblNeleIrConter.setForeground(Color.WHITE);
+		panel_1.add(lblNeleIrConter);
+
+		JLabel lblAMenorVenda = new JLabel(". Qual foi menor venda");
+		lblAMenorVenda.setBounds(16, 133, 321, 16);
+		lblAMenorVenda.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblAMenorVenda.setForeground(Color.WHITE);
+		panel_1.add(lblAMenorVenda);
+
+		JLabel lblMaximoVendido = new JLabel(". Maximo vendido");
+		lblMaximoVendido.setBounds(16, 190, 321, 16);
+		lblMaximoVendido.setForeground(Color.WHITE);
+		lblMaximoVendido.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		panel_1.add(lblMaximoVendido);
+
+		JLabel lblQualFoi = new JLabel(". Qual foi a maior venda");
+		lblQualFoi.setBounds(19, 161, 321, 16);
+		lblQualFoi.setForeground(Color.WHITE);
+		lblQualFoi.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		panel_1.add(lblQualFoi);
+		
+		txtdatainicio = new JDateChooser();
+		txtdatainicio.getCalendarButton().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		txtdatainicio.setBounds(51, 218, 114, 28);
+		panel_1.add(txtdatainicio);
+		
+		JDateChooser txtdatafinal = new JDateChooser();
+		txtdatafinal.setBounds(51, 258, 114, 28);
+		panel_1.add(txtdatafinal);
+		
+		JLabel lblDe = new JLabel("De:");
+		lblDe.setForeground(Color.WHITE);
+		lblDe.setBounds(6, 218, 55, 16);
+		panel_1.add(lblDe);
+		
+		JLabel lblAt = new JLabel("At\u00E9:");
+		lblAt.setForeground(Color.WHITE);
+		lblAt.setBounds(6, 258, 55, 16);
+		panel_1.add(lblAt);
+
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground((new Color(25, 25, 112)));
+		panel_2.setBounds(636, 0, 328, 362);
+		contentPane.add(panel_2);
+		panel_2.setLayout(null);
+
+		JLabel lblRelatrioDeEstoque = new JLabel("Relat\u00F3rio de Estoque");
+		lblRelatrioDeEstoque.setBounds(108, 6, 151, 25);
+		lblRelatrioDeEstoque.setFont(new Font("SansSerif", Font.BOLD, 12));
+		lblRelatrioDeEstoque.setForeground(Color.WHITE);
+		lblRelatrioDeEstoque.setIcon(new ImageIcon(Relatorios.class.getResource("/imagens/icons8-arquivo-25.png")));
+		panel_2.add(lblRelatrioDeEstoque);
+
+		JLabel lblCliqueNoBoto_1 = new JLabel("Clique no bot\u00E3o abaixo para exibir um relat\u00F3rio \r\n\r\n\r\n");
+		lblCliqueNoBoto_1.setBounds(17, 43, 356, 23);
+		lblCliqueNoBoto_1.setForeground(Color.WHITE);
+		lblCliqueNoBoto_1.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		panel_2.add(lblCliqueNoBoto_1);
+
+		JLabel lblNeleIrConter_1 = new JLabel("Nele ir\u00E1 conter informa\u00E7\u00F5es sobre o Estoque");
+		lblNeleIrConter_1.setBounds(16, 88, 262, 16);
+		lblNeleIrConter_1.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblNeleIrConter_1.setForeground(Color.WHITE);
+		panel_2.add(lblNeleIrConter_1);
+
+		JLabel lblOQueFalta = new JLabel(". O que est\u00E1 em falta");
+		lblOQueFalta.setBounds(18, 133, 286, 16);
+		lblOQueFalta.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblOQueFalta.setForeground(Color.WHITE);
+		panel_2.add(lblOQueFalta);
+
+		JButton btnGerarRelatrioDe = new JButton("Gerar Relat\u00F3rio de Estoque");
+		btnGerarRelatrioDe.setBounds(67, 262, 213, 37);
+		btnGerarRelatrioDe.setIcon(new ImageIcon(Relatorios.class.getResource("/imagens/icons8-pdf-25.png")));
+		btnGerarRelatrioDe.setForeground(Color.WHITE);
+		btnGerarRelatrioDe.setBackground(new Color(0, 128, 128));
+		panel_2.add(btnGerarRelatrioDe);
+
+		JLabel lblOQue = new JLabel(". O que precisa comprar");
+		lblOQue.setBounds(18, 163, 286, 16);
+		lblOQue.setForeground(Color.WHITE);
+		lblOQue.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		panel_2.add(lblOQue);
+
+		JPanel panel_3 = new JPanel();
+		panel_3.setBackground((new Color(25, 25, 112)));
+		panel_3.setBounds(268, 367, 361, 375);
+		contentPane.add(panel_3);
+		panel_3.setLayout(null);
+
+		JButton btnGerarRelatrioDe_1 = new JButton("Gerar Relat\u00F3rio de Produtos");
+		btnGerarRelatrioDe_1.setBounds(72, 269, 214, 37);
+		btnGerarRelatrioDe_1.setIcon(new ImageIcon(Relatorios.class.getResource("/imagens/icons8-pdf-25.png")));
+		btnGerarRelatrioDe_1.setForeground(Color.WHITE);
+		btnGerarRelatrioDe_1.setBackground(new Color(0, 128, 128));
+		panel_3.add(btnGerarRelatrioDe_1);
+
+		JLabel lblRelatrioDeProdutos = new JLabel("Relat\u00F3rio De Produtos");
+		lblRelatrioDeProdutos.setBounds(126, 6, 160, 33);
+		lblRelatrioDeProdutos.setIcon(new ImageIcon(Relatorios.class.getResource("/imagens/icons8-arquivo-25.png")));
+		lblRelatrioDeProdutos.setForeground(Color.WHITE);
+		lblRelatrioDeProdutos.setFont(new Font("SansSerif", Font.BOLD, 12));
+		panel_3.add(lblRelatrioDeProdutos);
+
+		JLabel label_3 = new JLabel("Clique no bot\u00E3o abaixo para exibir um relat\u00F3rio completo \r\n\r\n");
+		label_3.setBounds(19, 51, 356, 23);
+		label_3.setForeground(Color.WHITE);
+		label_3.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		panel_3.add(label_3);
+
+		JLabel lblNeleIrConter_2 = new JLabel("Nele ir\u00E1 conter informa\u00E7\u00F5es sobre produtos\r\n\r\n\r\n");
+		lblNeleIrConter_2.setBounds(19, 96, 334, 16);
+		lblNeleIrConter_2.setForeground(Color.WHITE);
+		lblNeleIrConter_2.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		panel_3.add(lblNeleIrConter_2);
+
+		JLabel lblQualMaisVende = new JLabel(". Qual mais vende\r\n");
+		lblQualMaisVende.setBounds(32, 136, 321, 16);
+		lblQualMaisVende.setForeground(Color.WHITE);
+		lblQualMaisVende.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		panel_3.add(lblQualMaisVende);
+
+		JLabel lblQualTem = new JLabel(". Qual tem mais saida\r\n\r\n");
+		lblQualTem.setBounds(32, 164, 321, 16);
+		lblQualTem.setForeground(Color.WHITE);
+		lblQualTem.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		panel_3.add(lblQualTem);
+
+		JLabel lblProdutoMenos = new JLabel(". Produto menos Vendido\r\n\r\n\r\n");
+		lblProdutoMenos.setBounds(32, 192, 321, 16);
+		lblProdutoMenos.setForeground(Color.WHITE);
+		lblProdutoMenos.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		panel_3.add(lblProdutoMenos);
+
+		JPanel panel_4 = new JPanel();
+		panel_4.setBackground((new Color(25, 25, 112)));
+		panel_4.setBounds(636, 367, 328, 375);
+		contentPane.add(panel_4);
+		panel_4.setLayout(null);
+
+		JLabel lblRelatrioDeCliente = new JLabel("Relat\u00F3rio de Clientes");
+		lblRelatrioDeCliente.setBounds(114, 6, 171, 25);
+		lblRelatrioDeCliente.setIcon(new ImageIcon(Relatorios.class.getResource("/imagens/icons8-arquivo-25.png")));
+		lblRelatrioDeCliente.setForeground(Color.WHITE);
+		lblRelatrioDeCliente.setFont(new Font("SansSerif", Font.BOLD, 12));
+		panel_4.add(lblRelatrioDeCliente);
+
+		JLabel label_7 = new JLabel("Clique no bot\u00E3o abaixo para exibir um relat\u00F3rio \r\n\r\n\r\n");
+		label_7.setBounds(16, 43, 356, 23);
+		label_7.setForeground(Color.WHITE);
+		label_7.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		panel_4.add(label_7);
+
+		JLabel lblNeleIrConter_3 = new JLabel("Nele ir\u00E1 conter informa\u00E7\u00F5es sobre o Cliente\r\n");
+		lblNeleIrConter_3.setBounds(16, 91, 262, 16);
+		lblNeleIrConter_3.setForeground(Color.WHITE);
+		lblNeleIrConter_3.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		panel_4.add(lblNeleIrConter_3);
+
+		JLabel lblQualClienteCompra = new JLabel(". Qual cliente mais compra\r\n");
+		lblQualClienteCompra.setBounds(33, 132, 286, 16);
+		lblQualClienteCompra.setForeground(Color.WHITE);
+		lblQualClienteCompra.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		panel_4.add(lblQualClienteCompra);
+
+		JButton btnGerarRelatrioDe_2 = new JButton("Gerar Relat\u00F3rio de Clientes");
+		btnGerarRelatrioDe_2.setBounds(48, 270, 220, 37);
+		btnGerarRelatrioDe_2.setIcon(new ImageIcon(Relatorios.class.getResource("/imagens/icons8-pdf-25.png")));
+		btnGerarRelatrioDe_2.setForeground(Color.WHITE);
+		btnGerarRelatrioDe_2.setBackground(new Color(0, 128, 128));
+		panel_4.add(btnGerarRelatrioDe_2);
+
+		JLabel lblQualCliente = new JLabel(". Qual cliente menos compra\r\n");
+		lblQualCliente.setBounds(33, 159, 286, 16);
+		lblQualCliente.setForeground(Color.WHITE);
+		lblQualCliente.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		panel_4.add(lblQualCliente);
+
+		JSeparator separator_10 = new JSeparator();
+		separator_10.setBounds(321, 6, -317, 2);
+		panel_4.add(separator_10);
+	}
+	
+	
+	private void gravaPdf(RelatorioVendasVO relatorioVendasVO) {
+		
+		
+		Document document = new Document();
+
+		try {
+			PdfWriter.getInstance(document, new FileOutputStream("C:/temp/RelatorioVendas.pdf"));
+
+			document.open();
+			document.add(new Paragraph("Relatório de Vendas\n"));
+			document.add(new Paragraph(
+					"\nFrangos resfriados vendidos: 100; \nFrangos Congelados: 150; \nFrangos Temperados Vendidos: 120;\n \nTotal vendido no mês: 370; \nPreço total: 10.000;"));
+
+		} catch (DocumentException ex) {
+			System.out.println("Error:" + ex);
+		} catch (FileNotFoundException ex) {
+			System.out.println("Error:" + ex);
+		} finally {
+			document.close();
+		}
+
+		try {
+			Desktop.getDesktop().open(new File("C:/temp/RelatorioVendas.pdf"));
+		} catch (IOException ex) {
+			System.out.println("Error:" + ex);
+		}
+		
+		
+	}
+	
+	private RelatorioVendasVO getDadosRelatoriosVendas() throws Exception {
+		
+		RelatorioController relatorioController = new RelatorioController();
+		
+		RelatorioVendasVO relatorio = new RelatorioVendasVO();
+		relatorio.setDataInicio(txtdatainicio);
+		
+		return relatorioController.getDadosRelatoriosVendas();
+		
+	}
+}

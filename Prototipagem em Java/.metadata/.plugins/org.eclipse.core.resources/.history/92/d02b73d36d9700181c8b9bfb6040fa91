@@ -1,0 +1,17 @@
+package VO;
+
+import java.util.Date;
+
+public class VendasVO {
+	
+	private int codigo;
+	private Date dataVenda;
+	private int quantidade;
+	private int codigoProduto;
+	private String nomeProduto;
+	private String nomeCliente;
+	private double valor;
+	private double peso;
+	
+
+}

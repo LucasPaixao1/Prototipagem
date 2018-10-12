@@ -1,0 +1,39 @@
+package BO;
+
+import java.awt.HeadlessException;
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
+import DAO.ProdutoDAO;
+import VO.ProdutoVO;
+import Validator.ProdutoValidation;
+
+public class ProdutoBO {
+
+	public void cadastrarProduto(ProdutoVO pVO) throws Exception {
+		ProdutoValidation pValidation = new ProdutoValidation();
+		ProdutoDAO pDAO = new ProdutoDAO();
+
+		boolean retorno = pValidation.validaProduto(pVO);
+
+		if (retorno) {
+			pDAO.cadastraProduto(pVO);
+		}
+	}
+	
+	public List<ProdutoVO> getDados() throws Exception{
+		ProdutoDAO pDAO = new ProdutoDAO();
+		
+		return pDAO.pesquisarProdutoTodos();
+	}
+
+	public String excluir(ProdutoVO produtoVO) {
+		ProdutoDAO pDAO = new ProdutoDAO();
+
+		return pDAO.excluir(ProdutoVO);
+	
+		return null;
+	}
+
+}

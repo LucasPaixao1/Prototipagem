@@ -1,0 +1,524 @@
+package View;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Panel;
+import java.awt.Color;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JSeparator;
+import javax.swing.JButton;
+import javax.swing.border.EtchedBorder;
+import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.ImageIcon;
+import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JComboBox;
+import java.awt.Toolkit;
+import com.toedter.calendar.JDateChooser;
+
+import Controller.VendasController;
+import VO.VendasVO;
+
+import java.awt.Cursor;
+
+public class VendasView extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField codigoVen;
+	private JTextField txtValorProd;
+	private JTextField txtQuanProd;
+	private JTextField txtPesoProd;
+	private static JTable table;
+	private JTextField textField_6;
+	private JTextField txtCodProd;
+	static VendasView frameVendas = new VendasView();
+	private JTextField txtCodigoCli;
+	private JDateChooser txtdata;
+	
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		
+		try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+           System.err.println(ex);
+        }
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frameVendas.setVisible(true);
+					frameVendas.setLocationRelativeTo(null);
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public VendasView() {
+		setTitle("Vendas");
+		setResizable(false);
+		setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 955, 804);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		
+		Panel panel = new Panel();
+		panel.setBounds(0, 0, 270, 776);
+		panel.setBackground(new Color(17,144,147));
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(0, 490, 270, 2);
+		
+		JButton button = new JButton("Cadastro de Clientes");
+		button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button.setBounds(0, 131, 270, 48);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				CadastroClienteView window = new CadastroClienteView();
+				window.frmCadastroDeCliente.setVisible(true);
+				
+				dispose();			}
+		});
+		button.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-gest\u00E3o-de-cliente-25.png")));
+		button.setOpaque(true);
+		button.setForeground(Color.WHITE);
+		button.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		button.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		button.setBackground(new Color(17,144,147));
+		
+		JButton button_1 = new JButton("Estoque");
+		button_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_1.setBounds(0, 371, 270, 48);
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ViewEstoqueDesign estoque = new ViewEstoqueDesign();
+				estoque.setVisible(true);
+				
+				dispose();			}
+		});
+		button_1.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-procurar-estoque-25.png")));
+		button_1.setOpaque(true);
+		button_1.setForeground(Color.WHITE);
+		button_1.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		button_1.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		button_1.setBackground(new Color(17,144,147));
+		
+		JButton button_2 = new JButton("Cadastro de Fornecedores");
+		button_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_2.setBounds(0, 191, 270, 48);
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Fornecedor fornecedor = new Fornecedor();
+				fornecedor.frame.setVisible(true);
+				
+				dispose();				
+			}
+		});
+		button_2.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-caminh\u00E3o-25.png")));
+		button_2.setOpaque(true);
+		button_2.setForeground(Color.WHITE);
+		button_2.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		button_2.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		button_2.setBackground(new Color(17,144,147));
+		
+		JButton button_3 = new JButton("Cadastro de Produtos");
+		button_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_3.setBounds(0, 251, 270, 48);
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				CadastroProdutosView produto = new CadastroProdutosView();
+				produto.setVisible(true);
+				
+				dispose();			}
+		});
+		button_3.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-produto-25.png")));
+		button_3.setOpaque(true);
+		button_3.setForeground(Color.WHITE);
+		button_3.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		button_3.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		button_3.setBackground(new Color(17,144,147));
+		
+		JButton button_4 = new JButton("Vendas");
+		button_4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_4.setBounds(0, 311, 270, 48);
+		button_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				VendasView vendas = new VendasView();
+				vendas.setVisible(true);
+				
+				dispose();				
+			}
+		});
+		button_4.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-performance-de-vendas-25.png")));
+		button_4.setOpaque(true);
+		button_4.setForeground(Color.WHITE);
+		button_4.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		button_4.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 255, 255), null));
+		button_4.setBackground(new Color(17,144,147));
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(10, 97, 0, 2);
+		
+		JLabel label = new JLabel("Varej\u00E3o Santos");
+		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label.setBounds(10, 39, 260, 32);
+		label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				ViewMenuDesign menu = new ViewMenuDesign();
+				menu.setVisible(true);
+				
+				dispose();			}
+		});
+		label.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-p\u00E1gina-inicial-25.png")));
+		label.setForeground(new Color(240, 248, 255));
+		label.setFont(new Font("Segoe UI", Font.BOLD, 24));
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(10, 89, 0, 2);
+		
+		JLabel label_1 = new JLabel("Administrador");
+		label_1.setBounds(24, 523, 79, 16);
+		label_1.setForeground(Color.WHITE);
+		label_1.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		JSeparator separator_3 = new JSeparator();
+		separator_3.setBounds(0, 476, 270, 2);
+		
+		JSeparator separator_4 = new JSeparator();
+		separator_4.setBounds(12, 89, 204, 18);
+		
+		codigoVen = new JTextField();
+		codigoVen.setBounds(298, 136, 56, 26);
+		codigoVen.setColumns(10);
+		
+		JLabel lblCdigoDaVenda = new JLabel("C\u00D3DIGO DA VENDA:");
+		lblCdigoDaVenda.setBounds(298, 111, 122, 14);
+		lblCdigoDaVenda.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		JLabel lblDataDaVenda = new JLabel("DATA DA VENDA:");
+		lblDataDaVenda.setBounds(298, 203, 117, 14);
+		lblDataDaVenda.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		txtValorProd = new JTextField();
+		txtValorProd.setBounds(786, 136, 92, 26);
+		txtValorProd.setColumns(10);
+		
+		JLabel lblValorTotal = new JLabel("VALOR TOTAL:");
+		lblValorTotal.setBounds(786, 111, 124, 14);
+		lblValorTotal.setToolTipText("");
+		lblValorTotal.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		txtQuanProd = new JTextField();
+		txtQuanProd.setBounds(760, 229, 92, 26);
+		txtQuanProd.setColumns(10);
+		
+		JLabel lblQuantidadeVendida = new JLabel("QUANTIDADE VENDIDA:");
+		lblQuantidadeVendida.setBounds(750, 203, 167, 14);
+		lblQuantidadeVendida.setToolTipText("");
+		lblQuantidadeVendida.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		JLabel lblPesoTotal = new JLabel("PESO TOTAL:");
+		lblPesoTotal.setBounds(519, 203, 137, 14);
+		lblPesoTotal.setToolTipText("");
+		lblPesoTotal.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		txtPesoProd = new JTextField();
+		txtPesoProd.setBounds(519, 229, 92, 26);
+		txtPesoProd.setColumns(10);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(287, 418, 646, 257);
+		panel_1.setBorder(new TitledBorder(null, "Vendas Cadastradas", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(14, 66, 613, 174);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Codigo", "Nome Do Cliente", "Data da Venda", "Valor", "Quantidade", "Peso ", "Nome Prod."
+			}
+		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(79);
+		table.getColumnModel().getColumn(1).setPreferredWidth(100);
+		table.getColumnModel().getColumn(2).setPreferredWidth(103);
+		table.getColumnModel().getColumn(3).setPreferredWidth(59);
+		table.getColumnModel().getColumn(4).setPreferredWidth(74);
+		table.getColumnModel().getColumn(5).setPreferredWidth(54);
+		table.getColumnModel().getColumn(6).setPreferredWidth(80);
+		
+		JLabel lblPesquisarPorVenda = new JLabel("Pesquisar por Venda C\u00F3digo:");
+		lblPesquisarPorVenda.setBounds(24, 23, 171, 16);
+		lblPesquisarPorVenda.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		
+		textField_6 = new JTextField();
+		textField_6.setBounds(192, 21, 63, 23);
+		textField_6.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		textField_6.setColumns(10);
+		
+		JButton button_8 = new JButton("");
+		button_8.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_8.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-pesquisar-filled-25.png")));
+		button_8.setBounds(267, 16, 47, 28);
+		button_8.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		
+		JButton button_5 = new JButton("Alterar");
+		button_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				alteraVenda();
+				
+			}
+
+			
+		});
+		button_5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_5.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-alterar-25.png")));
+		button_5.setBounds(413, 715, 102, 37);
+		button_5.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		
+		JButton button_6 = new JButton("Salvar");
+		button_6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button_6.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-salvar-25 (2).png")));
+		button_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					cadastrar();
+					listarVendasTodos();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+
+			
+		});
+		button_6.setBounds(304, 715, 89, 37);
+		button_6.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		
+		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnExcluir.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-excluir-25.png")));
+		btnExcluir.setBounds(797, 715, 102, 37);
+		btnExcluir.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		
+		JLabel lblVendas = new JLabel("VENDAS");
+		lblVendas.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-vender-estoque-filled-25.png")));
+		lblVendas.setBounds(577, 31, 122, 26);
+		lblVendas.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		
+		txtCodProd = new JTextField();
+		txtCodProd.setBounds(617, 136, 70, 26);
+		txtCodProd.setColumns(10);
+		
+		JLabel lblCdigoDoProduto = new JLabel("C\u00D3DIGO DO PRODUTO:");
+		lblCdigoDoProduto.setBounds(617, 111, 133, 14);
+		lblCdigoDoProduto.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		
+		JSeparator separator_5 = new JSeparator();
+		separator_5.setBounds(580, 55, 119, 2);
+		contentPane.setLayout(null);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		panel.add(label);
+		panel.add(separator_2);
+		panel.add(separator_1);
+		panel.add(separator_4);
+		panel.add(button);
+		panel.add(button_2);
+		panel.add(button_3);
+		panel.add(button_4);
+		panel.add(button_1);
+		panel.add(separator_3);
+		panel.add(separator);
+		panel.add(label_1);
+		
+		JButton btnRelatorios = new JButton("Relatorios");
+		btnRelatorios.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnRelatorios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Relatorios relatorios = new Relatorios();
+				relatorios.setVisible(true);
+				
+				dispose();				
+			}
+		});
+		btnRelatorios.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-pdf-25.png")));
+		btnRelatorios.setForeground(Color.WHITE);
+		btnRelatorios.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), null));
+		btnRelatorios.setBackground(new Color(17, 144, 147));
+		btnRelatorios.setBounds(0, 431, 268, 48);
+		panel.add(btnRelatorios);
+		contentPane.add(separator_5);
+		contentPane.add(lblVendas);
+		contentPane.add(lblCdigoDaVenda);
+		contentPane.add(lblPesoTotal);
+		contentPane.add(lblQuantidadeVendida);
+		contentPane.add(txtPesoProd);
+		contentPane.add(txtQuanProd);
+		contentPane.add(button_6);
+		contentPane.add(button_5);
+		contentPane.add(btnExcluir);
+		contentPane.add(codigoVen);
+		contentPane.add(txtCodProd);
+		contentPane.add(lblCdigoDoProduto);
+		contentPane.add(lblDataDaVenda);
+		contentPane.add(lblValorTotal);
+		contentPane.add(txtValorProd);
+		contentPane.add(panel_1);
+		panel_1.setLayout(null);
+		panel_1.add(textField_6);
+		panel_1.add(lblPesquisarPorVenda);
+		panel_1.add(button_8);
+		panel_1.add(scrollPane);
+		
+		JButton btnPreencherCampos = new JButton("Preencher Campos");
+		btnPreencherCampos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnPreencherCampos.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-cor-de-preenchimento-25.png")));
+		btnPreencherCampos.setBounds(326, 16, 171, 28);
+		panel_1.add(btnPreencherCampos);
+		
+		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				try {
+					listarVendasTodos();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		btnAtualizar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnAtualizar.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-actualizar-25 (1).png")));
+		btnAtualizar.setBounds(509, 16, 118, 28);
+		panel_1.add(btnAtualizar);
+		
+		txtdata = new JDateChooser();
+		txtdata.setDateFormatString("yyyy/MM/dd");
+		txtdata.setBounds(298, 227, 136, 28);
+		contentPane.add(txtdata);
+		
+		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnLimpar.setIcon(new ImageIcon(VendasView.class.getResource("/imagens/icons8-vassoura-filled-25.png")));
+		btnLimpar.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		btnLimpar.setBounds(667, 715, 102, 37);
+		contentPane.add(btnLimpar);
+		
+		txtCodigoCli = new JTextField();
+		txtCodigoCli.setBounds(448, 135, 70, 28);
+		contentPane.add(txtCodigoCli);
+		txtCodigoCli.setColumns(10);
+		
+		JLabel lblCdigoDoCliente = new JLabel("C\u00D3DIGO DO CLIENTE:");
+		lblCdigoDoCliente.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblCdigoDoCliente.setBounds(448, 111, 122, 14);
+		contentPane.add(lblCdigoDoCliente);
+	}
+	
+	
+	private void cadastrar() throws Exception {
+		VendasVO vendas = new VendasVO();
+		VendasController vendascontroller = new VendasController();
+		
+		vendas.setCodigo(Integer.parseInt(txtCodProd.getText().trim()));
+		vendas.setPeso(Integer.parseInt(txtPesoProd.getText().trim()));
+		vendas.setQuantidade(Integer.parseInt(txtQuanProd.getText().trim()));
+		vendas.setValor(Integer.parseInt(txtValorProd.getText().trim()));
+		vendas.setCodigoProduto(Integer.parseInt(txtCodProd.getText().trim()));
+		vendas.setDataVenda(txtdata.getDate());
+		vendas.setCodigocliente(Integer.parseInt(txtCodigoCli.getText().trim()));
+	
+		
+		vendascontroller.cadastrarvendas(vendas);
+		
+		
+		
+	}
+
+	private static void listarVendasTodos() throws Exception {
+		VendasController controller = new VendasController();
+		List<VendasVO> lista = new ArrayList<VendasVO>();
+		
+		lista = controller.pesquisaVendasTodos();
+		
+		limparTabela(table);
+		
+		for (VendasVO vendasVO : lista) {
+			
+			DefaultTableModel dados = (DefaultTableModel) table.getModel();
+			
+			String cod = Integer.toString(vendasVO.getCodigo());
+			String nomeProduto = vendasVO.getNomeProduto();
+			String nomeCliente = vendasVO.getNomeCliente();
+			
+			SimpleDateFormat out = new SimpleDateFormat("yyyy-MM-dd");
+			SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+
+			String data = out.format(in.parse(vendasVO.getDataVenda().toString()));
+			String valor = Double.toString(vendasVO.getValor());
+			String quantidade = Integer.toString(vendasVO.getQuantidade());
+			String peso = Double.toString(vendasVO.getPeso());
+			
+			dados.addRow(new String[] { cod, nomeCliente, data, valor, quantidade, peso, nomeProduto });
+			
+			
+		}
+		
+		
+		
+	}
+
+	private void alteraVenda() {
+		
+		
+	}
+
+}

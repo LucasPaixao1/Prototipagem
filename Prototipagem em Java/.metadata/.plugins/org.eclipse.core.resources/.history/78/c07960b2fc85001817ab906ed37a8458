@@ -1,0 +1,13 @@
+package Controller;
+
+import BO.ProdutoBO;
+import VO.ProdutoVO;
+
+public class ProdutoController {
+
+	public void cadastroDeProduto(ProdutoVO pVO) {
+		ProdutoBO pBO = new ProdutoBO();
+		pBO.cadastrarProduto(pVO);
+		
+	}
+}

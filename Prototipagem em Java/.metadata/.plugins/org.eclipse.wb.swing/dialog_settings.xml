@@ -12,6 +12,12 @@
 		<item value="260" key="y"/>
 		<item value="381" key="height"/>
 	</section>
+	<section name="org.eclipse.wb.internal.swing.laf.ui.AddCustomLookAndFeelDialog">
+		<item value="419" key="x"/>
+		<item value="607" key="width"/>
+		<item value="331" key="y"/>
+		<item value="409" key="height"/>
+	</section>
 	<section name="org.eclipse.wb.internal.swing.model.property.editor.models.combo.ComboBoxModelDialog">
 		<item value="722" key="x"/>
 		<item value="476" key="width"/>

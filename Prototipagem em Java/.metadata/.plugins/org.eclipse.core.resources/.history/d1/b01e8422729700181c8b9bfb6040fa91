@@ -1,0 +1,10 @@
+package BO;
+
+public class VendasBO {
+
+	public void cadastrarVendas() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

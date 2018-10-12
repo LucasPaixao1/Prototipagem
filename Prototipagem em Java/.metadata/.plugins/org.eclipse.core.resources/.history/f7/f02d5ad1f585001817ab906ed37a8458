@@ -1,0 +1,12 @@
+package BO;
+
+import VO.ProdutoVO;
+
+public class ProdutoBO {
+
+	public ProdutoVO cadastrarProduto(ProdutoVO pVO) {
+		
+		return null;
+	}
+
+}

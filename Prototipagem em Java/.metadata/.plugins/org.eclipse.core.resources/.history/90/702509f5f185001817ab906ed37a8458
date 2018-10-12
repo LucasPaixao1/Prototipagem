@@ -1,0 +1,17 @@
+package DAOFactory;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DAOFactory {
+	
+	public Connection conexaao() {
+		
+		
+		String password = "lucas@1234";
+		String user = "root";
+		String url = "jdbc:mysql://localhost:3306/Modelo_Fisico_Empresa";
+		return DriverManager.getConnection(url , user, password);
+	}
+
+}

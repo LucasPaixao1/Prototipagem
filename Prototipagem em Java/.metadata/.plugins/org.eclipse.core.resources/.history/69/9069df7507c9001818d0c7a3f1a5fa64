@@ -1,0 +1,25 @@
+package DAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Date;
+
+import DAOFactory.DAOFactory;
+import VO.RelatorioVendasVO;
+
+public class RelatorioVendasDAO {
+	
+	private Connection connection;
+
+	public RelatorioVendasDAO() throws Exception {
+		this.connection = DAOFactory.conexao();
+	}
+
+	public RelatorioVendasVO getDadosRelatoriosVendas(Date datainicio, Date datafinal) throws Exception {
+		PreparedStatement preparedStatement = this.connection.prepareStatement("Select sum(vendas.quantidade_venda) from vendas inner join produto on(vendas.Codigo_Produto = produto.Codigo_Produto) group by produto.tipo_produto;");
+				
+		return null;
+	}
+
+}

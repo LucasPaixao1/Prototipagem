@@ -6,36 +6,50 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
+import Controller.LembreteController;
+import VO.LembreteVO;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
+import com.toedter.calendar.JDateChooser;
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import java.awt.Cursor;
 
 public class AddLembrete extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
-	private JTextField textField_2;
+	private JTextField txtassunto;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
+
 		try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-           System.err.println(ex);
-        }
-		
+			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+				if ("Nimbus".equals(info.getName())) {
+					javax.swing.UIManager.setLookAndFeel(info.getClassName());
+					break;
+				}
+			}
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| javax.swing.UnsupportedLookAndFeelException ex) {
+			System.err.println(ex);
+		}
+
 		try {
 			AddLembrete dialog = new AddLembrete();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -52,8 +66,9 @@ public class AddLembrete extends JDialog {
 	 */
 	public AddLembrete() {
 		setFont(new Font("Dialog", Font.BOLD, 12));
-		setBounds(100, 100, 357, 501);
+		setBounds(100, 100, 357, 459);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(17,144,147));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
@@ -76,50 +91,93 @@ public class AddLembrete extends JDialog {
 			contentPanel.add(lblNewLabel_2);
 		}
 		{
-			textField = new JTextField();
-			textField.setBounds(96, 103, 86, 28);
-			contentPanel.add(textField);
-			textField.setColumns(10);
-		}
-		{
-			textField_2 = new JTextField();
-			textField_2.setBounds(96, 309, 221, 28);
-			contentPanel.add(textField_2);
-			textField_2.setColumns(10);
+			txtassunto = new JTextField();
+			txtassunto.setBounds(96, 309, 209, 28);
+			contentPanel.add(txtassunto);
+			txtassunto.setColumns(10);
 		}
 		{
 			JLabel lblLembretePersonalizado = new JLabel("Lembrete Personalizado");
+			lblLembretePersonalizado.setIcon(new ImageIcon(AddLembrete.class.getResource("/imagens/icons8-calend\u00E1rio-25 (1).png")));
+//			lblLembretePersonalizado.setIcon(new ImageIcon(AddLembrete.class.getResource("/imagens/icons8-calend\u00E1rio-25.png")));
 			lblLembretePersonalizado.setFont(new Font("Segoe UI", Font.BOLD, 24));
-			lblLembretePersonalizado.setBounds(39, 11, 278, 54);
+			lblLembretePersonalizado.setBounds(18, 11, 317, 54);
 			contentPanel.add(lblLembretePersonalizado);
 		}
-		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(96, 176, 209, 109);
-		contentPanel.add(textArea);
+
+		JTextArea txtdescricao = new JTextArea();
+		txtdescricao.setBounds(96, 176, 209, 109);
+		contentPanel.add(txtdescricao);
+
+		JDateChooser txtdata = new JDateChooser();
+		txtdata.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		txtdata.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		txtdata.setBounds(96, 113, 209, 28);
+		contentPanel.add(txtdata);
+		{
+			JButton okButton = new JButton("Salvar");
+			okButton.setBounds(96, 373, 88, 37);
+			contentPanel.add(okButton);
+			okButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			okButton.setIcon(new ImageIcon(AddLembrete.class.getResource("/imagens/icons8-salvar-25 (2).png")));
+//				okButton.setIcon(new ImageIcon(AddLembrete.class.getResource("/imagens/icons8-salvar-25.png")));
+			okButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						cadastrar();
+
+						AddLembrete lembrete = new AddLembrete();
+						dispose();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+
+				private void cadastrar() throws Exception {
+					LembreteVO lVO = new LembreteVO();
+					LembreteController lController = new LembreteController();
+
+					lVO.setData(txtdata.getDate());
+					lVO.setDescricao(txtdescricao.getText().trim());
+					lVO.setAssunto(txtassunto.getText().trim());
+
+					txtdescricao.setText("");
+					txtassunto.setText("");
+
+					txtdata.requestFocus();
+					lController.cadastroDeLembrete(lVO);
+
+				}
+
+			});
+			okButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+			okButton.setActionCommand("OK");
+			getRootPane().setDefaultButton(okButton);
+		}
+		{
+			JButton cancelButton = new JButton("Cancelar");
+			cancelButton.setBounds(196, 373, 109, 37);
+			contentPanel.add(cancelButton);
+			cancelButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			cancelButton.setIcon(new ImageIcon(AddLembrete.class.getResource("/imagens/icons8-excluir-25.png")));
+//				cancelButton.setIcon(new ImageIcon(AddLembrete.class.getResource("/imagens/icons8-cancelar-25.png")));
+			cancelButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					AddLembrete addLembrete = new AddLembrete();
+					dispose();
+
+				}
+			});
+			cancelButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+			cancelButton.setActionCommand("Cancel");
+		}
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBackground(new Color(17,144,147));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				JButton okButton = new JButton("Salvar");
-				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						
-						AddLembrete addLembrete= new AddLembrete();
-						dispose();					}
-				});
-				okButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-			}
-			{
-				JButton cancelButton = new JButton("Cancelar");
-				cancelButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
-			}
 		}
+
 	}
 }

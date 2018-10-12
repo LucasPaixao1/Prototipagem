@@ -1,0 +1,12 @@
+package DAO;
+
+import VO.VendasVO;
+
+public class VendasDAO {
+
+	public void cadastrarVendas(VendasVO vendasVO) {
+		
+		
+	}
+
+}

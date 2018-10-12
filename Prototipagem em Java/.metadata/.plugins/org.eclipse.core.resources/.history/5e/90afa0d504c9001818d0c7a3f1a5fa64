@@ -1,0 +1,15 @@
+package BO;
+
+import DAO.RelatorioVendasDAO;
+import VO.RelatorioVendasVO;
+
+public class RelatorioVendasBO {
+
+	public RelatorioVendasVO getDadosRelatoriosVendas() throws Exception {
+		RelatorioVendasDAO relatorioVendasDAO = new RelatorioVendasDAO();
+		
+		
+		return relatorioVendasDAO.getDadosRelatoriosVendas();
+	}
+
+}

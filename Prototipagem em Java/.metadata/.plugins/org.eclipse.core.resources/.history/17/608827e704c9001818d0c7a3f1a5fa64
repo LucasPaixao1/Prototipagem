@@ -1,0 +1,24 @@
+package DAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import DAOFactory.DAOFactory;
+import VO.RelatorioVendasVO;
+
+public class RelatorioVendasDAO {
+	
+	private Connection connection;
+
+	public RelatorioVendasDAO() throws Exception {
+		this.connection = DAOFactory.conexao();
+	}
+
+	public RelatorioVendasVO getDadosRelatoriosVendas() throws Exception {
+		PreparedStatement preparedStatement = this.connection.prepareStatement("");
+				
+		return null;
+	}
+
+}

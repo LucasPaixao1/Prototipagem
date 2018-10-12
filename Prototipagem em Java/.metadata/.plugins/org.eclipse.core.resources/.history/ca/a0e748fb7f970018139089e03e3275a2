@@ -1,0 +1,20 @@
+package BO;
+
+import DAO.VendasDAO;
+import VO.VendasVO;
+import Validator.VendasValidation;
+
+public class VendasBO {
+
+	public void cadastrarVendas(VendasVO vendasVO) throws Exception {
+		VendasValidation vendasvalidator = new VendasValidation();
+		VendasDAO vendasDAO = new VendasDAO();
+		boolean retorno = vendasvalidator.validarVendas(vendasVO);
+		
+		if(retorno){
+			vendasDAO.cadastrarVendas(vendasVO);
+		}
+		
+	}
+
+}
